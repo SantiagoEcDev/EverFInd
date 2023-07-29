@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="styles/form.css">
+    <meta name="google-signin-client_id" content="982774708892-edt942q84021d9mop1rssjrvpe6h1vu6.apps.googleusercontent.com">
+
+</head>
+<body>
+  <div class="container">
+    <form id="registration-form" class="register-form" method="post" action="/user/register">
+        <h1 class="title">Regístrate</h1>
+
+        <div class="line-subtitle-container">
+            <div class="line"></div>
+            <span class="subtitle">Regístrate con</span>
+        </div>
+        <div class="button-container">
+          <button class="google-button">
+              <img src="assets/img/Register/logo-google.png" alt="Icono de Google" width="50" height="40">
+              <span class="button-text">Continuar con Google</span>
+          </button>
+          <button class="facebook-button">
+              <img src="assets/img/Register/logo-facebook.png" alt="Icono de Facebook" width="25" height="25">
+              <span class="button-text">Continuar con Facebook</span>
+          </button>
+      </div>
+      
+      <div class="or-container">
+        <span class="or-subtitle">O</span>
+    </div>
+
+    <div class="input-container">
+      <label for="name" class="form-label">Nombre Completo</label>
+      <input id="name" type="text" name="name" class="form-input">
+  </div>
+  <div class="email-container">
+    <label for="email" class="form-label">Correo Electrónico</label>
+    <input id="email" type="email" name="email" class="form-input">
+</div>
+<div class="password-container">
+  <label for="password" class="form-label">Contraseña</label>
+  <input id="password" type="password" name="password" class="form-input">
+</div>
+<div class="arrow-container">
+  <button type="submit" class="arrow-circle">
+      <div class="arrow-icon"></div>
+  </button>
+</div>
+<div class="login-container">
+  <p class="login-text">¿Ya tienes una cuenta? <a href="#" class="login-link">Iniciar sesión</a></p>
+</div>
+</form>
+
+    <div class="image-container">
+      <img src="assets/img/Register/DrawKit Vector Illustration Animal & Pets (2).png" alt="Imagen">
+  </div>
+</body>
+
+<script src="./js/googleAuth.js"></script>
+</html>
