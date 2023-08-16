@@ -16,6 +16,12 @@ section{
   padding-right: 2px; /* Espacio entre "Location" y "Bogota" */
 }
 
+.info-location{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
 .location p{
   margin-top: 40px;
   color: var(--font-secondary-color);
@@ -40,10 +46,13 @@ i{
 }
 
 .feed{
+  width: 90%;
   padding-top: 20px;
   border-radius: 20px;
   height: auto;
-  margin: 30px;
+  margin: 50px;
+  margin-right: auto;
+  margin-left: auto;
   background-color: #F6F6F6;
 }
 
@@ -121,6 +130,7 @@ i.active{
 }
 
 .pets-available{
+  background-color: transparent;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -161,9 +171,7 @@ article{
   padding-top: 20px;
 }
 
-.pet-info-column p{
-  color: #9B9B9B;
-}
+
 .name-gender{
   display: flex;
 }
