@@ -164,6 +164,11 @@
   margin-left: 240px;
 }
 
+.arrow-container button{
+  background: none;
+  border: none;
+}
+
 .arrow-circle {
   width: 80px;
   height: 80px;

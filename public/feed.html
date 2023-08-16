@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Sidebar Menu  | CodingLab </title>
+    <link rel="stylesheet" href="./styles/sideBar.css">
+    <link rel="stylesheet" href="./styles/feed.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus icon'></i>
+        <div class="logo_name">CodingLab</div>
+        <i class='bx bx-menu' id="btn" ></i>
+    </div>
+
+    <ul class="nav-list">
+      <li>
+          <i class='bx bx-search' ></i>
+         <input type="text" placeholder="Search...">
+         <span class="tooltip">Search</span>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fas fa-home"></i>
+          <span class="links_name">Inicio</span>
+        </a>
+         <span class="tooltip">Inicio</span>
+      </li>
+
+      <li>
+       <a href="#">
+         <i class='fas fa-user' ></i>
+         <span class="links_name">Perfil</span>
+       </a>
+       <span class="tooltip">Perfil</span>
+     </li>
+
+     <li>
+       <a href="#">
+        <i class="fa-solid fa-shield-dog"></i>
+         <span class="links_name">Adoptar</span>
+       </a>
+       <span class="tooltip">Adoptar</span>
+     </li>
+
+     <li>
+       <a href="#">
+        <i class="fas fa-hand-holding-heart"></i>
+         <span class="links_name">Dar en adopción</span>
+       </a>
+       <span class="tooltip">Dar en adopción</span>
+     </li>
+
+     <li>
+       <a href="#">
+        <i class="fas fa-exclamation-triangle"></i>
+         <span class="links_name">Mascotas perdidas</span>
+       </a>
+       <span class="tooltip">Mascotas perdidas</span>
+     </li>
+
+     <li>
+       <a href="#">
+        <i class="fas fa-heart"></i>
+         <span class="links_name">Solicitudes de adopción</span>
+       </a>
+       <span class="tooltip">Solicitudes de adopción</span>
+     </li>
+
+     <li>
+       <a href="#">
+        <i class="fas fa-cog"></i>
+         <span class="links_name">Configuración</span>
+       </a>
+       <span class="tooltip">Configuración</span>
+     </li>
+
+     <li class="profile">
+         <div class="profile-details">
+           <img src="profile.jpg" alt="profileImg">
+           <div class="name_job">
+             <div class="name">Prem Shahi</div>
+             <div class="job">Web designer</div>
+           </div>
+         </div>
+         <i class='fas fa-sign-out-alt' id="log_out" ></i>
+     </li>
+    </ul>
+  </div>
+
+  <!-- Profile Content -->
+  <section class="home-section">
+    <div class="info-location">
+      <div class="location">
+        <p>Location</p>
+        <i class="fas fa-map-marker-alt"></i><span class="city">Bogota,</span><span class="country">Colombia</span>
+      </div>
+      <div class="img-profile">
+        <img src="" alt="">
+      </div>
+    </div>
+
+    <section class="feed">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Buscar mascota..."/><i class="fas fa-bars"></i> 
+      </div>
+
+      <div class="choose-pet">
+        <div class="pet-selector">
+          <div class="pet-icon active">
+            <i class="fas fa-cat active"></i>
+          </div>      
+          <span>Cat</span> 
+        </div>
+        <div class="pet-selector">
+          <div class="pet-icon">
+            <i class="fas fa-dog"></i>
+          </div>      
+          <span>Dog</span> 
+        </div>
+      </div>
+
+      <section class="pets-available">
+        <div class="pets">
+        <article class="pet-view">
+          <div class="pet-background">
+              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+          </div>
+          <div class="pet-info">
+            <div class="pet-info-column">
+              <div class="name-gender">
+                <div class="name">
+                  <h2>Hannah</h2></div>
+                <div class="gender">
+                  <i class="fas fa-venus"></i>
+                </div>
+              </div>
+              <div class="age">
+                <h4>2 años de edad</h4>
+              </div>
+            <div class="breed"><p>Labrador Retriever</p>
+            </div>
+          </div>
+        </div>
+        </article>
+      </div>
+
+      <div class="pets">
+        <article class="pet-view">
+          <div class="pet-background">
+              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+          </div>
+          <div class="pet-info">
+            <div class="pet-info-column">
+              <div class="name-gender">
+                <div class="name">
+                  <h2>Hannah</h2></div>
+                <div class="gender">
+                  <i class="fas fa-venus"></i>
+                </div>
+              </div>
+              <div class="age">
+                <h4>2 años de edad</h4>
+              </div>
+            <div class="breed"><p>Labrador Retriever</p>
+            </div>
+          </div>
+        </div>
+        </article>
+      </div>
+
+      <div class="pets">
+        <article class="pet-view">
+          <div class="pet-background">
+              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+          </div>
+          <div class="pet-info">
+            <div class="pet-info-column">
+              <div class="name-gender">
+                <div class="name">
+                  <h2>Hannah</h2></div>
+                <div class="gender">
+                  <i class="fas fa-venus"></i>
+                </div>
+              </div>
+              <div class="age">
+                <h4>2 años de edad</h4>
+              </div>
+            <div class="breed"><p>Labrador Retriever</p>
+            </div>
+          </div>
+        </div>
+        </article>
+      </div> 
+      <div class="pets">
+        <article class="pet-view">
+          <div class="pet-background">
+              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+          </div>
+          <div class="pet-info">
+            <div class="pet-info-column">
+              <div class="name-gender">
+                <div class="name">
+                  <h2>Hannah</h2></div>
+                <div class="gender">
+                  <i class="fas fa-venus"></i>
+                </div>
+              </div>
+              <div class="age">
+                <h4>2 años de edad</h4>
+              </div>
+            <div class="breed"><p>Labrador Retriever</p>
+            </div>
+          </div>
+        </div>
+        </article>
+      </div>     
+    </section>
+    </section>
+  <script>
+  let sidebar = document.querySelector(".sidebar");
+  let closeBtn = document.querySelector("#btn");
+  let searchBtn = document.querySelector(".bx-search");
+  closeBtn.addEventListener("click", ()=>{
+    sidebar.classList.toggle("open");
+    menuBtnChange();//calling the function(optional)
+  });
+
+  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+    sidebar.classList.toggle("open");
+    menuBtnChange(); //calling the function(optional)
+  });
+
+  // following are the code to change sidebar button(optional)
+  function menuBtnChange() {
+   if(sidebar.classList.contains("open")){
+     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+   }else {
+     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+   }
+  }
+  </script>
+
+
+</body>
+</html>
