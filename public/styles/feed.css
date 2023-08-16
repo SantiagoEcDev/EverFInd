@@ -161,6 +161,9 @@ article{
   padding-top: 20px;
 }
 
+.pet-info-column p{
+  color: #9B9B9B;
+}
 .name-gender{
   display: flex;
 }
