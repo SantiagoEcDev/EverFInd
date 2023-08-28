@@ -1,30 +1,75 @@
-section{
-    display: flex;
+*{
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
 }
 
-.left-side{
+:root{
+    --titles-color: #2E2A48;
+    --primary-icons: #EE6451;
+}
+
+.container{
+    display: flex;
     height: 100vh;
+}
+
+.left-section{
     width: 60%;
+    height: 100%;
     background-color: #FDF7F1;
 }
 
-.right-side{
-    height: 100vh;
+.logo-title{
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.logo-title h1{
+    font-size: 100px;
+}
+
+.startAdopting{
+    display: flex;
+    border-radius: 30px;
+    margin-top: 200px;
+    margin-left: 20px;
+}
+
+.adopt{
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    display: flex;
+    background-color: var(--primary-icons);
+    border-radius: 30px;
+    margin-left: 20px;
+    width: 300px;
+    height: 60px;
+}
+
+.adopt i{
+    margin-left: 20px;
+}
+
+.adopt:hover{
+    border: 2px solid var(--primary-icons);
+    transition: color 0.3s;
+    background-color: #FFFFFF;
+    color: var(--primary-icons);
+    border-color:  solid #EE6451;
+}
+
+.right-section{
+    height: 100%;
     width: 40%;
     background-color: #CBDA74;
 }
 
-.petz{
-    align-items: center;
-    justify-content: center;
-}
 
-.start a{
-    text-decoration: none;
-    color: black;
-    background-color: #FFFFFF;
-    font-style: none;
-    cursor: pointer;
-}
+
+ 
