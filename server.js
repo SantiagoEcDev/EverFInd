@@ -33,6 +33,7 @@ app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
+
 // Configuración de archivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
 
