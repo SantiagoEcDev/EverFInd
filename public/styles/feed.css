@@ -124,12 +124,16 @@ i.active{
 }
 
 .pets{
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
   display: flex;
   width: auto;
   margin-top: 15px;
 }
 
 .pets-available{
+  
   background-color: transparent;
   width: 100%;
   display: flex;
@@ -138,9 +142,16 @@ i.active{
 }
 
 article{
+  cursor: pointer;
   padding-left: 40px;
   display: flex;
   width: auto;
+}
+
+.pet-view:hover{
+  -webkit-transform: scale(1.5);
+  transform: scale(1.0);
+  z-index:1000;
 }
 
 .pet-background{
@@ -179,3 +190,61 @@ article{
 .gender{
   margin-left: 80px;
 }
+
+.btn-more{
+  border: 1px solid #EE6451;
+  background-color: #EE6451;
+  color:white;
+  cursor: pointer;
+  width: auto;
+  border-radius: 15px;
+  padding: 10px;
+  height: 40px;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.btn-more:hover{
+  border: 1px solid #EE6451;
+  transition: color 0.3s;
+  background-color: #FFFFFF;
+  color: #EE6451;
+  border-color:  solid #EE6451;
+}
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Resto de los estilos necesarios */

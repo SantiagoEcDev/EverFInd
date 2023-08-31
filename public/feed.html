@@ -86,8 +86,8 @@
          <div class="profile-details">
            <img src="profile.jpg" alt="profileImg">
            <div class="name_job">
-             <div class="name">Prem Shahi</div>
-             <div class="job">Web designer</div>
+             <div class="name">Santiago Escoabr</div>
+             <div class="job">Web developer</div>
            </div>
          </div>
          <i class='fas fa-sign-out-alt' id="log_out" ></i>
@@ -130,6 +130,81 @@
 
       <section class="pets-available">
         <div class="pets">
+          <article class="pet-view">
+            <div class="pet-background">
+                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+            </div>
+            <div class="pet-info">
+              <div class="pet-info-column">
+                <div class="name-gender">
+                  <div class="name">
+                    <h2>Hannah</h2></div>
+                  <div class="gender">
+                    <i class="fas fa-venus"></i>
+                  </div>
+                </div>
+                <div class="age">
+                  <p>2 años de edad</p>
+                </div>
+              <div class="more">
+                <button class="btn-more">Información</button>
+              </div>
+            </div>
+          </div>
+          </article>
+        </div>
+
+        <div class="pets">
+          <article class="pet-view">
+            <div class="pet-background">
+                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+            </div>
+            <div class="pet-info">
+              <div class="pet-info-column">
+                <div class="name-gender">
+                  <div class="name">
+                    <h2>Hannah</h2></div>
+                  <div class="gender">
+                    <i class="fas fa-venus"></i>
+                  </div>
+                </div>
+                <div class="age">
+                  <p>2 años de edad</p>
+                </div>
+              <div class="more">
+                <button class="btn-more">Información</button>
+              </div>
+            </div>
+          </div>
+          </article>
+        </div>
+
+        <div class="pets">
+          <article class="pet-view">
+            <div class="pet-background">
+                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+            </div>
+            <div class="pet-info">
+              <div class="pet-info-column">
+                <div class="name-gender">
+                  <div class="name">
+                    <h2>Hannah</h2></div>
+                  <div class="gender">
+                    <i class="fas fa-venus"></i>
+                  </div>
+                </div>
+                <div class="age">
+                  <p>2 años de edad</p>
+                </div>
+              <div class="more">
+                <button class="btn-more">Información</button>
+              </div>
+            </div>
+          </div>
+          </article>
+        </div>
+
+      <div class="pets">
         <article class="pet-view">
           <div class="pet-background">
               <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
@@ -146,108 +221,31 @@
               <div class="age">
                 <p>2 años de edad</p>
               </div>
-            <div class="breed"><p>Labrador Retriever</p>
+            <div class="more">
+              <button class="btn-more">Información</button>
             </div>
           </div>
         </div>
         </article>
-      </div>
-
-      <div class="pets">
-        <article class="pet-view">
-          <div class="pet-background">
-              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-          </div>
-          <div class="pet-info">
-            <div class="pet-info-column">
-              <div class="name-gender">
-                <div class="name">
-                  <h2>Hannah</h2></div>
-                <div class="gender">
-                  <i class="fas fa-venus"></i>
-                </div>
-              </div>
-              <div class="age">
-                <h4>2 años de edad</h4>
-              </div>
-            <div class="breed"><p>Labrador Retriever</p>
-            </div>
-          </div>
-        </div>
-        </article>
-      </div>
-
-      <div class="pets">
-        <article class="pet-view">
-          <div class="pet-background">
-              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-          </div>
-          <div class="pet-info">
-            <div class="pet-info-column">
-              <div class="name-gender">
-                <div class="name">
-                  <h2>Hannah</h2></div>
-                <div class="gender">
-                  <i class="fas fa-venus"></i>
-                </div>
-              </div>
-              <div class="age">
-                <h4>2 años de edad</h4>
-              </div>
-            <div class="breed"><p>Labrador Retriever</p>
-            </div>
-          </div>
-        </div>
-        </article>
-      </div> 
-      <div class="pets">
-        <article class="pet-view">
-          <div class="pet-background">
-              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-          </div>
-          <div class="pet-info">
-            <div class="pet-info-column">
-              <div class="name-gender">
-                <div class="name">
-                  <h2>Hannah</h2></div>
-                <div class="gender">
-                  <i class="fas fa-venus"></i>
-                </div>
-              </div>
-              <div class="age">
-                <h4>2 años de edad</h4>
-              </div>
-            <div class="breed"><p>Labrador Retriever</p>
-            </div>
-          </div>
-        </div>
-        </article>
-      </div>     
+      </div>   
+      
     </section>
+    <div class="modal" id="modal1">
+      <div class="modal-content">
+          <span class="close" data-modal-close="modal1">&times;</span>
+          <h2>Detalles de la Mascota</h2>
+          <p>Nombre: Hannah</p>
+          <p>Edad: 2 años</p>
+          <p>Raza: Labrador Retriever</p>
+      </div>
+  </div>
     </section>
-  <script>
-  let sidebar = document.querySelector(".sidebar");
-  let closeBtn = document.querySelector("#btn");
-  let searchBtn = document.querySelector(".bx-search");
-  closeBtn.addEventListener("click", ()=>{
-    sidebar.classList.toggle("open");
-    menuBtnChange();//calling the function(optional)
-  });
 
-  searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
-    sidebar.classList.toggle("open");
-    menuBtnChange(); //calling the function(optional)
-  });
+    
 
-  // following are the code to change sidebar button(optional)
-  function menuBtnChange() {
-   if(sidebar.classList.contains("open")){
-     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
-   }else {
-     closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
-   }
-  }
-  </script>
+    <script src="./popUp.js"></script>
+    <script src="./javascript/navigation.js"></script>
+
 
 
 </body>
