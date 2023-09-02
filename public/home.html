@@ -2,9 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Responsive Sidebar Menu  | CodingLab </title>
+    <title>Home</title>
     <link rel="stylesheet" href="./styles/sideBar.css">
-    <link rel="stylesheet" href="./styles/feed.css">
+    <link rel="stylesheet" href="./styles/home.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
       </li>
 
       <li>
-        <a href="#">
+        <a href="#" onclick="cargarContenido('home')" >
           <i class="fas fa-home"></i>
           <span class="links_name">Inicio</span>
         </a>
@@ -35,7 +35,7 @@
       </li>
 
       <li>
-       <a href="#">
+       <a href="#" onclick="cargarContenido('profile')">
          <i class='fas fa-user' ></i>
          <span class="links_name">Perfil</span>
        </a>
@@ -43,7 +43,7 @@
      </li>
 
      <li>
-       <a href="#">
+       <a href="#"onclick="cargarContenido('adopt')">
         <i class="fa-solid fa-shield-dog"></i>
          <span class="links_name">Adoptar</span>
        </a>
@@ -51,7 +51,7 @@
      </li>
 
      <li>
-       <a href="#">
+       <a href="#" onclick="cargarContenido('giveToAdopt')">
         <i class="fas fa-hand-holding-heart"></i>
          <span class="links_name">Dar en adopción</span>
        </a>
@@ -59,7 +59,7 @@
      </li>
 
      <li>
-       <a href="#">
+       <a href="#" onclick="cargarContenido('lostPets')">
         <i class="fas fa-exclamation-triangle"></i>
          <span class="links_name">Mascotas perdidas</span>
        </a>
@@ -67,7 +67,7 @@
      </li>
 
      <li>
-       <a href="#">
+       <a href="#" onclick="cargarContenido('adoptionApplication')">
         <i class="fas fa-heart"></i>
          <span class="links_name">Solicitudes de adopción</span>
        </a>
@@ -75,7 +75,7 @@
      </li>
 
      <li>
-       <a href="#">
+       <a href="#" onclick="cargarContenido('settings')">
         <i class="fas fa-cog"></i>
          <span class="links_name">Configuración</span>
        </a>
@@ -84,7 +84,7 @@
 
      <li class="profile">
          <div class="profile-details">
-           <img src="profile.jpg" alt="profileImg">
+           <img src="" alt="profileImg">
            <div class="name_job">
              <div class="name">Santiago Escoabr</div>
              <div class="job">Web developer</div>
@@ -101,9 +101,6 @@
       <div class="location">
         <p>Location</p>
         <i class="fas fa-map-marker-alt"></i><span class="city">Bogota,</span><span class="country">Colombia</span>
-      </div>
-      <div class="img-profile">
-        <img src="" alt="">
       </div>
     </div>
 
@@ -230,20 +227,9 @@
       </div>   
       
     </section>
-    <div class="modal" id="modal1">
-      <div class="modal-content">
-          <span class="close" data-modal-close="modal1">&times;</span>
-          <h2>Detalles de la Mascota</h2>
-          <p>Nombre: Hannah</p>
-          <p>Edad: 2 años</p>
-          <p>Raza: Labrador Retriever</p>
-      </div>
-  </div>
     </section>
-
-    
-
-    <script src="./popUp.js"></script>
+  
+    <script src="fetch.js"></script>
     <script src="./javascript/navigation.js"></script>
 
 
