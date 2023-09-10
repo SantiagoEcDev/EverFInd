@@ -3,11 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link rel="stylesheet" href="./styles/sideBar.css">
+    <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Dar en adopción</title>
 </head>
 <body>
-    <h1>give to adopt</h1>
+    <div class="sidebar">
+        <div class="logo-details">
+          <i class='bx bxl-c-plus-plus icon'></i>
+            <div class="logo_name">PetMatch</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+    
+        <ul class="nav-list">
+          <li>
+            <a href="home.html" >
+              <i class="fa-solid fa-shield-dog"></i>
+              <span class="links_name">Adoptar</span>
+            </a>
+            <span class="tooltip">Adoptar</span>
+          </li>
+    
+         <li>
+           <a href="giveToAdopt.html">
+            <i class="fas fa-hand-holding-heart"></i>
+             <span class="links_name">Dar en adopción</span>
+           </a>
+           <span class="tooltip">Dar en adopción</span>
+         </li>
+    
+         <li>
+           <a href="lostPets.html">
+            <i class="fas fa-exclamation-triangle"></i>
+             <span class="links_name">Mascotas perdidas</span>
+           </a>
+           <span class="tooltip">Mascotas perdidas</span>
+         </li>
+    
+         <li>
+           <a href="adoptionApplication.html">
+            <i class="fas fa-heart"></i>
+             <span class="links_name">Solicitudes de adopción</span>
+           </a>
+           <span class="tooltip">Solicitudes de adopción</span>
+         </li>
+    
+         <li>
+           <a href="settings.html">
+            <i class="fas fa-cog"></i>
+             <span class="links_name">Configuración</span>
+           </a>
+           <span class="tooltip">Configuración</span>
+         </li>
+    
+         <li class="profile">
+             <div class="profile-details">
+               <img src="" alt="profileImg">
+               <div class="name_job">
+                 <div class="name">Santiago Escoabr</div>
+                 <div class="job">Web developer</div>
+               </div>
+             </div>
+             <i class='fas fa-sign-out-alt' id="log_out" ></i>
+         </li>
+        </ul>
+      </div>
 
-    <script src="fetch.js"></script>
+      <section class="home-section">
+    <section class="feed">
+        <div class="yourPets">
+            <div class="petPhoto">
+                <img src="./assets/img/feed/dogFeed.png" alt="">
+            </div>
+            <div class="petInfo">
+                <div class="info">
+                    <h2>Hannah</h2>
+                    <p>2 años de edad</p>
+                    <p>Hembra</p>
+                    <p>Perro</p>
+                </div>
+                <div class="description">
+                    <label for=""></label>
+                </div>
+                
+            </div>
+        </div>
+    <div class="add"><a href="#" class="hero_cta"><i class="fas fa-plus"></i></a></div>
+    <section class="modal">
+        <div class="modal_container">
+            <h2>Agregar Mascota</h2>
+            <!-- Formulario para agregar mascotas -->
+            <form id="formularioMascota">
+                <label for="nombreMascota">Nombre de la mascota:</label>
+                <input type="text" id="nombreMascota" required>
+
+                <label for="raza">Raza:</label>
+                <input type="text" id="raza" required>
+
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad" required>
+
+                <input type="radio" id="gato" name="tipoMascota" value="gato">
+                <label for="gato">Gato</label>
+
+                <input type="radio" id="perro" name="tipoMascota" value="perro">
+                <label for="perro">Perro</label>
+                  
+
+                <button type="submit">Agregar</button>
+            </form>
+            <a href="#" class="modal_close"></a>
+        </div>
+    </section>
+</section>
+</section>
+<script src="navigation.js"></script>   
+<script src="main.js"></script>
 </body>
 </html>
