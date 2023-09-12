@@ -73,53 +73,98 @@
       </div>
 
       <section class="home-section">
-    <section class="feed">
-        <div class="yourPets">
-            <div class="petPhoto">
-                <img src="./assets/img/feed/dogFeed.png" alt="">
-            </div>
-            <div class="petInfo">
-                <div class="info">
-                    <h2>Hannah</h2>
-                    <p>2 años de edad</p>
-                    <p>Hembra</p>
-                    <p>Perro</p>
+        <section class="modal">
+          <div class="modal_container">
+            
+              <h2>Agregar Mascota</h2>
+              <!-- Formulario para agregar mascotas -->
+              <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre de la mascota:</label>
+                    <input type="text" id="nombre" name="nombre" required>
                 </div>
-                <div class="description">
-                    <label for=""></label>
+    
+                <div class="form-group">
+                  <i class="fas fa-upload"></i> Subir Archivo
+                    <input type="file" id="photo" name="photo" accept="image/*">
                 </div>
-                
-            </div>
-        </div>
-    <div class="add"><a href="#" class="hero_cta"><i class="fas fa-plus"></i></a></div>
-    <section class="modal">
-        <div class="modal_container">
-            <h2>Agregar Mascota</h2>
-            <!-- Formulario para agregar mascotas -->
-            <form id="formularioMascota">
-                <label for="nombreMascota">Nombre de la mascota:</label>
-                <input type="text" id="nombreMascota" required>
-
-                <label for="raza">Raza:</label>
-                <input type="text" id="raza" required>
-
-                <label for="edad">Edad:</label>
-                <input type="number" id="edad" required>
-
-                <input type="radio" id="gato" name="tipoMascota" value="gato">
-                <label for="gato">Gato</label>
-
-                <input type="radio" id="perro" name="tipoMascota" value="perro">
-                <label for="perro">Perro</label>
-                  
-
-                <button type="submit">Agregar</button>
+    
+                <div class="form-group">
+                    <label for="raza">Raza:</label>
+                    <input type="text" id="raza" name="raza" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="genero">Género:</label>
+                    <select id="genero" name="genero">
+                        <option value="macho">Macho</option>
+                        <option value="hembra">Hembra</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <a href="#" class="modal_close">Atrás</a>
+                <button type="submit">Agregar Mascota</button>
             </form>
-            <a href="#" class="modal_close"></a>
         </div>
-    </section>
-</section>
-</section>
+          </div>
+        </section>
+
+        <section class="feed">
+        <section class="pets-available">
+        <div class="pets">
+          <article class="pet-view">
+            <div class="pet-background">
+                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+            </div>
+            <div class="pet-info">
+              <div class="pet-info-column">
+                <div class="name-gender">
+                  <div class="name">
+                    <h2>Hannah</h2></div>
+                  <div class="gender">
+                    <i class="fas fa-venus"></i>
+                  </div>
+                </div>
+                <div class="age">
+                  <p>2 años de edad</p>
+                </div>
+              <div class="more">
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="pets">
+          <article class="pet-view">
+            <div class="pet-background">
+                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+            </div>
+            <div class="pet-info">
+              <div class="pet-info-column">
+                <div class="name-gender">
+                  <div class="name">
+                    <h2>Hannah</h2></div>
+                  <div class="gender">
+                    <i class="fas fa-venus"></i>
+                  </div>
+                </div>
+                <div class="age">
+                  <p>2 años de edad</p>
+                </div>
+              <div class="more">
+                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                <button class="btn-delete"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      <div class="add"><a href="#" class="hero_cta"><i class="fas fa-plus"></i></a></div> 
+      
+      </section>
+      
 <script src="navigation.js"></script>   
 <script src="main.js"></script>
 </body>
