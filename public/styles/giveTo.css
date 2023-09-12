@@ -1,10 +1,37 @@
-.home-section{
-    position: relative;
-    background: white;
-    min-height: 100vh;
-    top: 0;
-    left: 78px;
-    width: calc(100% - 78px);
-    transition: all 0.5s ease;
-    z-index: 2;
-  }
+.pets-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pets-name, .pets-breed {
+  grid-column: span 2;
+}
+.pets-birthday, .pets-gender, .pets-spayed-neutered, .pets-weight {
+  grid-column: span 1;
+}
+.pets-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+.pets-form input[type="text"], .pets-form input[type="date"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.pets-form input[type="radio"] {
+  display: none;
+}
+.pets-form input[type="radio"]:checked + label {
+  background: #ccc;
+}
+.pets-form button {
+  background: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.pets-form button:hover {
+  background: #333;
+}

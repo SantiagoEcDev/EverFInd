@@ -78,33 +78,64 @@
             
               <h2>Agregar Mascota</h2>
               <!-- Formulario para agregar mascotas -->
-              <form>
-                <div class="form-group">
-                    <label for="nombre">Nombre de la mascota:</label>
-                    <input type="text" id="nombre" name="nombre" required>
+
+              <div class='signup-container'>
+                <div class='right-container'>
+                    <header>
+                        <h1>¡Yay, cachorros! ¡Asegúrate de que tu perrito reciba el mejor cuidado!</h1>
+                        <div class='set'>
+                            <div class='pets-name'>
+                                <label for='pets-name'>Nombre</label>
+                                <input id='pets-name' placeholder="Nombre de la mascota" type='text'>
+                            </div>
+                            <div class='pets-photo'>
+                                <button id='pets-upload'>
+                                    <i class='fas fa-camera-retro'></i>
+                                </button>
+                                <label for='pets-upload'>Subir una foto</label>
+                            </div>
+                        </div>
+                        <div class='set'>
+                            <div class='pets-breed'>
+                                <label for='pets-breed'>Raza</label>
+                                <input id='pets-breed' placeholder="Raza de la mascota" type='text'>
+                            </div>
+                            <div class='pets-birthday'>
+                                <label for='pets-birthday'>Cumpleaños</label>
+                                <input id='pets-birthday' placeholder='MM/DD/AAAA' type='text'>
+                            </div>
+                        </div>
+                        <div class='set'>
+                            <div class='pets-gender'>
+                                <label for='pet-gender-female'>Género</label>
+                                <div class='radio-container'>
+                                    <input checked='' id='pet-gender-female' name='pet-gender' type='radio' value='female'>
+                                    <label for='pet-gender-female'>Hembra</label>
+                                    <input id='pet-gender-male' name='pet-gender' type='radio' value='male'>
+                                    <label for='pet-gender-male'>Macho</label>
+                                </div>
+                            </div>
+                            <div class='pets-spayed-neutered'>
+                                <label for='pet-spayed'>Esterilizado/Castrado</label>
+                                <div class='radio-container'>
+                                    <input checked='' id='pet-spayed' name='spayed-neutered' type='radio' value='spayed'>
+                                    <label for='pet-spayed'>Esterilizado</label>
+                                    <input id='pet-neutered' name='spayed-neutered' type='radio' value='neutered'>
+                                    <label for='pet-neutered'>Castrado</label>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <footer>
+                        <div class='set'>
+                            <button id='back' class="modal_close">Atrás</button>
+                            <button id='next'>Ingresar</button>
+                        </div>
+                    </footer>
                 </div>
-    
-                <div class="form-group">
-                  <i class="fas fa-upload"></i> Subir Archivo
-                    <input type="file" id="photo" name="photo" accept="image/*">
-                </div>
-    
-                <div class="form-group">
-                    <label for="raza">Raza:</label>
-                    <input type="text" id="raza" name="raza" required>
-                </div>
-    
-                <div class="form-group">
-                    <label for="genero">Género:</label>
-                    <select id="genero" name="genero">
-                        <option value="macho">Macho</option>
-                        <option value="hembra">Hembra</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-                <a href="#" class="modal_close">Atrás</a>
-                <button type="submit">Agregar Mascota</button>
-            </form>
+            </div>
+            
+              
         </div>
           </div>
         </section>
