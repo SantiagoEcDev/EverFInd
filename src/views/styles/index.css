@@ -21,9 +21,9 @@
     background-color: #FDF7F1;
 }
 
-.title h4{
+.title h1{
     color:#0C0C3A;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin-top: 40px;
     margin-left: 40px;
     font-size: 25px;
@@ -65,12 +65,12 @@
     background-color: var(--primary-icons);
     border-radius: 30px;
     margin-left: 20px;
-    width: 300px;
+    width: 320px;
     height: 60px;
 }
 
 .adopt i{
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .adopt:hover{
