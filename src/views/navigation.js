@@ -11,6 +11,8 @@ let sidebar = document.querySelector(".sidebar");
     menuBtnChange(); //calling the function(optional)
   });
 
+  
+
   // following are the code to change sidebar button(optional)
   function menuBtnChange() {
    if(sidebar.classList.contains("open")){

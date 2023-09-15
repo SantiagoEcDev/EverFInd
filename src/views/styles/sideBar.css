@@ -64,6 +64,15 @@
   text-align: center;
   line-height: 60px;
 }
+
+.logout{
+    color: #fff;
+    width: auto;
+    min-width: 50px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px;
+}
 .sidebar .nav-list{
   margin-top: 20px;
   height: 100%;

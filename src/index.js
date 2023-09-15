@@ -3,12 +3,13 @@ const path = require('path');
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+const flash = require('connect-flash')
 
 //Initializations
 const app = express();
 require('./database')
 require('./passport/local-auth')
-const flash = require('connect-flash')
+
 
 // Configuraciones
 app.use(express.static(path.join(__dirname, 'views')));
@@ -27,12 +28,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-    app.locals.signupMessage = req.flash('signMessage')
+    app.locals.signupMessage = req.flash('signMessage');
+    app.locals.signupMessage = req.flash('signinMessage');
+    app.locals.user = req.user;
     next();
 })
 
 // Rutas
 app.use('/', require('./routes/index'));
+
 
 
 // Iniciando servidor

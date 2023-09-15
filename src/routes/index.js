@@ -15,38 +15,60 @@ router.get('/signup', (req, res, next) => {
     
 });
 
+
 router.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/home',
     failureRedirect: '/signup',
     passReqToCallback: true
 }));
 
-// router.post('/signin', passport.authenticate('local-signin', {
-//     succesRedirect: '/home',
-//     failureRedirect: '/signin',
-//     passReqToCallback: true
-// }));
 
-// router.get('/signin', (req, res, next) => {
-//     res.sendFile(path.join(__dirname, '..', 'views', 'signin.html')); // Renderiza la vista home
-// });
+router.get('/signin', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'signin.html'));
+    
+});
 
-// router.post('/signin', (req, res, next) => {
-//     res.sendFile(path.join(__dirname, '..', 'views', 'signin.html')); // Renderiza la vista home
-// });
+router.post('/signin', passport.authenticate('local-signin', {
+    successRedirect: '/home',
+    failureRedirect: '/signin',
+    passReqToCallback: true
+}));
+
+router.get('/logout', (req, res) => {
+    req.logout((err) => {
+        if (err) {
+            console.error(err);
+            return next(err);
+        }
+        // Redirect or respond as needed after logging out
+        res.redirect('/'); // Example: Redirect to the home page
+    });
+});
+
+// router.use((req, res, next) => {
+//     isAuthenticated(req, res, next);
+//     next();
+//  });
+
+router.get('/home', isAuthenticated, (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'home.html')); // Renderiza la vista home
+});
 
 
+router.get('/settings', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'views', 'settings.html'));
+});
 
 
-
+function isAuthenticated(req, res, next) {
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect('/');
+}
+ 
 // Agrega una ruta para /home en tu archivo de rutas principal
-router.get('/home', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'home.html')); // Renderiza la vista home
-});
 
-router.post('/home', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'home.html')); // Renderiza la vista home
-});
 
 
 
