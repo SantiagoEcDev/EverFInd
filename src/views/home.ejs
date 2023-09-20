@@ -21,7 +21,7 @@
 
     <ul class="nav-list">
       <li>
-        <a href="home.html" >
+        <a href="home.ejs" >
           <i class="fa-solid fa-shield-dog"></i>
           <span class="links_name">Adoptar</span>
         </a>
@@ -62,9 +62,9 @@
 
      <li class="profile">
          <div class="profile-details">
-           <!-- <img src="" alt="profileImg"> -->
+           <img src="" alt="profileImg">
            <div class="name_job">
-             <div class="name" id="userName">Santiago Escobar</div>
+             <div class="name" id="userName"><p><%= user.name %></p></div>
              <a href="/logout"><i class='fas fa-sign-out-alt' id="log_out" ></i></a>
              <!-- <div class="job">Web developer</div> -->
            </div>

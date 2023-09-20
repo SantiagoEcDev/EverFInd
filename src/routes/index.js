@@ -51,7 +51,7 @@ router.get('/logout', (req, res) => {
 //  });
 
 router.get('/home', isAuthenticated, (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'home.html')); // Renderiza la vista home
+    res.render('home'); // Renderiza la vista home
 });
 
 

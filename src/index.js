@@ -1,4 +1,5 @@
 const express = require('express');
+const engine = require('ejs-mate');
 const path = require('path');
 const morgan = require('morgan');
 const passport = require('passport');
@@ -12,9 +13,12 @@ require('./passport/local-auth')
 
 
 // Configuraciones
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', engine)
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'views')));
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
