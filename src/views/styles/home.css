@@ -128,7 +128,12 @@ i.active{
   align-items: center;
   justify-content: center;
   padding: 10px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 
+    repeat(
+      auto-fit,
+      minmax(150px, 1fr)
+    );
   width: auto;
   margin-top: 15px;
 }
