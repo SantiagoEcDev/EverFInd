@@ -76,7 +76,7 @@ body{
     height: 56px;
     display: flex;
     align-items: center;
-    color: var(--primary);
+    color: #66CC66;
     z-index: 500;
     padding-bottom: 20px;
     box-sizing: content-box;
@@ -516,6 +516,46 @@ body{
     background: var(--warning);
 }
 
+.content main .bottom-data .orders table tr td .edit{
+    font-size: 10px;
+    padding: 6px 16px;
+    color: var(--light);
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.content main .bottom-data .orders table tr td .edit{
+    font-size: 10px;
+    padding: 6px 16px;
+    color: var(--light);
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.edit i{
+    color: #1e8eff;
+}
+
+.edit i:hover{
+    color: #135ba4;
+}
+
+.content main .bottom-data .orders table tr td .delete{
+    font-size: 10px;
+    padding: 6px 16px;
+    color: var(--light);
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.delete a {
+    color: rgb(254, 48, 48);
+}
+
+.delete a:hover{
+    color: rgb(211, 46, 46);
+}
+
 .content main .bottom-data .reminders{
     flex-grow: 1;
     flex-basis: 300px;
@@ -559,6 +599,11 @@ body{
 
 .content main .bottom-data .reminders .task-list li:last-child{
    margin-bottom: 0;
+}
+
+
+.edit{
+    color: blue;
 }
 
 @media screen and (max-width: 768px) {
