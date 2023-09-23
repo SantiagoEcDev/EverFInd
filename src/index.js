@@ -41,8 +41,6 @@ app.use((req, res, next) => {
 // Rutas
 app.use('/', require('./routes/index'));
 
-const mascotasRouter = require('./controllers/myPets');
-app.use('/', mascotasRouter);
 
 
 

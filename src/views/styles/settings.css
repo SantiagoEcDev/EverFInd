@@ -666,3 +666,76 @@ body{
     }
 
 }
+
+/* Estilos para el formulario */
+form {
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrar el formulario en la página */
+}
+
+/* Estilos para los campos */
+.addPet {
+    margin-bottom: 15px; /* Espacio entre campos */
+}
+
+.addPet label {
+    display: block; /* Hacer que las etiquetas sean bloques para que queden encima de los campos */
+    font-weight: bold; /* Negrita para las etiquetas */
+}
+
+.addPet input[type="text"],
+.addPet input[type="number"],
+.addPet textarea {
+    width: 100%; /* Ancho completo para los campos de texto */
+    padding: 5px; /* Espacio interior en los campos */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 4px; /* Esquinas redondeadas */
+}
+
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none; /* Quitalos estilos nativos del navegador */
+}
+
+/* Estilos para las opciones (option) dentro del select */
+select option {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Estilos para el select cuando está en foco (activo) */
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Estilos para el grupo de radio buttons */
+.addPet .radio-group {
+    display: flex; /* Hacer que los radio buttons se alineen en fila */
+    gap: 10px; /* Espacio entre radio buttons */
+}
+
+.addPet .radio-group input[type="radio"] {
+    margin: 0; /* Eliminar el margen predeterminado */
+}
+
+/* Estilos para el botón */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

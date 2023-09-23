@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
 
-const myPetsSchema = new mongoose.Schema({
-  nombre: String,
-  tipo: String,
-  raza: String,
-  cumpleanos: Date,
-  genero: String,
-  esterilizado: Boolean,
+const petSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  type: String,
+  breed: String,
+  lost: String,
+  description: String,
+  createdAt:{
+    type: Date,
+    default: Date.now
+  }
 });
 
-const myPets = mongoose.model('MyPets', myPetsSchema);
-
-module.exports = myPets;
+module.exports = mongoose.model('Pet', petSchema);
