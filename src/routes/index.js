@@ -67,6 +67,7 @@ router.get('/giveto', async (req, res, next) => {
 
         // Renderiza la vista 'giveto' y pasa la lista de mascotas como contexto
         res.render('giveto', { pets });
+        
     } catch (error) {
         console.error('Error al obtener la lista de mascotas:', error);
         res.redirect('/'); // Redirige a la página de inicio o maneja el error de acuerdo a tus necesidades
@@ -94,6 +95,7 @@ router.post('/addPet', async (req, res) => {
         await newPet.save();
 
         res.redirect('/giveto');
+        res.render('otra-vista', { pets });
     }catch (error){
         console.error('Error al guardar la mascota:', error );
         res.redirect('/giveto');

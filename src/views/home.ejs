@@ -1,212 +1,163 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="./styles/sideBar.css">
-    <link rel="stylesheet" href="./styles/home.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./styles/settings.css">
+    <link rel="stylesheet" href="./styles/home.css">
+    <title>Responsive Dashboard Design #2 | AsmrProg</title>
+</head>
 
 <body>
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus icon'></i>
-        <div class="logo_name">CodingLab</div>
-        <i class='bx bx-menu' id="btn" ></i>
-    </div>
 
-    <ul class="nav-list">
-      <li>
-        <a href="home.ejs" >
-          <i class="fa-solid fa-shield-dog"></i>
-          <span class="links_name">Adoptar</span>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-code-alt'></i>
+            <div class="logo-name"><span>Asmr</span>Prog</div>
         </a>
-        <span class="tooltip">Adoptar</span>
-      </li>
+        <ul class="side-menu">
+            <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
+            <li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
+            <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
+            <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
+            <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
 
-     <li>
-       <a href="giveToAdopt.html">
-        <i class="fas fa-hand-holding-heart"></i>
-         <span class="links_name">Dar en adopción</span>
-       </a>
-       <span class="tooltip">Dar en adopción</span>
-     </li>
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" class="notif">
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="images/logo.png">
+            </a>
+        </nav>
 
-     <li>
-       <a href="lostPets.html">
-        <i class="fas fa-exclamation-triangle"></i>
-         <span class="links_name">Mascotas perdidas</span>
-       </a>
-       <span class="tooltip">Mascotas perdidas</span>
-     </li>
+        <!-- End of Navbar -->
 
-     <li>
-       <a href="adoptionApplication.html">
-        <i class="fas fa-heart"></i>
-         <span class="links_name">Solicitudes de adopción</span>
-       </a>
-       <span class="tooltip">Solicitudes de adopción</span>
-     </li>
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Analytics
+                            </a></li>
+                        /
+                        <li><a href="#" class="active">Shop</a></li>
+                    </ul>
+                </div>
+                <a href="#" class="report">
+                    <i class='bx bx-cloud-download'></i>
+                    <span>Download CSV</span>
+                </a>
+            </div>
 
-     <li>
-       <a href="settings.html">
-        <i class="fas fa-cog"></i>
-         <span class="links_name">Configuración</span>
-       </a>
-       <span class="tooltip">Configuración</span>
-     </li>
+            <!-- Insights -->
+            <ul class="insights">
+                <li>
+                    <i class='bx bx-calendar-check'></i>
+                    <span class="info">
+                        <h3>
+                            1,074
+                        </h3>
+                        <p>Paid Order</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-show-alt'></i>
+                    <span class="info">
+                        <h3>
+                            3,944
+                        </h3>
+                        <p>Site Visit</p>
+                    </span>
+                </li>
+                <!-- <li><i class='bx bx-line-chart'></i>
+                    <span class="info">
+                        <h3>
+                            14,721
+                        </h3>
+                        <p>Searches</p>
+                    </span>
+                </li>
+                <li><i class='bx bx-dollar-circle'></i>
+                    <span class="info">
+                        <h3>
+                            $6,742
+                        </h3>
+                        <p>Total Sales</p>
+                    </span>
+                </li> -->
+            </ul>
+            <!-- End of Insights -->
 
-     <li class="profile">
-         <div class="profile-details">
-           <img src="" alt="profileImg">
-           <div class="name_job">
-             <div class="name" id="userName"><p><%= user.name %></p></div>
-             <a href="/logout"><i class='fas fa-sign-out-alt' id="log_out" ></i></a>
-             <!-- <div class="job">Web developer</div> -->
-           </div>
-         </div>
-         
-    </ul>
-  </div>
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-paw'></i>
+                        <h3>Pets</h3>
+                        <i class='bx bx-filter'></i>
+                        <i class='bx bx-search'></i>
+                    </div>
+                    <article class="pet-view">
+                        <div class="pet-background">
+                            <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+                        </div>
+                        <div class="pet-info">
+                          <div class="pet-info-column">
+                            <div class="name-gender">
+                              <div class="name">
+                                <h2>Hannah</h2></div>
+                              <div class="gender">
+                                <i class="fas fa-venus"></i>
+                              </div>
+                            </div>
+                            <div class="age">
+                              <p>2 años de edad</p>
+                            </div>
+                          <div class="more">
+                            <button class="btn-more">Información</button>
+                          </div>
+                        </div>
+                      </div>
+                      </article>
+                </div>
 
-  <!-- Profile Content -->
-  <section class="home-section">
-    <div class="info-location">
-      <div class="location">
-        <p>Location</p>
-        <i class="fas fa-map-marker-alt"></i><span class="city">Bogota,</span><span class="country">Colombia</span>
-      </div>
+                
+
+            </div>
+
+        </main>
+
     </div>
 
-    <section class="feed">
-      <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Buscar mascota..."/><i class="fas fa-bars"></i> 
-      </div>
-
-      <div class="choose-pet">
-        <div class="pet-selector">
-          <div class="pet-icon active">
-            <i class="fas fa-dog active"></i>
-          </div>      
-          <span>Dogs</span> 
-        </div>
-        <div class="pet-selector">
-          <div class="pet-icon">
-            <i class="fas fa-cat"></i>
-          </div>      
-          <span>Cats</span> 
-        </div>
-      </div>
-
-      <section class="pets-available">
-        <div class="pets">
-          <article class="pet-view">
-            <div class="pet-background">
-                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-            </div>
-            <div class="pet-info">
-              <div class="pet-info-column">
-                <div class="name-gender">
-                  <div class="name">
-                    <h2>Hannah</h2></div>
-                  <div class="gender">
-                    <i class="fas fa-venus"></i>
-                  </div>
-                </div>
-                <div class="age">
-                  <p>2 años de edad</p>
-                </div>
-              <div class="more">
-                <button class="btn-more">Información</button>
-              </div>
-            </div>
-          </div>
-          </article>
-        </div>
-
-        <div class="pets">
-          <article class="pet-view">
-            <div class="pet-background">
-                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-            </div>
-            <div class="pet-info">
-              <div class="pet-info-column">
-                <div class="name-gender">
-                  <div class="name">
-                    <h2>Hannah</h2></div>
-                  <div class="gender">
-                    <i class="fas fa-venus"></i>
-                  </div>
-                </div>
-                <div class="age">
-                  <p>2 años de edad</p>
-                </div>
-              <div class="more">
-                <button class="btn-more">Información</button>
-              </div>
-            </div>
-          </div>
-          </article>
-        </div>
-
-        <div class="pets">
-          <article class="pet-view">
-            <div class="pet-background">
-                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-            </div>
-            <div class="pet-info">
-              <div class="pet-info-column">
-                <div class="name-gender">
-                  <div class="name">
-                    <h2>Hannah</h2></div>
-                  <div class="gender">
-                    <i class="fas fa-venus"></i>
-                  </div>
-                </div>
-                <div class="age">
-                  <p>2 años de edad</p>
-                </div>
-              <div class="more">
-                <button class="btn-more">Información</button>
-              </div>
-            </div>
-          </div>
-          </article>
-        </div>
-
-      <div class="pets">
-        <article class="pet-view">
-          <div class="pet-background">
-              <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-          </div>
-          <div class="pet-info">
-            <div class="pet-info-column">
-              <div class="name-gender">
-                <div class="name">
-                  <h2>Hannah</h2></div>
-                <div class="gender">
-                  <i class="fas fa-venus"></i>
-                </div>
-              </div>
-              <div class="age">
-                <p>2 años de edad</p>
-              </div>
-            <div class="more">
-              <button class="btn-more">Información</button>
-            </div>
-          </div>
-        </div>
-        </article>
-      </div>   
-      
-    </section>
-    </section>
-    <script src="navigation.js"></script>   
-    <script src="main.js"></script>
+    <script src="dashboard.js"></script>
 </body>
-</html> 
+
+</html>
