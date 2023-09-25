@@ -63,7 +63,7 @@ router.get('/settings', (req, res, next) => {
 router.get('/giveto', async (req, res, next) => {
     try {
         // Obtén la lista de mascotas desde la base de datos
-        const pets = await Pet.find();
+        const pets = await Pet.find({owner: req.user._id});
 
         // Renderiza la vista 'giveto' y pasa la lista de mascotas como contexto
         res.render('giveto', { pets });
@@ -89,7 +89,8 @@ router.post('/addPet', async (req, res) => {
             breed,
             status,
             description,
-            createdAt
+            createdAt,
+            owner: req.user._id,
         });
 
         await newPet.save();
