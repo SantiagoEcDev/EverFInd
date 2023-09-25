@@ -50,11 +50,6 @@ router.get('/logout', (req, res) => {
 //     next();
 //  });
 
-router.get('/home', (req, res, next) => {
-    res.render('home'); // Renderiza la vista home
-});
-
-
 router.get('/settings', (req, res, next) => {
     res.sendFile(path.join(__dirname, '..', 'views', 'settings.html'));
 });
@@ -99,6 +94,19 @@ router.post('/addPet', async (req, res) => {
     }catch (error){
         console.error('Error al guardar la mascota:', error );
         res.redirect('/giveto');
+    }
+});
+
+router.get('/home', async (req, res, next) => {
+    try {
+        // Obtén la lista de mascotas desde la base de datos o de donde sea necesario
+        const pets = await Pet.find();
+
+        // Renderiza la vista 'home' y pasa la lista de mascotas como contexto
+        res.render('home', { pets });
+    } catch (error) {
+        console.error('Error al obtener la lista de mascotas:', error);
+        res.redirect('/'); // Maneja el error de acuerdo a tus necesidades
     }
 });
 

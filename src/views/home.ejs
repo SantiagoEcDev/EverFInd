@@ -73,10 +73,6 @@
                         <li><a href="#" class="active">Shop</a></li>
                     </ul>
                 </div>
-                <a href="#" class="report">
-                    <i class='bx bx-cloud-download'></i>
-                    <span>Download CSV</span>
-                </a>
             </div>
 
             <!-- Insights -->
@@ -125,6 +121,8 @@
                         <i class='bx bx-filter'></i>
                         <i class='bx bx-search'></i>
                     </div>
+
+                    <% pets.forEach(function(pet) { %>
                     <article class="pet-view">
                         <div class="pet-background">
                             <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
@@ -133,7 +131,7 @@
                           <div class="pet-info-column">
                             <div class="name-gender">
                               <div class="name">
-                                <h2>Hannah</h2></div>
+                                <h2><%= pet.name%></h2></div>
                               <div class="gender">
                                 <i class="fas fa-venus"></i>
                               </div>
@@ -147,6 +145,7 @@
                         </div>
                       </div>
                       </article>
+                      <% }); %>
                 </div>
 
                 
