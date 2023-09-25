@@ -5,7 +5,7 @@ const petSchema = new mongoose.Schema({
   age: Number,
   type: String,
   breed: String,
-  lost: String,
+  status: String,
   description: String,
   createdAt:{
     type: Date,

@@ -18,8 +18,8 @@
             <div class="logo-name"><span>Fur</span>EverFind</div>
         </a>
         <ul class="side-menu">
-            <li><a href="home1.html"><i class='bx bx-heart'></i>Adopt</a></li>
-            <li class="active"><a href="#"><i class='bx bx-send'></i>Give up for adoption</a></li>
+            <li><a href="home"><i class='bx bx-heart'></i>Adopt</a></li>
+            <li class="active"><a href="giveto"><i class='bx bx-send'></i>Give up for adoption</a></li>
             <li><a href="#"><i class='bx bx-search'></i>Lots pets</a></li>
             <li><a href="#"><i class='bx bx-file'></i>Adoption requests</a></li>
             <li><a href="#"><i class='bx bx-user'></i>Profile</a></li>
@@ -87,11 +87,14 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Pet Name</th>
-                                <th>Order Date</th>
-                                <th>Status</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Foto</th>
+                                <th>Nombre</th>
+                                <th>Edad</th>
+                                <th>Animal</th>
+                                <th>Raza</th>
+                                <th>Estado</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
 
                             </tr>
                         </thead>
@@ -99,25 +102,43 @@
                             <% pets.reverse().forEach(function(pet) { %>
                                 <tr>
                                     <td>
-                                        <img src="images/profile-1.jpg">
-                                        <p><%= pet.name %></p>
+                                        <img src="" alt="photo">
                                     </td>
-                                    <td><%= pet.createdAt.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' }) %></td>
-                                    <td><span class="status completed">Completed</span></td>
-                                    <td><span class="edit"><a href="/edit/<%= pet._id %>"><i class='bx bx-pencil'></i></a></span></td>
-                                    <td><span class="delete"><a href="/delete/<%= pet._id %>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta mascota?')"><i class='bx bx-trash'></i></a></span></td>
+                                    <td>
+                                        <p><%= pet.name%></p>
+                                    </td>
+                                    <td>
+                                        <p><%= pet.age %></p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            <%= pet.type %></p>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <span><p><%=pet.breed%></span></p>
+                                    </td>
+                                    <td><span class="<%= pet.status === 'Castrado' || pet.status === 'Esterilizado' ? 'status completed' : 'status pending' %>">
+                                        <%= pet.status %></td>
+                                    <!-- <td><%= pet.createdAt.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' }) %></td> -->
+                                    
+                                    <td><span id="btn-abrir-modal" class="edit"><a><i class='bx bx-pencil'></i></a></span></td>
+                                        <td><span class="delete"><a href="/delete/<%= pet._id %>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta mascota?')"><i class='bx bx-trash'></i></a></span></td>
                                 </tr>
                             <% }); %>
                         </tbody>
                     </table>
+                    
                 </div>
+
+                
                 
 
                 <!-- Reminders -->
                 <div class="reminders">
                     <div class="header">
                         <i class='bx bx-plus'></i>
-                        <h3>My Pets</h3>
+                        <h3>Postular mascota</h3>
                         <i class='bx bx-filter'></i>
                     </div>
                     <form action="/addPet" method="post">
@@ -134,8 +155,8 @@
                         <div class="addPet">
                             <label for="type">Animal:</label>
                             <select id="type" name="type" required>
-                                <option value="perro">Perro</option>
-                                <option value="gato">Gato</option>
+                                <option value="Perro">Perro</option>
+                                <option value="Gato">Gato</option>
                             </select>
                         </div>
                       
@@ -145,17 +166,19 @@
                         </div>
                     
                         <div class="addPet">
-                            <label>¿Está perdido?</label>
+                            <label>¿Estado?</label>
                             <div class="radio-group">
-                                <input type="radio" id="si" name="lost" value="si">
-                                <label for="si">Sí</label>
-                                <input type="radio" id="no" name="lost" value="no">
-                                <label for="no">No</label>
+                                <input type="radio" id="si" name="status" value="Esterilizado">
+                                <label for="si">Esterilizado</label>
+                                <input type="radio" id="no" name="status" value="Castrado">
+                                <label for="Castrado">Castrado</label>
+                                <input type="radio" id="no" name="status" value="Ninguno">
+                                <label for="Ninguno">Ninguno</label>
                             </div>
                         </div>
                       
                         <div class="addPet">
-                            <label for="description">Descripción:</label>
+                            <label for="description">Descripción de la mascota:</label>
                             <textarea id="description" name="description" rows="4" required></textarea>
                         </div>
                       
@@ -225,6 +248,35 @@
 
     </div>
 
+    <script>
+        // Obtén referencias a los campos de entrada
+        const name = document.getElementById('name');
+        const breed = document.getElementById('breed');
+        const description = document.getElementById('description');
+        // Función para capitalizar la primera letra
+        function capitalizeFirstLetter(inputField) {
+            const value = inputField.value;
+            if (value.length > 0) {
+                inputField.value = value.charAt(0).toUpperCase() + value.slice(1);
+            }
+        }
+
+        // Agrega un controlador de eventos al campo de nombre
+        name.addEventListener('input', function () {
+            capitalizeFirstLetter(this);
+        });
+
+        // Agrega un controlador de eventos al campo de apellido
+        breed.addEventListener('input', function () {
+            capitalizeFirstLetter(this);
+        });
+
+        description.addEventListener('input', function () {
+            capitalizeFirstLetter(this);
+        });
+    </script>
+
+    <script src="giveTo.js"></script>
     <script src="dashboard.js"></script>
 </body>
 

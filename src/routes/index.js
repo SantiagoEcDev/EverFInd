@@ -77,7 +77,7 @@ router.get('/giveto', async (req, res, next) => {
 
 //Subir mascotas a la página
 router.post('/addPet', async (req, res) => {
-    const {name, age, type, breed, lost, description, createdAt} = req.body;
+    const {name, age, type, breed, status, description, createdAt} = req.body;
 
     try{
         
@@ -87,7 +87,7 @@ router.post('/addPet', async (req, res) => {
             age,
             type,
             breed,
-            lost,
+            status,
             description,
             createdAt
         });
@@ -95,7 +95,6 @@ router.post('/addPet', async (req, res) => {
         await newPet.save();
 
         res.redirect('/giveto');
-        res.render('otra-vista', { pets });
     }catch (error){
         console.error('Error al guardar la mascota:', error );
         res.redirect('/giveto');

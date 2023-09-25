@@ -513,7 +513,7 @@ body{
 }
 
 .content main .bottom-data .orders table tr td .status.pending{
-    background: var(--warning);
+    background: var(--danger);
 }
 
 .content main .bottom-data .orders table tr td .edit{
@@ -739,3 +739,5 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+
