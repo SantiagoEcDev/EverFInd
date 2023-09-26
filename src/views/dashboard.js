@@ -54,3 +54,26 @@ toggler.addEventListener('change', function () {
         document.body.classList.remove('dark');
     }
 });
+
+// JavaScript para manejar los modales
+const openModalButtons = document.querySelectorAll(".open-modal-btn");
+const closeModalButtons = document.querySelectorAll(".close-modal-btn");
+const modalContainers = document.querySelectorAll(".modal");
+
+openModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const index = button.getAttribute("data-index");
+    const modal = document.getElementById(`modal${index}`);
+    modal.style.display = "block";
+  });
+});
+
+closeModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const index = button.getAttribute("data-index");
+    const modal = document.getElementById(`modal${index}`);
+    modal.style.display = "none";
+  });
+});
+
+  
