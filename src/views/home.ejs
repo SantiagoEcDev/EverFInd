@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./styles/home.css">
-    <link rel="stylesheet" href="./styles/settings.css">
-    <title>Responsive Dashboard Design #2 | AsmrProg</title>
+    <title>Home</title>
 </head>
 
 <body>
@@ -19,11 +18,11 @@
             <div class="logo-name"><span>Fur</span>EverFind</div>
         </a>
         <ul class="side-menu">
-            <li class="active"><a href="home"><i class='bx bx-heart'></i>Adopt</a></li>
-            <li><a href="giveto"><i class='bx bx-send'></i>Give up for adoption</a></li>
-            <li><a href="#"><i class='bx bx-search'></i>Lots pets</a></li>
-            <li><a href="#"><i class='bx bx-file'></i>Adoption requests</a></li>
-            <li><a href="#"><i class='bx bx-user'></i>Profile</a></li>
+            <li class="active"><a href="home"><i class='bx bx-heart'></i>Adoptar</a></li>
+            <li><a href="giveto"><i class='bx bx-send'></i>Dar en adopción</a></li>
+            <li><a href="#"><i class='bx bx-search'></i>Mascotas perdidas</a></li>
+            <li><a href="#"><i class='bx bx-file'></i>Solicitudes</a></li>
+            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
             <!-- <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li> -->
         </ul>
         <ul class="side-menu">
@@ -64,13 +63,13 @@
         <main>
             <div class="header">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Inicio</h1>
                     <ul class="breadcrumb">
                         <li><a href="#">
-                                Analytics
+                                Mascotas
                             </a></li>
                         /
-                        <li><a href="#" class="active">Shop</a></li>
+                        <li><a href="#" class="active">Adoptar</a></li>
                     </ul>
                 </div>
             </div>
@@ -78,38 +77,38 @@
             <!-- Insights -->
             <ul class="insights">
                 <li>
-                    <i class='bx bx-calendar-check'></i>
+                    <i class='bx bxs-dog'></i>
                     <span class="info">
                         <h3>
-                            1,074
+                            Perros
                         </h3>
-                        <p>Paid Order</p>
+                        <p>1,074</p>
                     </span>
                 </li>
-                <li><i class='bx bx-show-alt'></i>
+                <li><i class='bx bxs-cat' ></i>
                     <span class="info">
                         <h3>
-                            3,944
+                            Gatos
                         </h3>
-                        <p>Site Visit</p>
+                        <p>3,944</p>
                     </span>
                 </li>
-                <!-- <li><i class='bx bx-line-chart'></i>
-                    <span class="info">
-                        <h3>
-                            14,721
-                        </h3>
-                        <p>Searches</p>
-                    </span>
-                </li>
-                <li><i class='bx bx-dollar-circle'></i>
-                    <span class="info">
-                        <h3>
-                            $6,742
-                        </h3>
-                        <p>Total Sales</p>
-                    </span>
-                </li> -->
+                    <!-- <li><i class='bx bx-line-chart'></i>
+                        <span class="info">
+                            <h3>
+                                14,721
+                            </h3>
+                            <p>Searches</p>
+                        </span>
+                    </li>
+                    <li><i class='bx bx-dollar-circle'></i>
+                        <span class="info">
+                            <h3>
+                                $6,742
+                            </h3>
+                            <p>Total Sales</p>
+                        </span>
+                    </li> -->
             </ul>
             <!-- End of Insights -->
 
@@ -122,31 +121,35 @@
                         <i class='bx bx-search'></i>
                     </div>
 
-                    <% pets.forEach(function(pet) { %>
-                    <article class="pet-view">
-                        <div class="pet-background">
-                            <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
-                        </div>
-                        <div class="pet-info">
-                          <div class="pet-info-column">
-                            <div class="name-gender">
-                              <div class="name">
-                                <h2><%= pet.name%></h2></div>
-                              <div class="gender">
-                                <i class="fas fa-venus"></i>
-                              </div>
+                    <div class="pets-available">
+                        <% pets.forEach(function(pet) { %>
+                            <div class="pet-container">
+                                <article class="pet-view">
+                                    <div class="pet-background">
+                                        <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota 1">
+                                    </div>
+                                    <div class="pet-info">
+                                        <div class="pet-info-column">
+                                            <div class="name-gender">
+                                                <div class="name">
+                                                    <h2><%= pet.name%></h2>
+                                                </div>
+                                                <div class="gender">
+                                                    <i class="fas fa-venus"></i>
+                                                </div>
+                                            </div>
+                                            <div class="age">
+                                                <p>2 años de edad</p>
+                                            </div>
+                                            <div class="more">
+                                                <button class="btn-more">Información</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
                             </div>
-                            <div class="age">
-                              <p>2 años de edad</p>
-                            </div>
-                          <div class="more">
-                            <button class="btn-more">Información</button>
-                          </div>
-                        </div>
-                      </div>
-                      </article>
-                      <% }); %>
-                </div>
+                        <% }); %>
+                    </div>
 
                 
 
