@@ -695,7 +695,7 @@ body{
 }
 
 article{
-  padding-left: 40px;
+  padding-left: 20px;
   display: flex;
   width: auto;
 }
@@ -746,8 +746,8 @@ article{
   border-radius: 15px;
   padding: 10px;
   height: 40px;
-  margin-top: 20px;
-  margin-left: 50px;
+  margin-top: 5px;
+  margin-left: 80px;
 }
 
 .btn-more:hover{
