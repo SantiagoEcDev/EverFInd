@@ -77,3 +77,13 @@ closeModalButtons.forEach((button) => {
 });
 
   
+const aplicarBtn = document.getElementById('aplicarBtn');
+
+aplicarBtn.addEventListener('click', () => {
+    aplicarBtn.classList.toggle('clicked');
+    if (aplicarBtn.classList.contains('clicked')) {
+        aplicarBtn.innerHTML = 'Cancelar <i class="fa-solid fa-ban"></i>';
+    } else {
+        aplicarBtn.innerHTML = 'Aplicar  <i class="fa-solid fa-plus"></i>';
+    }
+});

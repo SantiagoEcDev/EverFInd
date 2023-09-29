@@ -781,6 +781,13 @@ body {
 
 /* Contenido del modal */
 .modal-content {
+    align-items: center;
+    text-align: center;
+justify-content: center;
+display: grid; /* Usa CSS Grid */
+grid-template-columns: 1fr 2fr; /* Dos columnas: una para la imagen y una para la descripción */
+    gap: 20px; /* Espacio entre las columnas */
+    text-align: center;
   background-color: #fff;
   margin: 10% auto;
   padding: 20px;
@@ -788,6 +795,47 @@ body {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   max-width: 80%;
 }
+
+.modal-left img {
+    max-width: 100%; /* Limita el ancho de la imagen al 100% del espacio del modal-left */
+    height: auto; /* Mantiene la proporción de aspecto de la imagen */
+}
+
+.button-container {
+    grid-column: span 2; /* Hace que el contenedor de botones ocupe dos columnas */
+    margin-top: 20px; /* Espacio superior para los botones */
+    display: flex;
+    justify-content: space-between;
+}
+
+.back{
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4f4caf; /* Verde */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.green-button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Verde */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+/* Estilo cuando se hace clic (rojo) */
+.green-button.clicked {
+    background-color: #dd2323; /* Rojo */
+}
+
+/* Ícono de cruz (X) */
+
+/* Estilo cuando se hace clic y muestra la cruz de cancelar */
 
 /* Estilos para hacer el modal responsive */
 @media (max-width: 768px) {

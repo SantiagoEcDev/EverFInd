@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/home.css">
     <title>Home</title>
 </head>
@@ -134,12 +135,9 @@
                                     <div class="name">
                                       <h2><%= pet.name %></h2>
                                     </div>
-                                    <div class="gender">
-                                      <i class="fas fa-venus"></i>
-                                    </div>
                                   </div>
                                   <div class="age">
-                                    <p>2 años de edad</p>
+                                    <p><%= pet.name %></p>
                                   </div>
                                   <div class="more">
                                     <!-- Botón para abrir el modal -->
@@ -157,11 +155,26 @@
                         <div id="modal<%= index %>" class="modal">
                           <div class="modal-content">
                             <!-- Contenido del modal para la mascota actual -->
-                            <h2><%= pet.name %></h2>
-                            <p>Edad: 2 años</p>
+                            <div class="modal-left">
+                                <img src="assets/img/feed/dogFeed.png" alt="">
+                            </div>
+                            <div class="modal-right">
+                                <h2><%= pet.name %></h2>
+                                <p>Edad: <%= pet.age %> años</p>
+                                <p>Raza: <%= pet.breed %></p>
+                                <p>Estado: <%= pet.status %></p>
+                                <p>Descripción: <%= pet.description %></p>
+
+                                <!-- ... Otros detalles de la mascota ... -->
+                            </div>
+
                             <!-- ... Otros detalles de la mascota ... -->
                             <!-- Botón para cerrar el modal -->
-                            <button class="close-modal-btn" data-index="<%= index %>">Cerrar</button>
+                            <div class="button-container">
+                                <!-- Botones debajo de la descripción -->
+                                <button class="close-modal-btn back" data-index="<%= index %>"><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i> Cerrar</button>
+                                <button id="aplicarBtn" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
+                            </div>
                           </div>
                         </div>
                       <% }); %>
