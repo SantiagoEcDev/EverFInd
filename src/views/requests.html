@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./styles/requests.css">
+    <title>Responsive Dashboard Design #2 | AsmrProg</title>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-bone'></i>
+            <div class="logo-name"><span>Ever</span>Find</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="home"><i class='bx bx-heart'></i>Adoptar</a></li>
+            <li><a href="giveto"><i class='bx bx-send'></i>Dar en adopción</a></li>
+            <li class="active"><a href="requests"><i class='bx bx-file'></i>Solicitudes</a></li>
+            <li><a href="profile"><i class='bx bx-user'></i>Perfil</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="/logout" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Salir
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" class="notif">
+                <i class='bx bx-bell'></i>
+                <span class="count">12</span>
+            </a>
+            <a href="#" class="profile">
+                <img src="images/logo.png">
+            </a>
+        </nav>
+
+        <!-- End of Navbar -->
+
+        <main>
+            <div class="header">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">
+                                Analytics
+                            </a></li>
+                        /
+                        <li><a href="#" class="active">Shop</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-chat'></i>
+                        <h3>Chat</h3>
+                    </div>
+                    <div class="chat-panel">
+                        <div class="chat-messages">
+                            <!-- Mensajes de chat se mostrarán aquí -->
+                            <div class="message">
+                                <img src="images/profile-1.jpg" class="user-image">
+                                <div>
+                                    <span class="user-name">Santiago Escobar</span>
+                                    <p class="user-message">Prueba de mensaje</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input">
+
+                            <!-- Área de entrada de texto para escribir mensajes -->
+                            <input type="text" placeholder="Escribe tu mensaje aquí">
+                            <div class="send">
+                                <a href="#" class="file"><i class='bx bx-image'></i></a>
+                                <a class="send-button" href="#"><i class='bx bx-send'></i></a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Direct messages -->
+                <div class="reminders">
+                    <div class="header">
+                        <i class='bx bx-user'></i>
+                        <h3>Mensajes directos</h3>
+                    </div>
+                    <ul class="user-list">
+                        <li class="user-item">
+                            <img class="user-image" src="./assets/img/login/selfie.jpg" alt="Usuario 1">
+                            <div class="user-name">Santiago Escobar</div>
+                            <div class="notification-count">3</div>
+                        </li>
+                        <li class="user-item">
+                            <img class="user-image" src="images/profile-2.jpg" alt="Usuario 2">
+                            <div class="user-name">Usuario 2</div>
+                            <div class="notification-count">0</div>
+                        </li>
+                        <li class="user-item">
+                            <img class="user-image" src="images/profile-3.jpg" alt="Usuario 3">
+                            <div class="user-name">Usuario 3</div>
+                            <div class="notification-count">5</div>
+                        </li>
+                        <!-- Agrega más elementos de usuario según sea necesario -->
+                    </ul>
+                </div>
+
+                <!-- End of Reminders-->
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
