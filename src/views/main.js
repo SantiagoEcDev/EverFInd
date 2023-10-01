@@ -65,13 +65,13 @@ function scrollToBottom() {
 // Escucha eventos relacionados con la escritura de mensajes
 messageInput.addEventListener('focus', (e) => {
   socket.emit('feedback', {
-    feedback: `✍️ ${nameInput.value} is typing a message`,
+    feedback: `${nameInput.value} está escribiendo un mensaje ✍🏻`,
   });
 });
 
 messageInput.addEventListener('keypress', (e) => {
   socket.emit('feedback', {
-    feedback: `✍️ ${nameInput.value} is typing a message`,
+    feedback: `${nameInput.value} está escribiendo un mensaje ✍🏻`,
   });
 });
 

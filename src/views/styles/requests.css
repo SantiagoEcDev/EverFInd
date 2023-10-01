@@ -989,20 +989,22 @@ body {
   .message-left {
     border-radius: 20px 20px 20px 0px;
     align-self: flex-start;
-    background-color: #fff;
+    background-color: #0E2432;
     box-shadow: -2px 2px 4px #dcdcdc;
+    color: #F7F8F8;
   }
   
   .message-right {
     border-radius: 20px 20px 0px 20px;
     align-self: flex-end;
-    background-color: #2d2d2d;
+    background-color: #FFFFFF;
     box-shadow: 2px 2px 4px #dcdcdc;
-    color: #f6f6f6;
+    color: black;
   }
   
   .message-left > p > span,
   .message-right > p > span {
+    color: #E33E3C;
     display: block;
     font-style: italic;
     font-size: 12px;
