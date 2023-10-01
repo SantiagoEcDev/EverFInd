@@ -430,8 +430,8 @@ body {
 
 .content main .bottom-data>div {
     border-radius: 20px;
+    padding: 24px;
     background: var(--light);
-    padding: 0px;
     overflow-x: auto;
 }
 
@@ -870,39 +870,8 @@ body {
     margin-bottom: 30px;
 }
 
-.chat-input {
-    display: flex;
-    align-items: center;
-}
-
-/* Estilos para los botones "file" y "send" */
-.chat-input .send {
-    display: flex;
-
-}
-
-/* Estilos para el botón "file" */
-.chat-input .send .file {
-    margin-right: 50px;
-    color: #4c4c4c;
-}
 
 
-/* Estilos para los íconos de los botones */
-.chat-input .send a i {
-    font-size: 24px;
-}
-
-/* Estilos para el campo de entrada de texto */
-.chat-input input[type="text"] {
-    margin-left: 10px;
-    width: 80%; /* El campo de entrada se expandirá para ocupar todo el espacio disponible */
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-    border-radius: 5px;
-    outline: none; /* Elimina el borde al hacer clic en el campo */
-}
 
 .chat-messages {
     display: flex;
@@ -979,26 +948,25 @@ body {
 }
 
 .main-chat{
-    width: 100%;
-    border: 2px solid #dddddd;
+    border: 8px solid #dddddd;
     border-radius: 24px;
     overflow: hidden;
-}
-
-.name{
+  }
+  
+  .name {
     display: flex;
     font-size: 32px;
     font-weight: 700;
     padding: 8px 16px;
     color: #7e7e7e;
     background-color: #ebebeb;
-}
-
-.name > span{
+  }
+  
+  .name > span {
     color: #bbb;
-}
-
-.name-input{
+  }
+  
+  .name-input {
     font-size: 24px;
     font-weight: 700;
     color: #7e7e7e;
@@ -1007,9 +975,9 @@ body {
     margin: 0px 12px;
     outline: none;
     background-color: #ebebeb;
-}
-
-.message-container{
+  }
+  
+  .message-container {
     display: flex;
     flex-direction: column;
     background-color: #f6f6f6;
@@ -1017,54 +985,56 @@ body {
     height: 600px;
     overflow-y: hidden;
     overflow-x: hidden;
-}
-
-.message-left, .message-right{
+  }
+  
+  .message-left,
+  .message-right {
     list-style: none;
     padding: 8px 12px;
     margin: 12px;
     max-width: 250px;
     font-size: 18px;
     word-wrap: break-word;
-} 
-
-.message-left{
+  }
+  
+  .message-left {
     border-radius: 20px 20px 20px 0px;
     align-self: flex-start;
     background-color: #fff;
     box-shadow: -2px 2px 4px #dcdcdc;
-}
-
-.message-right{
+  }
+  
+  .message-right {
     border-radius: 20px 20px 0px 20px;
     align-self: flex-end;
     background-color: #2d2d2d;
     box-shadow: 2px 2px 4px #dcdcdc;
     color: #f6f6f6;
-}
-
-.message-left > span, .message-right > span{
+  }
+  
+  .message-left > p > span,
+  .message-right > p > span {
     display: block;
     font-style: italic;
     font-size: 12px;
     margin-top: 4px;
-}
-
-.feedback{
+  }
+  
+  .feedback {
     font-style: italic;
     font-size: 14px;
     padding: 0px 16px 16px 16px;
     color: #2d2d2d;
     text-align: center;
-}
-
-.message-form{
+  }
+  
+  .message-form {
     display: flex;
     justify-content: space-between;
-    width: 100%
-}
-
-.message-input{
+    width: 100%;
+  }
+  
+  .message-input {
     flex-grow: 1;
     height: 48px;
     font-size: 16px;
@@ -1072,9 +1042,10 @@ body {
     outline: none;
     padding: 0 12px;
     background-color: #fff;
-}
-
-.send-button{
+  }
+  
+  .send-button {
+    color: black;
     height: 48px;
     font-size: 16px;
     border: none;
@@ -1082,10 +1053,10 @@ body {
     outline: none;
     background-color: #fff;
     cursor: pointer;
-}
-
-.v-divider{
+  }
+  
+  .v-divider {
     height: 48px;
     width: 2px;
     background-color: #f6f6f6;
-}
+  }

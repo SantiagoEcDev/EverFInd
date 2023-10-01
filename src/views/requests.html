@@ -79,39 +79,50 @@
                 <div class="orders">
                     <div class="main-chat">
                         <div class="name">
-                            <span><i class ="far fa-user"></i></span>
-                            <input type="text" id="name-input" class="name-input" value="anonymous" maxlength="20">
+                            <img class="user-image" src="./assets/img/login/selfie.jpg" alt="Usuario 1">
+                          <input
+                            type="text"
+                            id="name-input"
+                            class="name-input"
+                            value="anonymous"
+                            maxlength="20"
+                          />
                         </div>
-
+                  
                         <ul class="message-container" id="message-container">
-                            <li class="message-left">
-                                <p class="message">
-                                    lorem impsun
-                                </p>
-                                    <span>Santiago Escobar 🕛 26 July 10:40</span>
-                            </li>
-                            <li class="message-right">
-                                <p class="message">
-                                    lorem impsun
-                                </p>
-                                    <span>Santiago Escobar 🕛 26 July 10:40</span>
-                            </li>
-
-                            <li class="message-feedback">
-                                <p class="feedback" id="feedback">
-                                    Santiago está escribiendo un mensaje
-                                </p>
-                            </li>
-                        </ul >
-
+                          <li class="message-left">
+                            <p class="message">
+                              lorem impsun
+                              <span>bluebird ● 26 July 10:40</span>
+                            </p>
+                          </li>
+                  
+                          <li class="message-right">
+                            <p class="message">
+                              lorem impsun
+                              <span>bluebird ● 26 July 10:40</span>
+                            </p>
+                          </li>
+                  
+                          <li class="message-feedback">
+                            <p class="feedback" id="feedback">✍️ killer is typing a message...</p>
+                          </li>
+                        </ul>
+                  
                         <form class="message-form" id="message-form">
-                            <input type="text" name="message" id="message-input" class="message-input">
-                            <div class="v-divider"></div>
-                            <button type="submit" class="send-button">
-                                Enviar<span><i class="fas fa-paper-plane"></i></span>
-                            </button>
+                          <input
+                            type="text"
+                            name="message"
+                            id="message-input"
+                            placeholder="Escribe un mensaje"
+                            class="message-input"
+                          />
+                          <div class="v-divider"></div>
+                          <button type="submit"  class="send-button" >
+                            Enviar <span><i class="fas fa-paper-plane"></i></span>
+                          </button>
                         </form>
-                    </div>
+                      </div>
                 </div>
 
                 <!-- Direct messages -->
