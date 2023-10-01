@@ -315,6 +315,8 @@ body {
 }
 
 .content main .header {
+    margin-top: 10px;
+    margin-left: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -430,7 +432,6 @@ body {
 
 .content main .bottom-data>div {
     border-radius: 20px;
-    padding: 24px;
     background: var(--light);
     overflow-x: auto;
 }
@@ -863,64 +864,53 @@ body {
 }
 
 /* Estilo para cada elemento de usuario */
+.user-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Estilos para los elementos individuales de usuario */
 .user-item {
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
-}
-
-
-
-
-.chat-messages {
-    display: flex;
-    flex-direction: column; /* Apila los mensajes verticalmente */
-}
-
-/* Estilos para cada mensaje */
-.message {
-    display: flex;
-    align-items: flex-start; /* Alinea los elementos verticalmente en la parte superior */
-    margin-bottom: 10px; /* Espacio entre los mensajes */
-}
-/* Estilos para el mensaje */
-.user-message {
-    background-color: #f2f2f2; /* Color de fondo del mensaje del usuario */
     padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    transition: background-color 0.3s; /* Transición de color de fondo en hover */
 }
 
-/* Estilo para la imagen de perfil */
+.user-item:hover {
+    background-color: #f0f0f0; /* Color de fondo en hover */
+}
+
+/* Estilos para la imagen de usuario */
 .user-image {
-    width: 30px;
-    /* Ajusta el tamaño de la imagen según sea necesario */
-    height: 30px;
-    /* Ajusta el tamaño de la imagen según sea necesario */
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-/* Estilo para el nombre de usuario */
+/* Estilos para el nombre de usuario */
 .user-name {
+    flex-grow: 1; /* El nombre de usuario ocupará todo el espacio disponible */
     font-weight: bold;
 }
 
-/* Estilo para el número de notificaciones */
+/* Estilos para el contador de notificaciones */
 .notification-count {
-    background-color: #ff5733;
+    background-color: #ff0000;
     color: #fff;
     border-radius: 50%;
     width: 20px;
-    /* Ajusta el tamaño del número según sea necesario */
     height: 20px;
-    /* Ajusta el tamaño del número según sea necesario */
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 12px;
-    /* Ajusta el tamaño de la fuente del número según sea necesario */
-    margin-left: auto;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 10px;
 }
 
 /* Ícono de cruz (X) */
@@ -948,8 +938,8 @@ body {
 }
 
 .main-chat{
-    border: 8px solid #dddddd;
-    border-radius: 24px;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
     overflow: hidden;
   }
   
@@ -989,6 +979,7 @@ body {
   
   .message-left,
   .message-right {
+    display: flex;
     list-style: none;
     padding: 8px 12px;
     margin: 12px;
@@ -998,6 +989,8 @@ body {
   }
   
   .message-left {
+    display: flex;
+    flex-direction: column;
     border-radius: 20px 20px 20px 0px;
     align-self: flex-start;
     background-color: #fff;
@@ -1005,6 +998,8 @@ body {
   }
   
   .message-right {
+    display: flex;
+    flex-direction: column;
     border-radius: 20px 20px 0px 20px;
     align-self: flex-end;
     background-color: #2d2d2d;
@@ -1012,8 +1007,7 @@ body {
     color: #f6f6f6;
   }
   
-  .message-left > p > span,
-  .message-right > p > span {
+  .subMessage{
     display: block;
     font-style: italic;
     font-size: 12px;
@@ -1030,21 +1024,21 @@ body {
   
   .message-form {
     display: flex;
-    justify-content: space-between;
     width: 100%;
   }
   
+  /* Estilos predeterminados para tamaños de pantalla más grandes */
   .message-input {
     flex-grow: 1;
     height: 48px;
     font-size: 16px;
     border: none;
     outline: none;
-    padding: 0 12px;
+    padding: 0 8px; /* Reducir el relleno horizontal para dar espacio al botón */
     background-color: #fff;
-  }
-  
-  .send-button {
+}
+
+.send-button {
     color: black;
     height: 48px;
     font-size: 16px;
@@ -1053,7 +1047,21 @@ body {
     outline: none;
     background-color: #fff;
     cursor: pointer;
-  }
+}
+
+/* Estilos para tamaños de pantalla más pequeños, como iPhone 8 Plus */
+@media screen and (max-width: 414px) {
+    .message-input {
+        font-size: 14px;
+        padding: 0 6px; /* Reducir aún más el relleno horizontal */
+    }
+
+    .send-button {
+        font-size: 14px;
+        padding: 0px 10px;
+    }
+}
+
   
   .v-divider {
     height: 48px;
