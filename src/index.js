@@ -4,12 +4,13 @@ const path = require('path');
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
-const flash = require('connect-flash')
+const flash = require('connect-flash');
 
 //Initializations
 const app = express();
 require('./database')
 require('./passport/local-auth')
+
 
 
 // Configuraciones
@@ -41,10 +42,35 @@ app.use((req, res, next) => {
 // Rutas
 app.use('/', require('./routes/index'));
 
-
-
-
 // Iniciando servidor
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
     console.log('Server on Port', app.get('port'));
-});
+}) ;
+
+const io = require('socket.io')(server)
+
+let socketsConected = new Set()
+
+io.on('connection', onConnected)
+
+function onConnected(socket) {
+    console.log(socket.id)
+    socketsConected.add(socket.id)
+    
+    io.emit('clients-total',socketsConected.size)
+
+    socket.on('disconnect', () =>{
+        console.log('Socket disconnected', socket.id)
+        socketsConected.delete(socket.id)
+        io.emit('clients-total', socketsConected.size)
+    })
+
+    socket.on('message', (data) => {
+        console.log(data)
+        socket.broadcast.emit('chat-message', data)
+    })
+    socket.on('feedback', (data) => {
+        socket.broadcast.emit('feedback', data)
+      })
+    }
+

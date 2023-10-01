@@ -973,13 +973,10 @@ body {
     background-color: #f6f6f6;
     width: 100%;
     height: 600px;
-    overflow-y: hidden;
-    overflow-x: hidden;
   }
   
   .message-left,
   .message-right {
-    display: flex;
     list-style: none;
     padding: 8px 12px;
     margin: 12px;
@@ -989,8 +986,6 @@ body {
   }
   
   .message-left {
-    display: flex;
-    flex-direction: column;
     border-radius: 20px 20px 20px 0px;
     align-self: flex-start;
     background-color: #fff;
@@ -998,8 +993,6 @@ body {
   }
   
   .message-right {
-    display: flex;
-    flex-direction: column;
     border-radius: 20px 20px 0px 20px;
     align-self: flex-end;
     background-color: #2d2d2d;
@@ -1007,7 +1000,8 @@ body {
     color: #f6f6f6;
   }
   
-  .subMessage{
+  .message-left > p > span,
+  .message-right > p > span {
     display: block;
     font-style: italic;
     font-size: 12px;
