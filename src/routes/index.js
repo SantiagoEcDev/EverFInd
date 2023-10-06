@@ -58,7 +58,7 @@ router.get('/settings', (req, res, next) => {
 router.get('/giveto', async (req, res, next) => {
     try {
         // Obtén la lista de mascotas desde la base de datos
-        const pets = await Pet.find({owner: req.user._id});
+        const pets = await Pet.find({owner: req.user.name});
 
         // Renderiza la vista 'giveto' y pasa la lista de mascotas como contexto
         res.render('giveto', { pets });
@@ -85,7 +85,7 @@ router.post('/addPet', async (req, res) => {
             status,
             description,
             createdAt,
-            owner: req.user._id,
+            owner: req.user.name,
         });
 
         await newPet.save();
