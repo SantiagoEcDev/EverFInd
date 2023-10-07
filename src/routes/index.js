@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 // Ruta para la página de registro (signup)
 router.get('/signup', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'signup.html'));
+    res.render('signup');
     
 });
 
@@ -30,7 +30,7 @@ router.get('/signin', (req, res, next) => {
 
 router.post('/signin', passport.authenticate('local-signin', {
     successRedirect: '/home',
-    failureRedirect: '/signin',
+    failureRedirect: '/signup',
     passReqToCallback: true
 }));
 

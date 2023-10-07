@@ -58,7 +58,14 @@
                   <a href="#">Obtener ayuda</a>
                 </p>
               </div>
+              <% if (signinMessage) { %>
+                <%= signinMessage %>
+            <% } %>
             </form>
+
+            
+          
+            
 
             <form action="/signup" autocomplete="off" class="sign-up-form" method="POST">
               <div class="logo">
@@ -120,6 +127,9 @@
                 </p>
               </div>
             </form>
+            <% if (signupMessage) { %>
+              <%= signupMessage %>
+          <% } %>
           </div>
 
           <div class="carousel">
@@ -151,6 +161,7 @@
 
     <!-- Javascript file -->
 
+    <script src="toasts.js"></script>
     <script src="slidelogin.js"></script>
   </body>
 </html>
