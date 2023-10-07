@@ -834,6 +834,7 @@ grid-template-columns: 1fr 2fr; /* Dos columnas: una para la imagen y una para l
 }
 
 .notifi-box {
+    overflow-y: scroll;
     background-color: white;
 	width: 300px;
 	height: 0px;
@@ -844,6 +845,8 @@ grid-template-columns: 1fr 2fr; /* Dos columnas: una para la imagen y una para l
 	transition: 1s opacity, 250ms height;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 .notifi-box h2 {
 	font-size: 14px;
 	padding: 10px;
