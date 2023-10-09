@@ -50,9 +50,6 @@ router.get('/logout', (req, res) => {
 //     next();
 //  });
 
-router.get('/settings', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'settings.html'));
-});
 
 //Cargar los datos de las mascotas
 router.get('/giveto', async (req, res, next) => {
@@ -69,6 +66,10 @@ router.get('/giveto', async (req, res, next) => {
     }
 });
 
+router.get('/profile', (req, res, next) => {
+    res.render('profile');
+    
+});
 
 //Subir mascotas a la página
 router.post('/addPet', async (req, res) => {
