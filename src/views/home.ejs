@@ -12,6 +12,8 @@
 
 <body>
 
+    <script src="/socket.io/socket.io.js"></script>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="#" class="logo">
@@ -21,9 +23,8 @@
         <ul class="side-menu">
             <li class="active"><a href="home"><i class='bx bx-heart'></i>Adoptar</a></li>
             <li><a href="giveto"><i class='bx bx-send'></i>Dar en adopción</a></li>
-            <li><a href="#"><i class='bx bx-search'></i>Mascotas perdidas</a></li>
-            <li><a href="#"><i class='bx bx-file'></i>Solicitudes</a></li>
-            <li><a href="#"><i class='bx bx-user'></i>Perfil</a></li>
+            <li><a href="requests.html"><i class='bx bx-file'></i>Solicitudes</a></li>
+            <li><a href="profile.html"><i class='bx bx-user'></i>Perfil</a></li>
             <!-- <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li> -->
         </ul>
         <ul class="side-menu">
@@ -59,7 +60,7 @@
             </a>
             <div class="notifi-box" id="box">
                 <h2>Notifications <span>17</span></h2>
-                <div class="notifi-item">
+                <!-- <div class="notifi-item">
                     <img src="img/avatar1.png" alt="img">
                     <div class="text">
                        <h4>Elias Abdurrahman</h4>
@@ -137,7 +138,7 @@
                        <h4>Jane Doe</h4>
                        <p>@lorem ipsum dolor sit amet</p>
                     </div> 
-                </div>
+                </div> -->
             </div>
         </nav>
 
@@ -256,7 +257,7 @@
                             <div class="button-container">
                                 <!-- Botones debajo de la descripción -->
                                 <button class="close-modal-btn back" data-index="<%= index %>"><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i> Cerrar</button>
-                                <button id="aplicarBtn" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
+                                <button id="aplicarBtn"  data-index="<%= index %>" data-postulante-id="<%= pet.owner %>" class="green-button"></button> Solicitar <i class="fa-solid fa-plus"></i></button>
                             </div>
                           </div>
                         </div>
@@ -267,6 +268,7 @@
 
     </div>
 
+    <script src="notification.js"></script>
     <script src="dashboard.js"></script>
 </body>
 
