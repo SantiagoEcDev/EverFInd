@@ -65,6 +65,13 @@ function onConnected(socket) {
         io.emit('clients-total', socketsConected.size)
     })
 
+    socket.on('solicitudMascota', (data) => {
+        // envia la notificación al propietario de la mascota
+        io.to(data.ownerId).emit('nuevaSolicitud', {
+            message: '¡Tienes una nueva solicitud de adopción para ' + data.petName + '!'
+        });
+    });
+
     socket.on('message', (data) => {
         console.log(data)
         socket.broadcast.emit('chat-message', data)

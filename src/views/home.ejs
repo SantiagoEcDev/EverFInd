@@ -60,7 +60,7 @@
             </a>
             <div class="notifi-box" id="box">
                 <h2>Notifications <span>17</span></h2>
-                <!-- <div class="notifi-item">
+                 <div class="notifi-item">
                     <img src="img/avatar1.png" alt="img">
                     <div class="text">
                        <h4>Elias Abdurrahman</h4>
@@ -138,7 +138,7 @@
                        <h4>Jane Doe</h4>
                        <p>@lorem ipsum dolor sit amet</p>
                     </div> 
-                </div> -->
+                </div> 
             </div>
         </nav>
 
@@ -268,7 +268,36 @@
 
     </div>
 
-    <script src="notification.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:3000');
+
+// Cuando se carga la página, unimos el socket al ID del usuario actualmente logueado 
+// (Esto asume que tienes una variable global o un medio para obtener el ID del usuario)
+socket.on('connect', function() {
+    socket.emit('join', { userId: CURRENT_USER_ID });
+});
+
+// Escucha las notificaciones
+socket.on('nuevaSolicitud', function(data) {
+    // Aquí puedes mostrar la notificación al usuario. Por ejemplo, añadirla a tu lista de notificaciones
+    addNotification(data.message);
+});
+
+// Cuando alguien haga clic en el botón de "Solicitar"
+document.getElementById('aplicarBtn').addEventListener('click', function(e) {
+    const petIndex = e.target.getAttribute('data-index');
+    const ownerId = e.target.getAttribute('data-postulante-id');
+
+    // Aquí asumimos que tienes una forma de obtener el nombre de la mascota. Puede ser diferente según tu implementación
+    const petName = pets[petIndex].name;
+
+    // Emitir el evento de solicitud
+    socket.emit('solicitudMascota', {
+        ownerId: ownerId,
+        petName: petName
+    });
+});
+    </script>
     <script src="dashboard.js"></script>
 </body>
 

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Pet = require('../models/myPets');
+const User = require('../models/user')
 const path = require('path');
 
 // Ruta para la página de inicio
@@ -52,7 +53,7 @@ router.get('/logout', (req, res) => {
 
 
 //Cargar los datos de las mascotas
-router.get('/giveto', async (req, res, next) => {
+router.get('/giveto', isAuthenticated,async (req, res, next) => {
     try {
         // Obtén la lista de mascotas desde la base de datos
         const pets = await Pet.find({owner: req.user.name});
@@ -66,10 +67,74 @@ router.get('/giveto', async (req, res, next) => {
     }
 });
 
-router.get('/profile', (req, res, next) => {
-    res.render('profile');
+router.get('/profile', isAuthenticated, async (req, res, next) => {
+    try {
+        // Obtén la lista de mascotas desde la base de datos
+        const users = await User.find();
+
+        // Obtén el nombre del usuario logeado
+        const username = req.user.name;
+
+        const email = req.user.email;
+
+        // Renderiza la vista 'profile' y pasa la lista de mascotas y el nombre del usuario como contexto
+        res.render('profile', { users, username, email, req });
+        
+    } catch (error) {
+        console.error('Error al obtener la lista de mascotas:', error);
+        res.redirect('/'); // Redirige a la página de inicio o maneja el error de acuerdo a tus necesidades
+    }
     
 });
+
+// Ruta para modificar el nombre y el correo electrónico
+router.post('/profile', async (req, res, next) => {
+    // Verifica que el usuario esté autenticado
+    if (!req.isAuthenticated()) {
+      return res.status(401).json({ error: 'No autorizado' });
+    }
+  
+    // Verifica que el usuario exista en la base de datos
+    const user = await User.findById(req.user.id);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+  
+    // Obtén los valores nuevos del nombre y el correo electrónico
+    const name = req.body.name.toString();
+    const email = req.body.email;
+  
+    // Actualiza el usuario en la base de datos
+    user.name = name;
+    user.email = email;
+    try {
+      await user.save();
+    } catch (error) {
+      // Maneja el error
+      if (error.name === 'DocumentNotFoundError') {
+        return res.status(404).json({ error: 'Usuario no encontrado' });
+      } else {
+        return res.status(500).json({ error: 'Ocurrió un error al actualizar el usuario' });
+      }
+    }
+  
+    // Actualiza el componente de la vista
+    const data = {
+      name: user.name,
+      email: user.email,
+    };
+    try {
+      res.render('profile', data, { locals: { req } });
+    } catch (error) {
+      // Maneja el error
+      console.error('Error al renderizar la vista:', error);
+    }
+  
+    // Redirecciona a / si la sesión está cerrada
+    if (!req.session.user) {
+      res.redirect('/');
+    }
+  });
 
 //Subir mascotas a la página
 router.post('/addPet', async (req, res) => {
@@ -98,7 +163,7 @@ router.post('/addPet', async (req, res) => {
     }
 });
 
-router.get('/home', async (req, res, next) => {
+router.get('/home', isAuthenticated, async (req, res, next) => {
     try {
         // Obtén la lista de mascotas desde la base de datos o de donde sea necesario
         const pets = await Pet.find();
@@ -110,6 +175,11 @@ router.get('/home', async (req, res, next) => {
         res.redirect('/'); // Maneja el error de acuerdo a tus necesidades
     }
 });
+
+router.get('/requests', isAuthenticated, (req, res, next) => {
+    res.render('requests');
+});
+
 
 //Edit pets
 router.get('/edit/:id', async (req, res) => {
