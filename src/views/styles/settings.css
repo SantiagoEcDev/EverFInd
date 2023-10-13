@@ -729,11 +729,13 @@ select:focus {
 
 /* Estilos para el botón */
 button {
-    background-color: #007bff;
+    border-radius: 10px;
+    background-color: #0f7299;
     color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+
 }
 
 button:hover {

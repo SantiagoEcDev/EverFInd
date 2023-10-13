@@ -7,6 +7,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/home.css">
+    <link rel="icon" href="./assets/img/index/logo-removebg-preview.png" type="image/png">
+
     <title>Home</title>
 </head>
 
@@ -31,7 +33,7 @@
             <li>
                 <a href="/logout" class="logout">
                     <i class='bx bx-log-out-circle'></i>
-                    Logout
+                    Cerrar sesión
                 </a>
             </li>
         </ul>
@@ -59,7 +61,7 @@
                 <img src="images/logo.png">
             </a>
             <div class="notifi-box" id="box">
-                <h2>Notifications <span>17</span></h2>
+                <h2>Notificaciones <span>17</span></h2>
                  <div class="notifi-item">
                     <img src="img/avatar1.png" alt="img">
                     <div class="text">
@@ -67,78 +69,7 @@
                        <p>@lorem ipsum dolor sit amet</p>
                     </div> 
                 </div>
-    
-                <div class="notifi-item">
-                    <img src="img/avatar2.png" alt="img">
-                    <div class="text">
-                       <h4>John Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-
-                <div class="notifi-item">
-                    <img src="img/avatar2.png" alt="img">
-                    <div class="text">
-                       <h4>John Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-
-                <div class="notifi-item">
-                    <img src="img/avatar2.png" alt="img">
-                    <div class="text">
-                       <h4>John Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-
-                <div class="notifi-item">
-                    <img src="img/avatar2.png" alt="img">
-                    <div class="text">
-                       <h4>John Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-
-                <div class="notifi-item">
-                    <img src="img/avatar2.png" alt="img">
-                    <div class="text">
-                       <h4>John Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-
-                <div class="notifi-item">
-                    <img src="img/avatar2.png" alt="img">
-                    <div class="text">
-                       <h4>John Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-    
-                <div class="notifi-item">
-                    <img src="img/avatar3.png" alt="img">
-                    <div class="text">
-                       <h4>Emad Ali</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-    
-                <div class="notifi-item">
-                    <img src="img/avatar4.png" alt="img">
-                    <div class="text">
-                       <h4>Ekram Abu </h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div>
-    
-                <div class="notifi-item">
-                    <img src="img/avatar5.png" alt="img">
-                    <div class="text">
-                       <h4>Jane Doe</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
-                    </div> 
-                </div> 
+                
             </div>
         </nav>
 
@@ -166,7 +97,7 @@
                         <h3>
                             Perros
                         </h3>
-                        <p>1,074</p>
+                        <p><%= dogCount %></p>
                     </span>
                 </li>
                 <li><i class='bx bxs-cat'></i>
@@ -174,7 +105,7 @@
                         <h3>
                             Gatos
                         </h3>
-                        <p>3,944</p>
+                        <p><%= catCount %></p>
                     </span>
                 </li>
                 <!-- <li><i class='bx bx-line-chart'></i>
@@ -200,7 +131,7 @@
                 <div class="orders">
                     <div class="header">
                         <i class='bx bx-paw'></i>
-                        <h3>Pets</h3>
+                        <h3>Mascotas disponibles</h3>
                         <i class='bx bx-filter'></i>
                         <i class='bx bx-search'></i>
                     </div>
@@ -216,11 +147,14 @@
                                 <div class="pet-info-column">
                                   <div class="name-gender">
                                     <div class="name">
-                                      <h2><%= pet.name %></h2>
+                                      <h2 style="color: black;"><%= pet.name %></h2>
                                     </div>
                                   </div>
                                   <div class="age">
                                     <p>Edad: <%= pet.age %> años</p>
+                                  </div>
+                                  <div class="age">
+                                    <p><%= pet.type %></p>
                                   </div>
                                   <div class="more">
                                     <!-- Botón para abrir el modal -->
@@ -257,7 +191,7 @@
                             <div class="button-container">
                                 <!-- Botones debajo de la descripción -->
                                 <button class="close-modal-btn back" data-index="<%= index %>"><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i> Cerrar</button>
-                                <button id="aplicarBtn"  data-index="<%= index %>" data-postulante-id="<%= pet.owner %>" class="green-button"></button> Solicitar <i class="fa-solid fa-plus"></i></button>
+                                <button id="aplicarBtn"  data-index="<%= index %>" data-postulante-id="<%= pet.owner %>" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
                             </div>
                           </div>
                         </div>
@@ -268,36 +202,7 @@
 
     </div>
 
-    <script>
-        const socket = io.connect('http://localhost:3000');
-
-// Cuando se carga la página, unimos el socket al ID del usuario actualmente logueado 
-// (Esto asume que tienes una variable global o un medio para obtener el ID del usuario)
-socket.on('connect', function() {
-    socket.emit('join', { userId: CURRENT_USER_ID });
-});
-
-// Escucha las notificaciones
-socket.on('nuevaSolicitud', function(data) {
-    // Aquí puedes mostrar la notificación al usuario. Por ejemplo, añadirla a tu lista de notificaciones
-    addNotification(data.message);
-});
-
-// Cuando alguien haga clic en el botón de "Solicitar"
-document.getElementById('aplicarBtn').addEventListener('click', function(e) {
-    const petIndex = e.target.getAttribute('data-index');
-    const ownerId = e.target.getAttribute('data-postulante-id');
-
-    // Aquí asumimos que tienes una forma de obtener el nombre de la mascota. Puede ser diferente según tu implementación
-    const petName = pets[petIndex].name;
-
-    // Emitir el evento de solicitud
-    socket.emit('solicitudMascota', {
-        ownerId: ownerId,
-        petName: petName
-    });
-});
-    </script>
+    
     <script src="dashboard.js"></script>
 </body>
 

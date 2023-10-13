@@ -164,16 +164,20 @@ router.post('/addPet', async (req, res) => {
 });
 
 router.get('/home', isAuthenticated, async (req, res, next) => {
-    try {
-        // Obtén la lista de mascotas desde la base de datos o de donde sea necesario
-        const pets = await Pet.find();
+  try {
+      // Obtén la lista de mascotas desde la base de datos o de donde sea necesario
+      const pets = await Pet.find();
 
-        // Renderiza la vista 'home' y pasa la lista de mascotas como contexto
-        res.render('home', { pets });
-    } catch (error) {
-        console.error('Error al obtener la lista de mascotas:', error);
-        res.redirect('/'); // Maneja el error de acuerdo a tus necesidades
-    }
+      // Obtén el conteo de perros y gatos
+      const dogCount = await Pet.countDocuments({ type: "Perro" });
+      const catCount = await Pet.countDocuments({ type: "Gato" });
+
+      // Renderiza la vista 'home' y pasa la lista de mascotas y los conteos como contexto
+      res.render('home', { pets, dogCount, catCount });
+  } catch (error) {
+      console.error('Error al obtener la lista de mascotas:', error);
+      res.redirect('/'); // Maneja el error de acuerdo a tus necesidades
+  }
 });
 
 router.get('/requests', isAuthenticated, (req, res, next) => {

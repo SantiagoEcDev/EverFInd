@@ -303,6 +303,7 @@ main.sign-up-mode .carousel {
 
 @media (max-width: 850px) {
   .box {
+    
     height: auto;
     max-width: 550px;
     overflow: hidden;
