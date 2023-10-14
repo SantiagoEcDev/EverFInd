@@ -11,10 +11,15 @@ const petSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.String,
     ref: 'User'
   },
+  imagePath: {
+    type: String,
+    required: false // lo pongo como opcional, puedes cambiar según tus necesidades
+},
   createdAt:{
     type: Date,
     default: Date.now
   }
+
 });
 
 module.exports = mongoose.model('Pet', petSchema);

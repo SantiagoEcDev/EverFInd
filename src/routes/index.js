@@ -4,6 +4,18 @@ const passport = require('passport');
 const Pet = require('../models/myPets');
 const User = require('../models/user')
 const path = require('path');
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, path.join(__dirname, '../uploads/'));
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
+  }
+});
+const upload = multer({ storage: storage });
+
 
 // Ruta para la página de inicio
 router.get('/', (req, res, next) => {
@@ -136,32 +148,33 @@ router.post('/profile', async (req, res, next) => {
     }
   });
 
-//Subir mascotas a la página
-router.post('/addPet', async (req, res) => {
-    const {name, age, type, breed, status, description, createdAt} = req.body;
+  
 
-    try{
-        
-        //Crea una nueva instancia de mascota con los datos del formulario
+    router.post('/addPet', upload.single('image'), async (req, res) => {
+      const {name, age, type, breed, status, description, createdAt} = req.body;
+      const imagePath = req.file.path;
+    
+      try {
         const newPet = new Pet({
-            name,
-            age,
-            type,
-            breed,
-            status,
-            description,
-            createdAt,
-            owner: req.user.name,
+          name,
+          age,
+          type,
+          breed,
+          status,
+          description,
+          createdAt,
+          owner: req.user.name,
+          imagePath
         });
-
+    
         await newPet.save();
-
+    
         res.redirect('/giveto');
-    }catch (error){
-        console.error('Error al guardar la mascota:', error );
+      } catch (error) {
+        console.error('Error al guardar la mascota:', error);
         res.redirect('/giveto');
-    }
-});
+      }
+    });
 
 router.get('/home', isAuthenticated, async (req, res, next) => {
   try {

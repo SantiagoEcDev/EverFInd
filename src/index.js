@@ -14,6 +14,7 @@ require('./passport/local-auth')
 
 
 // Configuraciones
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.set('views', path.join(__dirname, 'views'));
 app.engine('ejs', engine)
 app.set('view engine', 'ejs');
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
     app.locals.user = req.user;
     next();
 })
+
 
 // Rutas
 app.use('/', require('./routes/index'));

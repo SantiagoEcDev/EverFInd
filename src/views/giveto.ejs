@@ -117,7 +117,7 @@
                             <% pets.reverse().forEach(function(pet) { %>
                                 <tr>
                                     <td>
-                                        <img src="" alt="photo">
+                                        <img src="<%= pet.imagePath %>" alt="">
                                     </td>
                                     <td>
                                         <p><%= pet.name%></p>
@@ -156,7 +156,7 @@
                         <h3>Postular mascota</h3>
                         <i class='bx bx-filter'></i>
                     </div>
-                    <form action="/addPet" method="post">
+                    <form action="/addPet" method="post" enctype="multipart/form-data">
                         <div class="addPet">
                             <label for="name">Nombre:</label>
                             <input type="text" id="name" name="name" required>
@@ -192,6 +192,11 @@
                         <div class="addPet">
                             <label for="description">Descripción de la mascota:</label>
                             <textarea id="description" name="description" rows="4"></textarea>
+                        </div>
+
+                        <div class="addPet">
+                            <label for="petImage">Imagen de la mascota:</label>
+                            <input type="file" id="image" name="image" enctype="multipart/form-data">
                         </div>
                       
                         <!-- Agrega otros campos si es necesario -->
