@@ -27,6 +27,16 @@ const storage = new CloudinaryStorage({
   },
 });
 
+const profileStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'perfiles', 
+    format: async (req, file) => 'png', 
+    public_id: (req, file) => 'perfil-' + req.user.id // esto asegura un ID único para cada usuario
+  },
+});
+
+
 // Middleware de Multer
 const parser = multer({ storage: storage });
 
@@ -103,8 +113,10 @@ router.get('/profile', isAuthenticated, async (req, res, next) => {
 
         const email = req.user.email;
 
+        const profileImage = req.user.profileImage;
+
         // Renderiza la vista 'profile' y pasa la lista de mascotas y el nombre del usuario como contexto
-        res.render('profile', { users, username, email, req });
+        res.render('profile', { users, username, email, profileImage, req });
         
     } catch (error) {
         console.error('Error al obtener la lista de mascotas:', error);
@@ -112,6 +124,22 @@ router.get('/profile', isAuthenticated, async (req, res, next) => {
     }
     
 });
+
+router.post('/uploadProfile', parser.single('image'), async (req, res) => {
+  if (!req.file) {
+      return res.send('No se subió ninguna imagen.');
+  }
+
+  const image = req.file.path;
+  
+  // Aquí, suponiendo que "user" es tu modelo y tienes el usuario actual en req.user
+  const currentUser = await User.findById(req.user._id);
+  currentUser.profileImage = image;
+  await currentUser.save();
+
+  res.redirect('/profile'); 
+});
+
 
 // Ruta para modificar el nombre y el correo electrónico
 router.post('/profile', async (req, res, next) => {
@@ -129,10 +157,16 @@ router.post('/profile', async (req, res, next) => {
     // Obtén los valores nuevos del nombre y el correo electrónico
     const name = req.body.name.toString();
     const email = req.body.email;
+    const phone = req.body.phone;
+    const description = req.body.description;
+    const city = req.body.city;
   
     // Actualiza el usuario en la base de datos
     user.name = name;
     user.email = email;
+    user.phone = phone;
+    user.description = description;
+    user.city = city;
     try {
       await user.save();
     } catch (error) {
@@ -148,6 +182,9 @@ router.post('/profile', async (req, res, next) => {
     const data = {
       name: user.name,
       email: user.email,
+      description: user.description,
+      phone: user.phone,
+      city: user.city
     };
     try {
       res.render('profile', data, { locals: { req } });
@@ -157,11 +194,33 @@ router.post('/profile', async (req, res, next) => {
     }
   
     // Redirecciona a / si la sesión está cerrada
-    if (!req.session.user) {
-      res.redirect('/');
-    }
+      res.redirect('/home');
   });
 
+  router.post('/deleteProfilePic', isAuthenticated, async (req, res) => {
+    try {
+        // Si el usuario no tiene una imagen de perfil, simplemente redirige
+        if (!req.user.profileImage) {
+            return res.redirect('/profile');
+        }
+        
+        // Obtiene el ID de la imagen desde la URL
+        let publicId = req.user.profileImage.split('/').pop().split('.')[0];
+
+        // Elimina la imagen de Cloudinary
+        await cloudinary.uploader.destroy(publicId);
+
+        // Actualiza el modelo del usuario para eliminar el URL de la imagen del perfil
+        req.user.profileImage = null;
+        await req.user.save();
+
+        // Redirige al usuario a la misma página (o donde quieras)
+        res.redirect('/profile');
+    } catch (error) {
+        console.error("Error al eliminar la imagen: ", error);
+        res.redirect('/profile');
+    }
+});
   
 
   router.post('/addPet', parser.single('image'), async (req, res) => {

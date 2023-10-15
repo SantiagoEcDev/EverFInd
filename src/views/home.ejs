@@ -57,8 +57,14 @@
                 <i class='bx bx-bell'></i>
                 <span class="count">12</span>
             </a>
-            <a href="#" class="profile" >
-                <img src="images/logo.png">
+            <a href="/profile" class="profile" >
+                <% if (user && user.profileImage) { %>
+                    <img src="<%= user.profileImage %>" alt="Imagen de perfil"
+                        class="d-block ui-w-80">
+                    <% } else { %>
+                        <img src="./assets/img/defaultProfilePic.png"
+                            alt="Imagen predeterminada" class="d-block ui-w-80">
+                        <% } %>
             </a>
             <div class="notifi-box" id="box">
                 <h2>Notificaciones <span>17</span></h2>
@@ -154,7 +160,7 @@
                                     <p>Edad: <%= pet.age %> años</p>
                                   </div>
                                   <div class="age">
-                                    <p><%= pet.type %></p>
+                                    <p><%= pet.breed %></p>
                                   </div>
                                   <div class="more">
                                     <!-- Botón para abrir el modal -->
