@@ -222,7 +222,7 @@ router.post('/profile', async (req, res, next) => {
     }
 });
   
-
+//Añadir una mascota
   router.post('/addPet', parser.single('image'), async (req, res) => {
     const { name, age, type, breed, status, description, createdAt } = req.body;
 
