@@ -141,7 +141,7 @@
                           <div class="pet-container">
                             <article class="pet-view">
                               <div class="pet-background">
-                                <img src="assets/img/feed/dogFeed.png" alt="Foto de la Mascota <%= index %>">
+                                <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
                               </div>
                               <div class="pet-info">
                                 <div class="pet-info-column">
@@ -173,7 +173,7 @@
                           <div class="modal-content">
                             <!-- Contenido del modal para la mascota actual -->
                             <div class="modal-left">
-                                <img src="assets/img/feed/dogFeed.png" alt="">
+                                <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
                             </div>
                             <div class="modal-right">
                                 <h2><%= pet.name %></h2>

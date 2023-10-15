@@ -6,15 +6,29 @@ const User = require('../models/user')
 const path = require('path');
 const multer = require('multer')
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, path.join(__dirname, '../uploads/'));
-  },
-  filename: function(req, file, cb) {
-    cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
-  }
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+// Configura Cloudinary
+          
+cloudinary.config({ 
+  cloud_name: 'dr8dplsp9', 
+  api_key: '213597497949877', 
+  api_secret: 'sXcT4s2778dA9L6AbY0ow4J7xeE' 
 });
-const upload = multer({ storage: storage });
+
+// Configura el almacenamiento
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'mascotas', 
+    format: async (req, file) => 'png', // soporta promesas
+    public_id: (req, file) => file.originalname
+  },
+});
+
+// Middleware de Multer
+const parser = multer({ storage: storage });
 
 
 // Ruta para la página de inicio
@@ -150,31 +164,32 @@ router.post('/profile', async (req, res, next) => {
 
   
 
-    router.post('/addPet', upload.single('image'), async (req, res) => {
-      const {name, age, type, breed, status, description, createdAt} = req.body;
-      const imagePath = req.file.path;
-    
-      try {
+  router.post('/addPet', parser.single('image'), async (req, res) => {
+    const { name, age, type, breed, status, description, createdAt } = req.body;
+
+    // Aquí, req.file contiene información sobre la imagen subida, incluyendo la URL en Cloudinary
+    const imagePath = req.file.path;
+
+    try {
         const newPet = new Pet({
-          name,
-          age,
-          type,
-          breed,
-          status,
-          description,
-          createdAt,
-          owner: req.user.name,
-          imagePath
+            name,
+            age,
+            type,
+            breed,
+            status,
+            description,
+            createdAt,
+            owner: req.user.name,
+            imagePath
         });
-    
+
         await newPet.save();
-    
         res.redirect('/giveto');
-      } catch (error) {
+    } catch (error) {
         console.error('Error al guardar la mascota:', error);
         res.redirect('/giveto');
-      }
-    });
+    }
+});
 
 router.get('/home', isAuthenticated, async (req, res, next) => {
   try {
