@@ -173,32 +173,37 @@
                       <!-- Modales para todas las mascotas -->
                       <% pets.forEach(function(pet, index) { %>
                         <div id="modal<%= index %>" class="modal">
-                          <div class="modal-content">
-                            <!-- Contenido del modal para la mascota actual -->
-                            <div class="modal-left">
-                                <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
+                            <div class="modal-content">
+                                <!-- Contenido del modal para la mascota actual -->
+                                <div class="modal-left">
+                                    <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
+                                </div>
+                                <div class="modal-right">
+                                    <h2><%= pet.name %></h2>
+                                    <p>Edad: <%= pet.age %> años</p>
+                                    <p>Raza: <%= pet.breed %></p>
+                                    <p>Estado: <%= pet.status %></p>
+                                    <p>Dueño: <%= pet.owner %></p>
+                                    <p>Descripción: <%= pet.description %></p>
+                    
+                                    <!-- ... Otros detalles de la mascota ... -->
+                                </div>
+                    
+                                <!-- Botón para cerrar el modal y formulario para solicitar amistad -->
+                                <div class="button-container">
+                                    <button class="close-modal-btn back" data-index="<%= index %>">
+                                        <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i> Cerrar
+                                    </button>
+                    
+                                    <form action="/addFriend" method="post">
+                                        <input type="hidden" name="userId" value="<%= currentUserId %>">
+                                        <input type="hidden" name="friendId" value="<%= pet.owner %>">
+                                        <button type="submit" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-right">
-                                <h2><%= pet.name %></h2>
-                                <p>Edad: <%= pet.age %> años</p>
-                                <p>Raza: <%= pet.breed %></p>
-                                <p>Estado: <%= pet.status %></p>
-                                <p>Dueño: <%= pet.owner %></p>
-                                <p>Descripción: <%= pet.description %></p>
-
-                                <!-- ... Otros detalles de la mascota ... -->
-                            </div>
-
-                            <!-- ... Otros detalles de la mascota ... -->
-                            <!-- Botón para cerrar el modal -->
-                            <div class="button-container">
-                                <!-- Botones debajo de la descripción -->
-                                <button class="close-modal-btn back" data-index="<%= index %>"><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i> Cerrar</button>
-                                <button id="aplicarBtn"  data-index="<%= index %>" data-postulante-id="<%= pet.owner %>" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
-                            </div>
-                          </div>
                         </div>
-                      <% }); %>
+                    <% }); %>
                 </div>
 
         </main>

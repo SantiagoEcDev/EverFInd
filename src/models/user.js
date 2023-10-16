@@ -9,7 +9,8 @@ const userSchema = new Schema({
     profileImage: String,
     phone: String,
     description: String,
-    city: String// Añade este campo para almacenar la URL de la imagen de perfil
+    city: String,
+    friends: [String],
 });
 
 userSchema.methods.encryptPassword = function(password) {

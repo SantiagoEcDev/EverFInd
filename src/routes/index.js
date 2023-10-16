@@ -259,14 +259,44 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
       const dogCount = await Pet.countDocuments({ type: "Perro" });
       const catCount = await Pet.countDocuments({ type: "Gato" });
 
-      // Renderiza la vista 'home' y pasa la lista de mascotas y los conteos como contexto
-      res.render('home', { pets, dogCount, catCount });
+      // Si estás utilizando Passport.js o algún middleware similar, probablemente tengas acceso a req.user
+      // Obtén el ID del usuario autenticado
+      const currentUserId = req.user._id; // Cambia `_id` si tu identificador tiene un nombre diferente en el objeto de usuario
+
+      // Renderiza la vista 'home' y pasa la lista de mascotas, los conteos y el currentUserId como contexto
+      res.render('home', { pets, dogCount, catCount, currentUserId });
   } catch (error) {
       console.error('Error al obtener la lista de mascotas:', error);
       res.redirect('/'); // Maneja el error de acuerdo a tus necesidades
   }
 });
 
+router.post('/addFriend', async (req, res) => {
+  const userId = req.body.userId;
+  const friendId = req.body.friendId;
+
+  try {
+      const user = await User.findById(userId);
+      if (!user) {
+          req.flash('error', 'User not found');
+          return res.redirect('/home');
+      }
+
+      if (user.friends.includes(friendId)) {
+          req.flash('error', 'Already friends');
+          return res.redirect('/home');
+      }
+
+      user.friends.push(friendId);
+      await user.save();
+
+      req.flash('success', 'Friend added successfully!');
+      res.redirect('/home');
+  } catch (error) {
+      req.flash('error', 'Server error');
+      res.redirect('/home');
+  }
+});
 router.get('/requests', isAuthenticated, (req, res, next) => {
     res.render('requests');
 });
