@@ -159,18 +159,13 @@
                         <h3>Mensajes directos</h3>
                     </div>
                     <ul class="user-list">
-                        
-                        <li class="user-item">
-                            <img class="user-image" src="images/profile-2.jpg" alt="Usuario 2">
-                            <div class="user-name">Usuario 2</div>
-                            <div class="notification-count">0</div>
-                        </li>
-                        <li class="user-item">
-                            <img class="user-image" src="images/profile-3.jpg" alt="Usuario 3">
-                            <div class="user-name">Usuario 3</div>
-                            <div class="notification-count">5</div>
-                        </li>
-                        <!-- Agrega más elementos de usuario según sea necesario -->
+                        <% friends.forEach(friend => { %>
+                            <li class="user-item">
+                                <img class="user-image" src="<%= friend.profileImage %>" alt="<%= friend.name %>">
+                                <div class="user-name"><%= friend.name %></div>
+                                <div class="notification-count">0</div> <!-- Aquí puedes agregar lógica para las notificaciones si lo deseas -->
+                            </li>
+                        <% }); %>
                     </ul>
                 </div>
 

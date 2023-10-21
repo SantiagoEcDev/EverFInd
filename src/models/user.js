@@ -10,7 +10,7 @@ const userSchema = new Schema({
     phone: String,
     description: String,
     city: String,
-    friends: [String],
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 });
 
 userSchema.methods.encryptPassword = function(password) {

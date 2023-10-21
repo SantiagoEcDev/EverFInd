@@ -271,34 +271,46 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
   }
 });
 
-router.post('/addFriend', async (req, res) => {
-  const userId = req.body.userId;
-  const friendId = req.body.friendId;
+router.post('/addFriend', isAuthenticated, async (req, res) => {
+  const { userId, friendId } = req.body;
 
   try {
-      const user = await User.findById(userId);
-      if (!user) {
-          req.flash('error', 'User not found');
-          return res.redirect('/home');
+      // Busca al usuario por su nombre (en este caso, friendId contiene el nombre)
+      const owner = await User.findOne({ name: friendId });
+
+      if (!owner) {
+          throw new Error('El propietario no se encuentra');
       }
 
-      if (user.friends.includes(friendId)) {
-          req.flash('error', 'Already friends');
-          return res.redirect('/home');
+      // Luego, con el usuario encontrado, procedemos como antes:
+      if (!owner.friends.includes(userId)) {
+          owner.friends.push(userId);
+          await owner.save();
       }
 
-      user.friends.push(friendId);
-      await user.save();
+      res.redirect('/home');  // Redirige a donde quieras después de agregar el amigo
 
-      req.flash('success', 'Friend added successfully!');
-      res.redirect('/home');
   } catch (error) {
-      req.flash('error', 'Server error');
-      res.redirect('/home');
+      console.error('Error al agregar amigo:', error);
+      res.redirect('/home');  // O maneja el error como prefieras
   }
 });
-router.get('/requests', isAuthenticated, (req, res, next) => {
-    res.render('requests');
+
+router.get('/requests', isAuthenticated, async (req, res, next) => {
+  try {
+      // Suponiendo que req.user._id te da el ID del usuario actualmente autenticado
+      const user = await User.findById(req.user._id).populate('friends');
+      
+      if (!user) {
+          throw new Error('Usuario no encontrado.');
+      }
+
+      res.render('requests', { friends: user.friends });
+
+  } catch (error) {
+      console.error('Error al obtener la lista de amigos:', error);
+      res.redirect('/');  // O maneja el error como prefieras, por ejemplo redirigiendo a la página principal.
+  }
 });
 
 
