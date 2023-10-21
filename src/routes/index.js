@@ -259,12 +259,15 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
       const dogCount = await Pet.countDocuments({ type: "Perro" });
       const catCount = await Pet.countDocuments({ type: "Gato" });
 
-      // Si estás utilizando Passport.js o algún middleware similar, probablemente tengas acceso a req.user
       // Obtén el ID del usuario autenticado
-      const currentUserId = req.user._id; // Cambia `_id` si tu identificador tiene un nombre diferente en el objeto de usuario
+      const currentUserId = req.user._id;
 
-      // Renderiza la vista 'home' y pasa la lista de mascotas, los conteos y el currentUserId como contexto
-      res.render('home', { pets, dogCount, catCount, currentUserId });
+      // Obtiene el usuario actual y sus amigos
+      const user = await User.findById(currentUserId).populate('friends');
+
+      // Renderiza la vista 'home' y pasa todo el contexto
+      res.render('home', { pets, dogCount, catCount, currentUserId, friends: user.friends });
+
   } catch (error) {
       console.error('Error al obtener la lista de mascotas:', error);
       res.redirect('/'); // Maneja el error de acuerdo a tus necesidades

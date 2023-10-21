@@ -47,15 +47,14 @@
             <i class='bx bx-menu'></i>
             <form action="#">
                 <div class="form-input">
-                    <input type="search" placeholder="Search...">
                     <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
                 </div>
             </form>
             <input type="checkbox" id="theme-toggle" hidden>
-            <label for="theme-toggle" class="theme-toggle"></label>
+            
             <a href="#" class="notif" onclick="toggleNotifi()">
                 <i class='bx bx-bell'></i>
-                <span class="count">12</span>
+                <span class="count"><%= friends.length %></span>
             </a>
             <a href="/profile" class="profile" >
                 <% if (user && user.profileImage) { %>
@@ -67,15 +66,17 @@
                         <% } %>
             </a>
             <div class="notifi-box" id="box">
-                <h2>Notificaciones <span>17</span></h2>
+                
+                <h2>Notificaciones <span><%= friends.length %></span></h2>
                  <div class="notifi-item">
+                    <% friends.forEach(friend => { %>
                     <img src="img/avatar1.png" alt="img">
                     <div class="text">
-                       <h4>Elias Abdurrahman</h4>
-                       <p>@lorem ipsum dolor sit amet</p>
+                       <h4><%= friend.name %></h4>
+                       <p>Solicitó tu mascota</p>
                     </div> 
                 </div>
-                
+                <% }); %>
             </div>
         </nav>
 

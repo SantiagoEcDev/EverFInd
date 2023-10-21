@@ -244,7 +244,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--primary);
+    background: transparent;
     color: var(--light);
     font-size: 18px;
     border: none;
@@ -363,6 +363,7 @@ body{
 }
 
 .content main .insights{
+    cursor: pointer;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     grid-gap: 24px;
@@ -376,7 +377,7 @@ body{
     display: flex;
     align-items: center;
     grid-gap: 24px;
-    cursor: pointer;
+    cursor: default;
 }
 
 .content main .insights li .bx{

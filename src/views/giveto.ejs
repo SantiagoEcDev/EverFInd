@@ -48,12 +48,10 @@
             <i class='bx bx-menu'></i>
             <form action="#">
                 <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                    
                 </div>
             </form>
-            <input type="checkbox" id="theme-toggle" hidden>
-            <label for="theme-toggle" class="theme-toggle"></label>
+            
             <a href="#" class="notif" onclick="toggleNotifi()">
                 <i class='bx bx-bell'></i>
                 <span class="count">12</span>
@@ -110,11 +108,7 @@
                             <tr>
                                 <th>Foto</th>
                                 <th>Nombre</th>
-                                <th>Edad</th>
-                                <th>Animal</th>
-                                <th>Raza</th>
                                 <th>Estado</th>
-                                <th>Editar</th>
                                 <th>Eliminar</th>
 
                             </tr>
@@ -128,14 +122,8 @@
                                     <td>
                                         <p><%= pet.name%></p>
                                     </td>
-                                    <td>
-                                        <p><%= pet.age %></p>
-                                    </td>
-                                    <td>
-                                        <p>
-                                            <%= pet.type %></p>
-                                        </p>
-                                    </td>
+                                    
+                                    
                                     <td>
                                         <span><p><%=pet.breed%></span></p>
                                     </td>
@@ -143,7 +131,6 @@
                                         <%= pet.status %></td>
                                     <!-- <td><%= pet.createdAt.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: '2-digit' }) %></td> -->
                                     
-                                    <td><span id="btn-abrir-modal" class="edit"><a><i class='bx bx-pencil'></i></a></span></td>
                                         <td><span class="delete"><a href="/delete/<%= pet._id %>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta mascota?')"><i class='bx bx-trash'></i></a></span></td>
                                 </tr>
                             <% }); %>
@@ -207,7 +194,7 @@
                       
                         <!-- Agrega otros campos si es necesario -->
                       
-                        <button type="submit">Guardar Mascota<i class="fa-solid fa-plus"></i></button>
+                        <button type="submit">Guardar Mascota <i class="fa-solid fa-plus"></i></button>
                     </form>
                       
                     <!-- <ul class="task-list"> -->
