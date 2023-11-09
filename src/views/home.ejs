@@ -68,8 +68,8 @@
             <div class="notifi-box" id="box">
                 
                 <h2>Notificaciones <span><%= friends.length %></span></h2>
-                 <div class="notifi-item">
-                    <% friends.forEach(friend => { %>
+                <% friends.forEach(friend => { %> 
+                <div class="notifi-item">
                     <img src="img/avatar1.png" alt="img">
                     <div class="text">
                        <h4><%= friend.name %></h4>
