@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>EverFind admin</title>
+    <link rel="stylesheet" href="./styles/admin.css">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+
+<body>
+
+    <input type="checkbox" id="menu-toggle">
+    <div class="sidebar">
+        <div class="side-header">
+            <h3>A<span>dmin</span></h3>
+        </div>
+
+        <div class="side-content">
+            <div class="profile">
+                <div class="profile-img bg-img" style="background-image: url(img/3.jpeg)"></div>
+                <h4>Santiago Escobar</h4>
+                <small>Administrador</small>
+            </div>
+
+            <div class="side-menu">
+                <ul>
+                    <li>
+                        <a href="" class="active">
+                            <span class="las la-home"></span>
+                            <small>Inicio</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="historial.html">
+                            <span class="las la-history"></span>
+                            <small>Historial</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="solicitudes.html">
+                            <span class="las la-envelope"></span>
+                            <small>Solicitudes</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mascotas.html">
+                            <span class="las la-paw"></span>
+                            <small>Mascotas</small>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cerrar">
+                            <span class="las la-sign-out-alt"></span>
+                            <small>Cerrar sesión</small>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <header>
+            <div class="header-content">
+                <label for="menu-toggle">
+                    <span class="las la-bars"></span>
+                </label>
+
+                <div class="header-menu">
+                    <label for="">
+                        <span class="las la-search"></span>
+                    </label>
+
+                    <div class="notify-icon">
+                        <span class="las la-envelope" id="mailIcon"></span>
+                        <span class="notify" id="mailCount">4</span>
+                    </div>
+
+                    <div class="notify-icon">
+                        <span class="las la-bell" id="notificationIcon"></span>
+                        <span class="notify" id="notificationCount">3</span>
+                    </div>
+
+                    <div class="user">
+                        <div class="bg-img" style="background-image: url(./assets/img/feed/dogFeed.png)"></div>
+
+                        <span class="las la-power-off"></span>
+                        <span>Cerrar sesión</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+
+            <div class="page-header">
+                <h1>Panel de control</h1>
+                <small>Inicio / Panel</small>
+            </div>
+
+            <div class="page-content">
+
+
+
+                <div class="analytics">
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>107,200</h2>
+                            <span class="las la-user-friends"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Usuarios registrados</small>
+                            <div class="card-indicator">
+                                <div class="indicator one" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="messageModal" class="modal">
+                        <!-- Contenido del Modal -->
+                        <div class="modal-content">
+                            <span class="close" id="closeMessageModal">&times;</span>
+                            <form id="messageForm" class="messageForm">
+                                <h2>Enviar Mensaje</h2>
+                                <label for="message">Mensaje:</label>
+                                <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                                <br>
+                                <input type="submit" value="Enviar">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="userModal" class="modal">
+                        <!-- Contenido del Modal -->
+                        <div class="modal-content">
+                            <span class="close" id="closeUserModal">&times;</span>
+
+                            <div class="userInfo">
+                                <div class="user">
+                                    <div class="profile-pic">
+                                        <img src="ruta/a/tu/imagen.jpg" alt="Foto de perfil">
+                                    </div>
+                                </div>
+
+                                <div class="name">
+                                    Santiago Escobar
+                                </div>
+
+                                <div class="email">
+                                    <p>santiagoescobar@gmail.com</p>
+                                </div>
+
+                                <div class="phone">
+                                    <p>3115477456</p>
+                                </div>
+
+                                <div class="city">
+                                    <p>Bogotá</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>340,230</h2>
+                            <span class="las la-paw"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Mascotas publicadas</small>
+                            <div class="card-indicator">
+                                <div class="indicator two" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>$653,200</h2>
+                            <span class="las la-hand-holding-heart"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Mascotas adoptadas</small>
+                            <div class="card-indicator">
+                                <div class="indicator three" style="width: 20%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>47,500</h2>
+                            <span class="las la-envelope"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Solicitudes recibidas</small>
+                            <div class="card-indicator">
+                                <div class="indicator four" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="records table-responsive">
+
+
+
+                    <div>
+                        <table width="100%">
+                            <thead>
+                                <tr>
+                                    <th></span>NOMBRE</th>
+                                    <th></span>REGISTRO</th>
+                                    <th></span>MASCOTAS</th>
+                                    <th></span>ACCIONES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="client">
+                                            <div class="client-img bg-img" style="background-image: url(img/3.jpeg)">
+                                            </div>
+                                            <div class="client-info">
+                                                <h4>Santiago Escobar</h4>
+                                                <small>santiagoescobar@gmail.com</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        19 April, 2022
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        <div class="actions">
+                                            <span data-title="Enviar mensaje" class="lab la-telegram-plane" id="openMessageModal"></span>
+                                            <span data-title="Ver" class="las la-eye" id="openUserModal"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+    <script>
+        document.getElementById("iconTrigger").addEventListener("click", function() {
+        var overflowMenu = document.getElementById("overflowMenu");
+        overflowMenu.style.display = overflowMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Opcional: Cerrar el menú si se hace clic fuera de él
+    window.onclick = function(event) {
+        if (!event.target.matches('#iconTrigger')) {
+            var dropdowns = document.getElementsByClassName("overflow-menu");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.style.display === "block") {
+                    openDropdown.style.display = "none";
+                }
+            }
+        }
+    }
+    </script>
+
+    <script src="../adminModal.js"></script>
+
+</body>
+
+</html>

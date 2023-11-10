@@ -56,7 +56,7 @@ let socketsConected = new Set()
 io.on('connection', onConnected)
 
 function onConnected(socket) {
-    console.log(socket.id)
+    console.log('A usuario has connected')
     socketsConected.add(socket.id)
     
     io.emit('clients-total',socketsConected.size)
