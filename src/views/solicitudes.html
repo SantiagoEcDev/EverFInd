@@ -65,6 +65,7 @@
 
     <div class="main-content">
 
+
         <header>
             <div class="header-content">
                 <label for="menu-toggle">
@@ -72,9 +73,6 @@
                 </label>
 
                 <div class="header-menu">
-                    <label for="">
-                        <span class="las la-search"></span>
-                    </label>
 
                     <div class="notify-icon">
                         <span class="las la-envelope" id="mailIcon"></span>
@@ -89,8 +87,7 @@
                     <div class="user">
                         <div class="bg-img" style="background-image: url(./assets/img/feed/dogFeed.png)"></div>
 
-                        <span class="las la-power-off"></span>
-                        <span>Cerrar sesión</span>
+                        
                     </div>
                 </div>
             </div>
@@ -104,162 +101,40 @@
                 <small>Inicio / Panel</small>
             </div>
 
+            <div id="petInfoModal" class="modal">
+                <!-- Contenido del Modal -->
+                <div class="petModal">
+                    <span class="close" id="closePetModal">&times;</span>
+                    <div class="carousel">
+                        <div class="carousel-images">
+                            <img src="./assets/img/feed/dogFeed.png" alt="Imagen 1">
+                            <img src="./assets/img/carnet.jpg" alt="Imagen 2" style="display: none;">
+                        </div>
+                        <button class="carousel-button prev" onclick="changeImage(-1)">&#10094;</button>
+                        <button class="carousel-button next" onclick="changeImage(1)">&#10095;</button>
+                    </div>
+                    
+                    <div class="petName">Hannah</div>
+                    <div class="petAge">Edad: 5 años</div>
+                    <div class="petBreed">Raza: Golden</div>
+                    
+
+                </div>
+            </div>
+
+
             <div class="page-content">
 
-
-
-                <div class="analytics">
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>107,200</h2>
-                            <span class="las la-user-friends"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Usuarios registrados</small>
-                            <div class="card-indicator">
-                                <div class="indicator one" style="width: 60%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="messageModal" class="modal">
-                        <!-- Contenido del Modal -->
-                        <div class="modal-content">
-                            <span class="close" id="closeMessageModal">&times;</span>
-                            <form id="messageForm" class="messageForm">
-                                <h2>Enviar Mensaje</h2>
-                                <label for="message">Mensaje:</label>
-                                <textarea id="message" name="message" rows="4" cols="50"></textarea>
-                                <br>
-                                <input type="submit" value="Enviar">
-                            </form>
-                        </div>
-                    </div>
-
-                    <div id="userModal" class="modal">
-                        <!-- Contenido del Modal -->
-                        <div class="modal-content">
-                            <span class="close" id="closeUserModal">&times;</span>
-
-                            <div class="userInfo">
-                                <div class="user">
-                                    <div class="profile-pic">
-                                        <img src="ruta/a/tu/imagen.jpg" alt="Foto de perfil">
-                                    </div>
-                                </div>
-
-                                <div class="name">
-                                    Santiago Escobar
-                                </div>
-
-                                <div class="email">
-                                    <p>santiagoescobar@gmail.com</p>
-                                </div>
-
-                                <div class="phone">
-                                    <p>3115477456</p>
-                                </div>
-
-                                <div class="city">
-                                    <p>Bogotá</p>
-                                </div>
-                            </div>
-
-                        </div>
+                <div class="records table-responsive">
+                    <div class="petRequest">
+                        <img src="./assets/img/feed/dogFeed.png" alt="Foto de Mascota" class="petPhoto">
+                        <span class="petName">Hannah</span>
+                        <span class="las la-eye viewIcon" id="openModal"></span>
+                        <button class="las la-check acceptButton"></button>
+                        <button class="las la-deny denyButton"></button>
                     </div>
 
                     
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>340,230</h2>
-                            <span class="las la-paw"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Mascotas publicadas</small>
-                            <div class="card-indicator">
-                                <div class="indicator two" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>$653,200</h2>
-                            <span class="las la-hand-holding-heart"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Mascotas adoptadas</small>
-                            <div class="card-indicator">
-                                <div class="indicator three" style="width: 20%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-head">
-                            <h2>47,500</h2>
-                            <span class="las la-envelope"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Solicitudes recibidas</small>
-                            <div class="card-indicator">
-                                <div class="indicator four" style="width: 90%"></div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-
-                <div class="records table-responsive">
-
-
-
-                    <div>
-                        <table width="100%">
-                            <thead>
-                                <tr>
-                                    <th></span>NOMBRE</th>
-                                    <th></span>REGISTRO</th>
-                                    <th></span>MASCOTAS</th>
-                                    <th></span>ACCIONES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="client">
-                                            <div class="client-img bg-img" style="background-image: url(img/3.jpeg)">
-                                            </div>
-                                            <div class="client-info">
-                                                <h4>Santiago Escobar</h4>
-                                                <small>santiagoescobar@gmail.com</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span data-title="Enviar mensaje" class="lab la-telegram-plane" id="openMessageModal"></span>
-                                            <span data-title="Ver" class="las la-eye" id="openUserModal"></span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                
-
-
-                            </tbody>
-                        </table>
-                    </div>
 
                 </div>
 
@@ -268,26 +143,47 @@
         </main>
 
     </div>
+
     <script>
-        document.getElementById("iconTrigger").addEventListener("click", function() {
-        var overflowMenu = document.getElementById("overflowMenu");
-        overflowMenu.style.display = overflowMenu.style.display === "block" ? "none" : "block";
-    });
+        let currentImageIndex = 0;
+const images = document.querySelectorAll('.carousel-images img');
 
-    // Opcional: Cerrar el menú si se hace clic fuera de él
-    window.onclick = function(event) {
-        if (!event.target.matches('#iconTrigger')) {
-            var dropdowns = document.getElementsByClassName("overflow-menu");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.style.display === "block") {
-                    openDropdown.style.display = "none";
-                }
-            }
-        }
+function changeImage(step) {
+    images[currentImageIndex].style.display = 'none';
+    currentImageIndex = (currentImageIndex + step + images.length) % images.length;
+    images[currentImageIndex].style.display = 'block';
+}
+
+// Inicializa el carrusel mostrando la primera imagen
+changeImage(0);
+
+        document.addEventListener('DOMContentLoaded', function() {
+    var petInfoModal = document.getElementById("petInfoModal");
+    var openModal = document.getElementById("openModal");
+    var closePetModal = document.getElementById("closePetModal");
+
+    // Función para abrir el modal
+    if (openModal) {
+        openModal.addEventListener('click', function() {
+            petInfoModal.style.display = "block";
+        });
     }
-    </script>
 
+    // Función para cerrar el modal
+    if (closePetModal) {
+        closePetModal.addEventListener('click', function() {
+            petInfoModal.style.display = "none";
+        });
+    }
+
+    // Cierra el modal si se hace clic fuera de su contenido
+    window.addEventListener('click', function(event) {
+        if (event.target == petInfoModal) {
+            petInfoModal.style.display = "none";
+        }
+    });
+});
+    </script>
     <script src="../adminModal.js"></script>
 
 </body>

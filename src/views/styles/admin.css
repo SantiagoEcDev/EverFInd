@@ -102,9 +102,7 @@
     font-weight: 600;
 }
 
-.sidebar {
-    /*overflow-y: auto;*/
-}
+
 
 .side-menu ul {
     text-align: center;
@@ -588,10 +586,162 @@ table tbody tr {
     align-items: center;
 }
 
+.petRequest {
+    border: 1px solid #cccccc;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.petRequest .petPhoto {
+    width: 80px; /* Ajusta según sea necesario */
+    height: 80px; /* Ajusta para mantener la proporción */
+    border-radius: 50%; /* Hace la imagen circular */
+    margin-right: 10px;
+}
+
+.petRequest .petName {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.petRequest .viewIcon {
+    cursor: pointer;
+    margin-right: 20px;
+    color: #000000;
+}
+
+.petRequest button {
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.petRequest .acceptButton {
+    background-color: rgb(78, 174, 49);
+}
+
+.petRequest .denyButton {
+    background-color: red;
+}
+
+/* Estilos adicionales para los iconos si usas una librería como Font Awesome */
+.petRequest .acceptButton:before {
+    content: '\f00c'; /* Código Unicode para el icono de Font Awesome */
+}
+
+.petRequest .denyButton:before {
+    content: '\f00d'; /* Código Unicode para el icono de Font Awesome */
+}
+
+.petInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    text-align: center;
+}
+
+.modal {
+    position: fixed; /* Posicionamiento fijo en toda la pantalla */
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste fino para centrar exactamente */
+    display: none; /* Oculto por defecto */
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    width: 100%; /* Ocupa todo el ancho */
+    height: 100%; /* Ocupa todo el alto */
+    padding-top: 50px; /* Espacio en la parte superior */
+}
+
+.petModal {
+    margin-top: 30px;
+    position: relative;
+    text-align: center; /* Centra el contenido textual */
+    padding: 20px; /* Espaciado interno */
+    background-color: #fff; /* Fondo blanco o el color que prefieras */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: auto; /* Ancho automático según el contenido */
+    max-width: 500px; /* Máximo ancho permitido */
+    margin: auto; /* Centrado horizontal */
+    max-height: 80%; /* Altura máxima para asegurar espacio en la parte superior e inferior */
+    overflow-y: auto; /* Permite desplazamiento si el contenido es muy largo */
+}
+
+.carousel {
+    position: relative;
+    margin: 20px 0; /* Espacio arriba y abajo del carrusel */
+    /* Establece un tamaño fijo para el carrusel */
+    width: 100%;
+    max-width: 300px; /* Ajusta al tamaño deseado */
+    height: 300px; /* Ajusta al tamaño deseado */
+    margin: auto;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que exceda el tamaño del contenedor */
+}
+
+.carousel-images img {
+    width: 100%; /* Las imágenes se escalan para llenar el ancho */
+    height: 100%; /* Las imágenes se escalan para llenar el alto */
+    object-fit: contain; /* Asegura que la imagen se ajuste dentro del área sin recortarse */
+    position: absolute; /* Posiciona las imágenes absolutamente dentro del carrusel */
+    top: 50%; /* Centra la imagen verticalmente */
+    left: 50%; /* Centra la imagen horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino para centrar la imagen */
+}
+.carousel-images img:first-child {
+    display: block; /* Muestra la primera imagen por defecto */
+}
 
 
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 50%; /* Botones redondos */
+    font-size: 24px;
+    cursor: pointer;
+    width: 60px; /* Tamaño del botón */
+    height: 60px; /* Tamaño del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
+.carousel-button.prev {
+    left: -20px; /* Posición del botón izquierdo */
+}
 
+.carousel-button.next {
+    right: -20px; /* Posición del botón derecho */
+}
+
+.petName, .petAge, .petBreed {
+    margin-top: 10px; /* Espaciado entre elementos */
+    font-size: 1.2em; /* Tamaño de fuente */
+    color: #333; /* Color de texto */
+}
+
+.petName {
+    font-weight: bold; /* Nombre de la mascota en negrita */
+}
+
+.petAge, .petBreed {
+    color: #666; /* Color de texto más suave */
+}
 
 
 
