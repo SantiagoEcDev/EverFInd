@@ -72,7 +72,7 @@
                 </label>
 
                 <div class="header-menu">
-                    
+
 
                     <div class="notify-icon">
                         <span class="las la-envelope" id="mailIcon"></span>
@@ -86,8 +86,6 @@
 
                     <div class="user">
                         <div class="bg-img" style="background-image: url(./assets/img/feed/dogFeed.png)"></div>
-
-                        
                     </div>
                 </div>
             </div>
@@ -98,7 +96,7 @@
 
             <div class="page-header">
                 <h1>Panel de control</h1>
-                <small>Inicio / Panel</small>
+                <small>Inicio / Info</small>
             </div>
 
             <div class="page-content">
@@ -127,12 +125,22 @@
                             <form id="messageForm" class="messageForm">
                                 <h2>Enviar Mensaje</h2>
                                 <label for="message">Mensaje:</label>
-                                <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                                <textarea id="message" name="message" rows="4" cols="50" required></textarea>
                                 <br>
-                                <input type="submit" value="Enviar">
+                                <input type="submit" value="Enviar" id="sendMessage">
                             </form>
                         </div>
                     </div>
+
+                    <div id="confirmacionEnvioModal" class="modal-envio" style="display: none;">
+                        <div class="contenido-modal-envio">
+                            <div class="icono-verificado">&#10004;</div>
+                            <p>Mensaje enviado con éxito.</p>
+                        </div>
+                    </div>
+
+                    <!-- Modal de Confirmación -->
+                    
 
                     <div id="userModal" class="modal">
                         <!-- Contenido del Modal -->
@@ -142,7 +150,7 @@
                             <div class="userInfo">
                                 <div class="user">
                                     <div class="profile-pic">
-                                        <img src="ruta/a/tu/imagen.jpg" alt="Foto de perfil">
+                                        <img src="./assets/img/feed/dogFeed.png" alt="Foto de perfil">
                                     </div>
                                 </div>
 
@@ -166,7 +174,7 @@
                         </div>
                     </div>
 
-                    
+
 
                     <div class="card">
                         <div class="card-head">
@@ -221,7 +229,6 @@
                             <thead>
                                 <tr>
                                     <th></span>NOMBRE</th>
-                                    <th></span>REGISTRO</th>
                                     <th></span>MASCOTAS</th>
                                     <th></span>ACCIONES</th>
                                 </tr>
@@ -230,7 +237,7 @@
                                 <tr>
                                     <td>
                                         <div class="client">
-                                            <div class="client-img bg-img" style="background-image: url(img/3.jpeg)">
+                                            <div class="client-img bg-img" style="background-image: url(./assets/img/adopt.png)">
                                             </div>
                                             <div class="client-info">
                                                 <h4>Santiago Escobar</h4>
@@ -239,21 +246,16 @@
                                         </div>
                                     </td>
                                     <td>
-                                        19 April, 2022
-                                    </td>
-                                    <td>
                                         1
                                     </td>
                                     <td>
                                         <div class="actions">
-                                            <span data-title="Enviar mensaje" class="lab la-telegram-plane" id="openMessageModal"></span>
+                                            <span data-title="Enviar mensaje" class="lab la-telegram-plane"
+                                                id="openMessageModal"></span>
                                             <span data-title="Ver" class="las la-eye" id="openUserModal"></span>
                                         </div>
                                     </td>
                                 </tr>
-                                
-
-
                             </tbody>
                         </table>
                     </div>
@@ -266,23 +268,23 @@
 
     </div>
     <script>
-        document.getElementById("iconTrigger").addEventListener("click", function() {
-        var overflowMenu = document.getElementById("overflowMenu");
-        overflowMenu.style.display = overflowMenu.style.display === "block" ? "none" : "block";
-    });
+        document.getElementById("iconTrigger").addEventListener("click", function () {
+            var overflowMenu = document.getElementById("overflowMenu");
+            overflowMenu.style.display = overflowMenu.style.display === "block" ? "none" : "block";
+        });
 
-    // Opcional: Cerrar el menú si se hace clic fuera de él
-    window.onclick = function(event) {
-        if (!event.target.matches('#iconTrigger')) {
-            var dropdowns = document.getElementsByClassName("overflow-menu");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.style.display === "block") {
-                    openDropdown.style.display = "none";
+        // Opcional: Cerrar el menú si se hace clic fuera de él
+        window.onclick = function (event) {
+            if (!event.target.matches('#iconTrigger')) {
+                var dropdowns = document.getElementsByClassName("overflow-menu");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "block") {
+                        openDropdown.style.display = "none";
+                    }
                 }
             }
         }
-    }
     </script>
 
     <script src="../adminModal.js"></script>

@@ -15,6 +15,8 @@
     font-family: 'Merriweather', sans-serif;
 }
 
+
+
 #menu-toggle {
     display: none;
 }
@@ -525,6 +527,7 @@ table tbody tr {
 }
 
 .modal {
+    
     display: none; /* Oculto por defecto */
     position: fixed; /* Fijo en su posición */
     z-index: 1; /* Situado sobre otros elementos */
@@ -540,7 +543,8 @@ table tbody tr {
 /* Estilo del contenido del Modal */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% desde la parte superior y centrado */
+    border-radius: 20px;
+    margin: 5% auto; /* 15% desde la parte superior y centrado */
     padding: 20px;
     border: 1px solid #888;
     width: 60%; /* Podría ser más o menos, dependiendo del diseño */
@@ -579,64 +583,115 @@ table tbody tr {
 }
 
 
-.userInfo{
-    width: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.userInfo {
+    background-color: #fff; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 400px; /* Ancho máximo */
+    margin: auto; /* Centrado */
+    text-align: center; /* Texto centrado */
+}
+
+.userInfo .user .profile-pic {
+    width: 100px; /* Tamaño de la imagen de perfil */
+    height: 100px; /* Tamaño de la imagen de perfil */
+    border-radius: 50%; /* Hace la imagen circular */
+    overflow: hidden; /* Asegura que la imagen no se desborde */
+    margin: 0 auto 20px; /* Centra la imagen y añade espacio debajo */
+}
+
+.userInfo .user .profile-pic img {
+    width: 100%;
+    height: auto;
+}
+
+.userInfo .name, .userInfo .email, .userInfo .phone, .userInfo .city {
+    margin-bottom: 10px; /* Espacio entre elementos */
+    font-size: 1.2em; /* Tamaño de fuente */
+    color: #333; /* Color del texto */
+}
+
+.userInfo .name {
+    font-weight: bold; /* Nombre en negrita */
+    font-size: 1.4em; /* Tamaño de fuente más grande para el nombre */
 }
 
 .petRequest {
-    border: 1px solid #cccccc;
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    background-color: #fff; /* Fondo blanco para la tarjeta */
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto 3D */
+    margin-bottom: 20px; /* Espacio entre tarjetas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para hover */
 }
 
-.petRequest .petPhoto {
-    width: 80px; /* Ajusta según sea necesario */
-    height: 80px; /* Ajusta para mantener la proporción */
-    border-radius: 50%; /* Hace la imagen circular */
-    margin-right: 10px;
+.petRequest:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
 }
 
-.petRequest .petName {
-    flex-grow: 1;
-    margin-right: 10px;
-}
-
-.petRequest .viewIcon {
-    cursor: pointer;
+.petPhoto {
+    width: 80px; /* Tamaño más grande para la foto */
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
     margin-right: 20px;
-    color: #000000;
 }
 
-.petRequest button {
-    border: none;
-    color: white;
-    padding: 5px 10px;
+.petName {
+    font-weight: bold;
+    font-size: 1.2em; /* Tamaño de fuente más grande para el nombre */
+    margin-right: auto;
+}
+
+.viewIcon, .acceptButton, .denyButton {
     cursor: pointer;
-    border-radius: 5px;
-    margin-right: 5px;
+    font-size: 1.5rem;
+    margin-left: 15px;
+    border: none;
+    background: none;
 }
 
-.petRequest .acceptButton {
-    background-color: rgb(78, 174, 49);
+.acceptButton {
+    color: green;
+    transition: transform 0.3s ease-in-out; /* Transición suave para la transformación */
+
 }
 
-.petRequest .denyButton {
-    background-color: red;
+.denyButton {
+    color: red;
+    transition: transform 0.3s ease-in-out; /* Transición suave para la transformación */
+
 }
 
-/* Estilos adicionales para los iconos si usas una librería como Font Awesome */
-.petRequest .acceptButton:before {
-    content: '\f00c'; /* Código Unicode para el icono de Font Awesome */
+.acceptButton:hover{
+    transform: scale(1.2);
+    
 }
 
-.petRequest .denyButton:before {
-    content: '\f00d'; /* Código Unicode para el icono de Font Awesome */
+.denyButton:hover{
+    transform: scale(1.2);
+    
+}
+
+.viewIcon {
+    color: #007bff; /* Color inicial del icono */
+    transition: transform 0.3s ease-in-out; /* Transición suave para la transformación */
+}
+
+.viewIcon:hover {
+    transform: scale(1.2); /* Aumenta el tamaño del icono */
+}
+
+/* Ajustes adicionales para los íconos de Line Awesome */
+.las {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .petInfo {
@@ -709,7 +764,7 @@ table tbody tr {
     top: 50%;
     transform: translateY(-50%);
     background-color: #fff; /* Fondo blanco */
-    border: 1px solid #ddd; /* Borde sutil */
+    border: 1px solid transparent; /* Borde sutil */
     border-radius: 50%; /* Botones redondos */
     font-size: 24px;
     cursor: pointer;
@@ -743,7 +798,228 @@ table tbody tr {
     color: #666; /* Color de texto más suave */
 }
 
+.pet-card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.pet-card:hover{
+    transform: scale(1.1);
+    
+}
+
+.pet-image {
+    width: 100%;
+    height: 200px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.pet-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.pet-name {
+    margin: 0;
+    color: #333;
+    font-size: 1.4em;
+}
+
+.pet-details {
+    margin: 5px 0;
+    color: #666;
+    font-size: 1em;
+}
+
+.messageForm {
+    background-color: #f7f7f7;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    margin: 40px auto;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.messageForm h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.messageForm label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+.messageForm textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    resize: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+    scroll-behavior: smooth;
+}
+
+.messageForm input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4a67d6;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.messageForm input[type="submit"]:hover {
+    background-color: #3b4db8;
+}
+
+.modal-envio {
+    border-radius: 30px;
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Si es necesario, agrega scroll */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo con opacidad */
+}
+
+.contenido-modal-envio {
+    border-radius: 20px;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% desde la parte superior y centrado horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del contenido */
+    max-width: 500px; /* Máximo ancho permitido */
+    text-align: center; /* Centra el texto */
+}
 
 
 
+/* Estilos adicionales para centrar y estilizar el texto y los elementos */
+p {
+    margin-top: 20px;
+    color: #333;
+    font-size: 18px;
+}
 
+.icono-verificado {
+    font-size: 50px; /* Tamaño del icono */
+    color: #4BB543; /* Color del icono */
+    display: inline-block;
+    border-radius: 50%; /* Hace el fondo circular */
+    border: 1px solid #4BB543;
+    width: 80px; /* Ancho del círculo */
+    height: 80px; /* Altura del círculo */
+    line-height: 80px; /* Centra el icono verticalmente */
+    text-align: center; /* Centra el icono horizontalmente */
+    background-color: white; /* Color de fondo */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    animation: scale 0.5s ease-in-out; /* Aplica la animación */
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(0); /* Comienza desde cero */
+    }
+    50% {
+        transform: scale(1.2); /* Escala un poco más grande */
+    }
+    100% {
+        transform: scale(1); /* Vuelve al tamaño normal */
+    }
+}
+
+.news-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.news-title {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.news-date {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.news-content {
+    color: #444;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.news-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-link:hover {
+    text-decoration: underline;
+}
+
+.user-name {
+    font-size: 1.2em;
+    margin-bottom: 10px; /* Espacio entre el nombre y la imagen */
+}
+
+.mascota-img {
+    width: 100%;
+    height: 300px; /* Ajusta según necesidad */
+    background-size: contain; /* Asegura que la imagen se ajuste completamente dentro del contenedor */
+    background-position: center;
+    background-repeat: no-repeat; /* Asegura que la imagen no se repita */
+    border-radius: 20px;
+    margin-bottom: 10px; /* Espacio entre la imagen y la acción */
+}
+
+.action {
+    font-size: 0.8em;
+    color: #666;
+}
+
+/* Estilo base para los iconos */
+.lab.la-telegram-plane, .las.la-eye {
+    transition: color 0.3s ease, transform 0.3s ease; /* Suaviza la transición de color y transformación */
+    color: #333; /* Color inicial del icono */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es interactivo */
+}
+
+/* Estilo para cuando el cursor pasa sobre el icono */
+.lab.la-telegram-plane:hover, .las.la-eye:hover {
+    color: #1a73e8; /* Cambia el color del icono */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del icono */
+}
