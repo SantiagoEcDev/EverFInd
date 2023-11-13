@@ -11,7 +11,7 @@ const userSchema = new Schema({
     description: String,
     city: String,
     friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    isAdmin: Boolean, // Nuevo campo para indicar si es administrador
+    isAdmin: { type: Boolean, default: false },
 
 });
 

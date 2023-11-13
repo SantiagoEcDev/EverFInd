@@ -140,7 +140,7 @@
                     </div>
 
                     <!-- Modal de Confirmación -->
-                    
+
 
                     <div id="userModal" class="modal">
                         <!-- Contenido del Modal -->
@@ -234,28 +234,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="client">
-                                            <div class="client-img bg-img" style="background-image: url(./assets/img/adopt.png)">
+                                <% users.forEach(user=> { %>
+                                    <tr>
+                                        <td>
+                                            <div class="client">
+                                                <div class="client-img bg-img"
+                                                    style="background-image: url('<%= user.profileImage %>')"></div>
+                                                <div class="client-info">
+                                                    <h4>
+                                                        <%= user.name %>
+                                                    </h4>
+                                                    <small>
+                                                        <%= user.email %>
+                                                    </small>
+                                                </div>
                                             </div>
-                                            <div class="client-info">
-                                                <h4>Santiago Escobar</h4>
-                                                <small>santiagoescobar@gmail.com</small>
+                                        </td>
+                                        <td>
+                                            1
+                                        </td>
+                                        <td>
+                                            <div class="actions">
+                                                <span data-title="Enviar mensaje" class="lab la-telegram-plane"
+                                                    id="openMessageModal"></span>
+                                                <span data-title="Ver" class="las la-eye" id="openUserModal"></span>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        1
-                                    </td>
-                                    <td>
-                                        <div class="actions">
-                                            <span data-title="Enviar mensaje" class="lab la-telegram-plane"
-                                                id="openMessageModal"></span>
-                                            <span data-title="Ver" class="las la-eye" id="openUserModal"></span>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+
                             </tbody>
                         </table>
                     </div>
@@ -287,7 +294,7 @@
         }
     </script>
 
-    <script src="../adminModal.js"></script>
+    <script src="./adminModal.js"></script>
 
 </body>
 

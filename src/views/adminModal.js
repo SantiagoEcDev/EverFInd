@@ -19,19 +19,19 @@ var sendMessage = document.getElementById("sendMessage")
 // Cuando el usuario hace clic en el botón, abre el modal 
 
 mail.addEventListener("click", function() {
-    window.location.href = "solicitudes.html"; 
+    window.location.href = "petitions"; 
 });
 
 mailCount.addEventListener("click", function() {
-    window.location.href = "solicitudes.html"; 
+    window.location.href = "petitions"; 
 });
 
 notificationIcon.addEventListener("click", function() {
-    window.location.href = "historial.html"; 
+    window.location.href = "history"; 
 });
 
 notificationCount.addEventListener("click", function() {
-    window.location.href = "historial.html"; 
+    window.location.href = "history"; 
 });
 
 btn.onclick = function () {

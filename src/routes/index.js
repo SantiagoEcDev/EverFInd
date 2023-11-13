@@ -80,7 +80,7 @@ router.get('/logout', (req, res) => {
             return next(err);
         }
         // Redirect or respond as needed after logging out
-        res.redirect('/'); // Example: Redirect to the home page
+        res.redirect('/signup'); // Example: Redirect to the home page
     });
 });
 
@@ -89,9 +89,17 @@ router.get('/logout', (req, res) => {
 //     next();
 //  });
 
-router.get('/admin', (req, res, next) => {
-  res.render('admin');
-  
+router.get('/admin', async (req, res) => {
+  try {
+      // Excluye al usuario administrador de la lista
+      const users = await User.find({ isAdmin: false });
+
+      // Renderiza la página de administrador con la lista de usuarios
+      res.render('admin', { users });
+  } catch (error) {
+      console.error('Error al obtener la lista de usuarios:', error);
+      res.redirect('/');
+  }
 });
 
 router.get('/history', (req, res, next) => {
