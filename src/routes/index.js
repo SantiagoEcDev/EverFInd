@@ -87,7 +87,25 @@ router.get('/logout', (req, res) => {
 //     next();
 //  });
 
+router.get('/admin', (req, res, next) => {
+  res.render('admin');
+  
+});
 
+router.get('/history', (req, res, next) => {
+  res.render('historial');
+  
+});
+
+router.get('/petitions', (req, res, next) => {
+  res.render('solicitudes');
+  
+});
+
+router.get('/pets', (req, res, next) => {
+  res.render('mascotas');
+  
+});
 //Cargar los datos de las mascotas
 router.get('/giveto', isAuthenticated,async (req, res, next) => {
     try {
