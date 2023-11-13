@@ -100,37 +100,19 @@
 
             <div class="page-content">
 
-
-
                 <div class="analytics">
 
-                    <div class="pet-card">
-                        <div class="pet-image" style="background-image: url('./assets/img/feed/dogFeed.png');"></div>
-                        <div class="pet-info">
-                            <h3 class="pet-name">Nombre de la Mascota</h3>
-                            <p class="pet-details">Edad: 2 años</p>
-                            <p class="pet-details">Raza: Labrador</p>
+                    <% pets.forEach((pet) => { %>
+                        <div class="pet-card">
+                          <div class="pet-image" style="background-image: url('<%= pet.imagePath %>');"></div>
+                          <div class="pet-info">
+                            <h3 class="pet-name"><%= pet.name %></h3>
+                            <p class="pet-details">Edad: <%= pet.age %> años</p>
+                            <p class="pet-details">Raza: <%= pet.breed %></p>
+                          </div>
                         </div>
-                    </div>
-
-                    <div class="pet-card">
-                        <div class="pet-image" style="background-image: url('ruta/a/imagen/mascota.jpg');"></div>
-                        <div class="pet-info">
-                            <h3 class="pet-name">Nombre de la Mascota</h3>
-                            <p class="pet-details">Edad: 2 años</p>
-                            <p class="pet-details">Raza: Labrador</p>
-                        </div>
-                    </div>
-
-                    <div class="pet-card">
-                        <div class="pet-image" style="background-image: url('ruta/a/imagen/mascota.jpg');"></div>
-                        <div class="pet-info">
-                            <h3 class="pet-name">Nombre de la Mascota</h3>
-                            <p class="pet-details">Edad: 2 años</p>
-                            <p class="pet-details">Raza: Labrador</p>
-                        </div>
-                    </div>
-
+                      <% }); %>
+                </div>
                     
 
             </div>

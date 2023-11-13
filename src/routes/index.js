@@ -91,14 +91,18 @@ router.get('/logout', (req, res) => {
 
 router.get('/admin', async (req, res) => {
   try {
-      // Excluye al usuario administrador de la lista
-      const users = await User.find({ isAdmin: false });
+    // Excluye al usuario administrador de la lista
+    const userCount = await User.countDocuments({ isAdmin: false });
+    const users = await User.find({ isAdmin: false });
 
-      // Renderiza la página de administrador con la lista de usuarios
-      res.render('admin', { users });
+    // Obtiene la cantidad de mascotas
+    const petCount = await Pet.countDocuments();
+
+    // Renderiza la página de administrador con la lista de usuarios y la cantidad de mascotas
+    res.render('admin', { users, userCount, petCount });
   } catch (error) {
-      console.error('Error al obtener la lista de usuarios:', error);
-      res.redirect('/');
+    console.error('Error al obtener la lista de usuarios y mascotas:', error);
+    res.redirect('/');
   }
 });
 
@@ -112,10 +116,19 @@ router.get('/petitions', (req, res, next) => {
   
 });
 
-router.get('/pets', (req, res, next) => {
-  res.render('mascotas');
-  
+router.get('/pets', async (req, res, next) => {
+  try {
+    // Obtener todas las mascotas
+    const pets = await Pet.find();
+
+    // Renderizar la vista "mascotas" y pasar las mascotas
+    res.render('mascotas', { pets });
+  } catch (error) {
+    console.error('Error al obtener las mascotas:', error);
+    next(error);
+  }
 });
+
 //Cargar los datos de las mascotas
 router.get('/giveto', isAuthenticated,async (req, res, next) => {
     try {
