@@ -10,7 +10,9 @@ const userSchema = new Schema({
     phone: String,
     description: String,
     city: String,
-    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    isAdmin: Boolean, // Nuevo campo para indicar si es administrador
+
 });
 
 userSchema.methods.encryptPassword = function(password) {

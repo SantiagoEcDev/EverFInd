@@ -60,17 +60,19 @@ router.post('/signup', passport.authenticate('local-signup', {
 }));
 
 
-router.get('/signin', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'signin.html'));
-    
-});
-
 router.post('/signin', passport.authenticate('local-signin', {
-    successRedirect: '/home',
+    passReqToCallback: true,
     failureRedirect: '/signup',
-    passReqToCallback: true
-}));
-
+}), (req, res) => {
+    // Verifica si el usuario es administrador
+    if (req.user && req.user.isAdmin) {
+        // Redirige a la página de administrador si es administrador
+        res.redirect('/admin');
+    } else {
+        // Redirige a la página de inicio normal si no es administrador
+        res.redirect('/home');
+    }
+});
 router.get('/logout', (req, res) => {
     req.logout((err) => {
         if (err) {
