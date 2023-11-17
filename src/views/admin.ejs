@@ -140,38 +140,55 @@
                     <!-- Modal de Confirmación -->
 
 
-                    <div id="userModal" class="modal">
-                        <!-- Contenido del Modal -->
-                        <div class="modal-content">
-                            <span class="close" id="closeUserModal">&times;</span>
-
-                            <div class="userInfo">
-                                <div class="user">
-                                    <div class="profile-pic">
-                                        <img src="./assets/img/feed/dogFeed.png" alt="Foto de perfil">
+                    <% users.forEach(function(user, index) { %>
+                        <div id="userModal<%= user.id %>" class="modal">
+                            <!-- Contenido del Modal -->
+                            <div class="modal-content">
+                                <span class="close" id="closeUserModal<%= user.id %>" data-modal-id="userModal<%= user.id %>">&times;</span>
+                                <div class="userInfo">
+                                    <!-- Contenido de la información del usuario -->
+                                    <div class="user">
+                                        <div class="profile-pic">
+                                            <img src="<%= user.profileImage %>" alt="Foto de perfil">
+                                        </div>
+                                    </div>
+                                    <div class="name">
+                                        <%= user.name %>
+                                    </div>
+                                    <div class="email">
+                                        <p><%= user.email %></p>
+                                    </div>
+                                    <div class="phone">
+                                        <p><%= user.phone %></p>
+                                    </div>
+                                    <div class="city">
+                                        <p><%= user.city %></p>
                                     </div>
                                 </div>
-
-                                <div class="name">
-                                    Santiago Escobar
-                                </div>
-
-                                <div class="email">
-                                    <p>santiagoescobar@gmail.com</p>
-                                </div>
-
-                                <div class="phone">
-                                    <p>3115477456</p>
-                                </div>
-
-                                <div class="city">
-                                    <p>Bogotá</p>
-                                </div>
                             </div>
-
                         </div>
-                    </div>
-
+                    <% }); %>
+                    
+                    <script>
+                        // Obtén los elementos <span> que cierran los modales
+                        var closeUserModalButtons = document.querySelectorAll("[id^='closeUserModal']");
+                    
+                        // Función para cerrar cualquier modal por ID
+                        function closeModal(modalId) {
+                            var modal = document.getElementById(modalId);
+                            if (modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    
+                        // Asigna manejadores de eventos a los elementos que cierran los modales
+                        closeUserModalButtons.forEach(function (button) {
+                            button.addEventListener("click", function () {
+                                var modalId = button.getAttribute("data-modal-id");
+                                closeModal(modalId);
+                            });
+                        });
+                    </script>
 
 
                     <div class="card">
@@ -199,39 +216,32 @@
                             <thead>
                                 <tr>
                                     <th></span>NOMBRE</th>
-                                    <th></span>MASCOTAS</th>
-                                    <th></span>ACCIONES</th>
+                                    <th></span>VER</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% users.forEach(user=> { %>
+                                <% users.forEach((user, index) => { %>
                                     <tr>
-                                        <td>
-                                            <div class="client">
-                                                <div class="client-img bg-img"
-                                                    style="background-image: url('<%= user.profileImage %>')"></div>
-                                                <div class="client-info">
-                                                    <h4>
-                                                        <%= user.name %>
-                                                    </h4>
-                                                    <small>
-                                                        <%= user.email %>
-                                                    </small>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            <div class="actions">
-                                                <span data-title="Enviar mensaje" class="lab la-telegram-plane"
-                                                    id="openMessageModal"></span>
-                                                <span data-title="Ver" class="las la-eye" id="openUserModal"></span>
-                                            </div>
-                                        </td>
+                                      <td>
+                                        <div class="client">
+                                          <div class="client-img bg-img" style="background-image: url('<%= user.profileImage %>')"></div>
+                                          <div class="client-info">
+                                            <h4>
+                                              <%= user.name %>
+                                            </h4>
+                                            <small>
+                                              <%= user.email %>
+                                            </small>
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div class="actions">
+                                            <span data-title="Ver" class="las la-eye" id="openUserModal<%= user.id %>" data-modal-id="userModal<%= user.id %>"></span>
+                                        </div>
+                                      </td>
                                     </tr>
-                                    <% }); %>
+                                  <% }); %>
 
                             </tbody>
                         </table>
