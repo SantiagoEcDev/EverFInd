@@ -111,15 +111,54 @@ router.get('/history', (req, res, next) => {
   
 });
 
-router.get('/petitions', (req, res, next) => {
-  res.render('solicitudes');
-  
+router.get('/petitions', async (req, res, next) => {
+  try {
+    // Aquí debes recuperar las solicitudes de mascotas de tu base de datos
+    const petRequests = await Pet.find({});
+
+    res.render('solicitudes', { petRequests });
+  } catch (error) {
+    console.error('Error al recuperar las solicitudes de mascotas:', error);
+    res.status(500).send('Error interno del servidor');
+  }
+});
+
+// Ruta para aceptar una mascota
+router.post('/accept', async (req, res) => {
+  const { petName } = req.body;
+
+  try {
+      // Encuentra la mascota por nombre y actualiza el estado aprobado
+      const updatedPet = await Pet.findOneAndUpdate({ name: petName }, { approved: true });
+
+      console.log('Mascota aprobada:', updatedPet);
+      res.redirect('/admin');
+  } catch (error) {
+      console.error('Error al aceptar la mascota:', error);
+      res.redirect('/admin');
+  }
+});
+
+// Ruta para denegar una mascota
+router.post('/deny', async (req, res) => {
+  const { petName } = req.body;
+
+  try {
+      // Elimina la mascota o actualiza el estado aprobado a false, según tus necesidades
+      await Pet.findOneAndRemove({ name: petName });
+
+      res.redirect('/admin');
+  } catch (error) {
+      console.error('Error al denegar la mascota:', error);
+      res.redirect('/admin');
+  }
 });
 
 router.get('/pets', async (req, res, next) => {
   try {
     // Obtener todas las mascotas
     const pets = await Pet.find();
+    
 
     // Renderizar la vista "mascotas" y pasar las mascotas
     res.render('mascotas', { pets });
@@ -280,7 +319,8 @@ router.post('/profile', async (req, res, next) => {
             description,
             createdAt,
             owner: req.user.name,
-            imagePath
+            imagePath,
+            approved: false,
         });
 
         await newPet.save();
@@ -293,12 +333,12 @@ router.post('/profile', async (req, res, next) => {
 
 router.get('/home', isAuthenticated, async (req, res, next) => {
   try {
-      // Obtén la lista de mascotas desde la base de datos o de donde sea necesario
-      const pets = await Pet.find();
+      // Obtén la lista de mascotas aprobadas desde la base de datos
+      const approvedPets = await Pet.find({ approved: true });
 
-      // Obtén el conteo de perros y gatos
-      const dogCount = await Pet.countDocuments({ type: "Perro" });
-      const catCount = await Pet.countDocuments({ type: "Gato" });
+      // Obtén el conteo de perros y gatos aprobados
+      const dogCount = await Pet.countDocuments({ type: "Perro", approved: true });
+      const catCount = await Pet.countDocuments({ type: "Gato", approved: true });
 
       // Obtén el ID del usuario autenticado
       const currentUserId = req.user._id;
@@ -307,10 +347,10 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
       const user = await User.findById(currentUserId).populate('friends');
 
       // Renderiza la vista 'home' y pasa todo el contexto
-      res.render('home', { pets, dogCount, catCount, currentUserId, friends: user.friends });
+      res.render('home', { pets: approvedPets, dogCount, catCount, currentUserId, friends: user.friends });
 
   } catch (error) {
-      console.error('Error al obtener la lista de mascotas:', error);
+      console.error('Error al obtener la lista de mascotas aprobadas:', error);
       res.redirect('/'); // Maneja el error de acuerdo a tus necesidades
   }
 });

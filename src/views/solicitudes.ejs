@@ -126,13 +126,23 @@
             <div class="page-content">
 
                 <div class="records table-responsive">
-                    <div class="petRequest">
-                        <img src="./assets/img/feed/dogFeed.png" alt="Foto de Mascota" class="petPhoto">
-                        <span class="petName">Hannah</span>
-                        <span class="las la-eye viewIcon" id="openModal"></span>
-                        <button class="las la-check acceptButton"></button>
-                        <button class="las la-times denyButton"></button>
-                    </div>
+                    <% petRequests.forEach(pet => { %>
+                        <% if (!pet.approved) { %>
+                            <div class="petRequest">
+                                <img src="<%= pet.imagePath %>" alt="Foto de Mascota" class="petPhoto">
+                                <span class="petName"><%= pet.name %></span>
+                                <span class="las la-eye viewIcon" id="openModal"></span>
+                                <form action="/accept" method="post">
+                                    <input type="hidden" name="petName" value="<%= pet.name %>">
+                                    <button type="submit" class="las la-check acceptButton"></button>
+                                </form>
+                                <form action="/deny" method="post">
+                                    <input type="hidden" name="petName" value="<%= pet.name %>">
+                                    <button type="submit" class="las la-times denyButton"></button>
+                                </form>
+                            </div>
+                        <% } %>
+                    <% }) %>
                 </div>
 
             </div>

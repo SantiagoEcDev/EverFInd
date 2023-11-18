@@ -142,32 +142,32 @@
 
                     <div class="pets-available">
                         <% pets.forEach(function(pet, index) { %>
-                          <div class="pet-container">
-                            <article class="pet-view">
-                              <div class="pet-background">
-                                <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
-                              </div>
-                              <div class="pet-info">
-                                <div class="pet-info-column">
-                                  <div class="name-gender">
-                                    <div class="name">
-                                      <h2 style="color: black;"><%= pet.name %></h2>
+                            <div class="pet-container">
+                                <article class="pet-view">
+                                    <div class="pet-background">
+                                        <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
                                     </div>
-                                  </div>
-                                  <div class="age">
-                                    <p>Edad: <%= pet.age %> años</p>
-                                  </div>
-                                  <div class="age">
-                                    <p><%= pet.breed %></p>
-                                  </div>
-                                  <div class="more">
-                                    <!-- Botón para abrir el modal -->
-                                    <button class="open-modal-btn btn-more" data-index="<%= index %>">Información</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </article>
-                          </div>
+                                    <div class="pet-info">
+                                        <div class="pet-info-column">
+                                            <div class="name-gender">
+                                                <div class="name">
+                                                    <h2 style="color: black;"><%= pet.name %></h2>
+                                                </div>
+                                            </div>
+                                            <div class="age">
+                                                <p>Edad: <%= pet.age %> años</p>
+                                            </div>
+                                            <div class="age">
+                                                <p><%= pet.breed %></p>
+                                            </div>
+                                            <div class="more">
+                                                <!-- Botón para abrir el modal -->
+                                                <button class="open-modal-btn btn-more" data-index="<%= index %>">Información</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
                         <% }); %>
                       </div>
                       

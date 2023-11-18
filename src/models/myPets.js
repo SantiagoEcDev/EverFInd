@@ -7,6 +7,7 @@ const petSchema = new mongoose.Schema({
   breed: String,
   status: String,
   description: String,
+  approved: { type: Boolean, default: false },
   owner: {
     type: mongoose.Schema.Types.String,
     ref: 'User'
