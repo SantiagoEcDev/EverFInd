@@ -154,7 +154,7 @@ router.post('/deny', async (req, res) => {
   }
 });
 
-router.get('/pets', sAuthenticated, async (req, res, next) => {
+router.get('/pets', isAuthenticated, async (req, res, next) => {
   try {
     // Obtener todas las mascotas
     const pets = await Pet.find();
