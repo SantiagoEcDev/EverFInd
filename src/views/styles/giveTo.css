@@ -35,3 +35,46 @@
 .pets-form button:hover {
   background: #333;
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 128, 0, 0.8); /* Fondo verde */
+  transition: opacity 0.5s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos del contenido del modal */
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Estilos para la animación de rotación */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilos para el cierre del modal */
+.close {
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}

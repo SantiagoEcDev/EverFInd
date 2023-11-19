@@ -199,7 +199,9 @@
                                     <form action="/addFriend" method="post">
                                         <input type="hidden" name="userId" value="<%= currentUserId %>">
                                         <input type="hidden" name="friendId" value="<%= pet.owner %>">
-                                        <button type="submit" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
+                                        <% if (pet.owner && pet.owner !== User._id) { %>
+                                            <button type="submit" class="green-button">Solicitar <i class="fa-solid fa-plus"></i></button>
+                                        <% } %>
                                     </form>
                                 </div>
                             </div>

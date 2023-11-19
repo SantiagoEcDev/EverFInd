@@ -34,12 +34,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="history">
-                            <span class="las la-history"></span>
-                            <small>Historial</small>
-                        </a>
-                    </li>
-                    <li>
                         <a href="petitions" class="active">
                             <span class="las la-envelope"></span>
                             <small>Solicitudes</small>
@@ -75,17 +69,15 @@
                 <div class="header-menu">
 
                     <div class="notify-icon">
-                        <span class="las la-envelope" id="mailIcon"></span>
-                        <span class="notify" id="mailCount">4</span>
+                        
                     </div>
 
                     <div class="notify-icon">
-                        <span class="las la-bell" id="notificationIcon"></span>
-                        <span class="notify" id="notificationCount">3</span>
+                        
                     </div>
 
                     <div class="user">
-                        <div class="bg-img" style="background-image: url(./assets/img/feed/dogFeed.png)"></div>
+                        <div class="bg-img" style="background-image: url()"></div>
 
                         
                     </div>
@@ -101,26 +93,26 @@
                 <small>Inicio / Panel</small>
             </div>
 
+            <% petRequests.forEach(pet => { %>
+                <% if (!pet.approved) { %>
             <div id="petInfoModal" class="modal">
                 <!-- Contenido del Modal -->
                 <div class="petModal">
                     <span class="close" id="closePetModal">&times;</span>
                     <div class="carousel">
                         <div class="carousel-images">
-                            <img src="./assets/img/feed/dogFeed.png" alt="Imagen 1">
-                            <img src="./assets/img/carnet.jpg" alt="Imagen 2" style="display: none;">
+                            <img src="<%= pet.imagePath %>" alt="Imagen 1">
                         </div>
-                        <button class="carousel-button prev" onclick="changeImage(-1)">&#10094;</button>
-                        <button class="carousel-button next" onclick="changeImage(1)">&#10095;</button>
+                        
                     </div>
                     
                     <div class="petName">Hannah</div>
                     <div class="petAge">Edad: 5 años</div>
                     <div class="petBreed">Raza: Golden</div>
-                    
-
                 </div>
             </div>
+            <% } %>
+            <% }); %>
 
 
             <div class="page-content">

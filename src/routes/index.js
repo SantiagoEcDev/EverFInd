@@ -89,7 +89,7 @@ router.get('/logout', (req, res) => {
 //     next();
 //  });
 
-router.get('/admin', async (req, res) => {
+router.get('/admin', isAuthenticated, async (req, res) => {
   try {
     // Excluye al usuario administrador de la lista
     const userCount = await User.countDocuments({ isAdmin: false });
@@ -111,7 +111,7 @@ router.get('/history', (req, res, next) => {
   
 });
 
-router.get('/petitions', async (req, res, next) => {
+router.get('/petitions', isAuthenticated, async (req, res, next) => {
   try {
     // Aquí debes recuperar las solicitudes de mascotas de tu base de datos
     const petRequests = await Pet.find({});
@@ -135,7 +135,7 @@ router.post('/accept', async (req, res) => {
       res.redirect('/admin');
   } catch (error) {
       console.error('Error al aceptar la mascota:', error);
-      res.redirect('/admin');
+      res.redirect('/petitions');
   }
 });
 
@@ -150,7 +150,7 @@ router.post('/deny', async (req, res) => {
       res.redirect('/admin');
   } catch (error) {
       console.error('Error al denegar la mascota:', error);
-      res.redirect('/admin');
+      res.redirect('/petitions');
   }
 });
 
@@ -347,7 +347,7 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
       const user = await User.findById(currentUserId).populate('friends');
 
       // Renderiza la vista 'home' y pasa todo el contexto
-      res.render('home', { pets: approvedPets, dogCount, catCount, currentUserId, friends: user.friends });
+      res.render('home', { pets: approvedPets, dogCount, catCount, currentUserId, friends: user.friends, User: User });
 
   } catch (error) {
       console.error('Error al obtener la lista de mascotas aprobadas:', error);
