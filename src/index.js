@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
-const MongoStore = require('connect-mongo')(session);
 
 //Initializations
 const app = express();
@@ -28,8 +27,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(session({
     secret: 'mysecretsession',
     resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    saveUninitialized: false
 }));
 app.use(flash());
 app.use(passport.initialize());
