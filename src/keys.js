@@ -1,5 +1,5 @@
 module.exports = {
     mongodb: {
-        URI: 'mongodb://localhost:27017/everfind'
+        URI: 'mongodb+srv://everfind:everfind123@cluster0.stdjwva.mongodb.net/?retryWrites=true&w=majority'
     }
 }
