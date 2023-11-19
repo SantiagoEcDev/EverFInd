@@ -28,7 +28,7 @@ async function createAdmin() {
     }
 }
 
-mongoose.connect(config.mongodb.URI,{
+mongoose.connect('mongodb+srv://everfind:everfind123@cluster0.stdjwva.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
