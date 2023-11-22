@@ -84,6 +84,21 @@ function onConnected(socket) {
           console.error('Error saving message:', error.message);
         }
       });
+
+      socket.on('save-message', (data) => {
+        // Guardar el mensaje en la base de datos
+        const message = new Message({
+          name: data.name,
+          message: data.message,
+          dateTime: data.dateTime,
+        });
+      
+        message.save((err) => {
+          if (err) {
+            console.error('Error saving message:', err.message);
+          }
+        });
+      });
       
     socket.on('feedback', (data) => {
         socket.broadcast.emit('feedback', data)

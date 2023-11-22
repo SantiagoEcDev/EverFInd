@@ -30,6 +30,7 @@ function sendMessage() {
   };
 
   socket.emit('message', data);
+  socket.emit('save-message', data);
   addMessageToUI(true, data);
   messageInput.value = '';
 }
