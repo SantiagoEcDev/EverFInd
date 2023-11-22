@@ -53,55 +53,29 @@ const io = require('socket.io')(server)
 
 let socketsConected = new Set()
 
-io.on('connection', onConnected)
-
-function onConnected(socket) {
-    console.log('A usuario has connected')
-    socketsConected.add(socket.id)
-    
-    io.emit('clients-total',socketsConected.size)
-
-    socket.on('disconnect', () =>{
-        console.log('Socket disconnected', socket.id)
-        socketsConected.delete(socket.id)
-        io.emit('clients-total', socketsConected.size)
-    })
-
-
-    socket.on('message', async (data) => {
-        try {
-          const newMessage = new Message({
-            sender: data.name,
-            content: data.content, // <-- Add the 'content' property
-          });
-      
-          // Guardar el mensaje en la base de datos
-          await newMessage.save();
-      
-          // Enviar el mensaje a todos los clientes, incluido el remitente
-          io.emit('chat-message', data);
-        } catch (error) {
-          console.error('Error saving message:', error.message);
+iio.on('connection', (socket) => {
+    console.log('User connected:', socket.id);
+  
+    // Listen for incoming chat messages
+    socket.on('chat message', (data) => {
+      console.log('Received message:', data);
+  
+      // Save the message to MongoDB
+      const message = new Message({ user: data.user, text: data.message });
+      message.save((err) => {
+        if (err) {
+          console.error('Error saving message to database:', err);
+        } else {
+          console.log('Message saved to the database');
         }
       });
-
-      socket.on('save-message', (data) => {
-        // Guardar el mensaje en la base de datos
-        const message = new Message({
-          name: data.name,
-          message: data.message,
-          dateTime: data.dateTime,
-        });
-      
-        message.save((err) => {
-          if (err) {
-            console.error('Error saving message:', err.message);
-          }
-        });
-      });
-      
-    socket.on('feedback', (data) => {
-        socket.broadcast.emit('feedback', data)
-      })
-    }
-
+  
+      // Broadcast the message to all connected clients
+      io.emit('chat message', data);
+    });
+  
+    // Listen for user disconnection
+    socket.on('disconnect', () => {
+      console.log('User disconnected:', socket.id);
+    });
+  });
