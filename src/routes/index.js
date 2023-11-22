@@ -54,7 +54,7 @@ router.get('/signup', (req, res, next) => {
 
 
 router.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/home',
+    successRedirect: '/home?welcome=true',
     failureRedirect: '/signup',
     passReqToCallback: true
 }));
@@ -339,6 +339,7 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
       // Obtén el conteo de perros y gatos aprobados
       const dogCount = await Pet.countDocuments({ type: "Perro", approved: true });
       const catCount = await Pet.countDocuments({ type: "Gato", approved: true });
+      const showWelcomeMessage = req.query.welcome === 'true';
 
       // Obtén el ID del usuario autenticado
       const currentUserId = req.user._id;
@@ -347,7 +348,7 @@ router.get('/home', isAuthenticated, async (req, res, next) => {
       const user = await User.findById(currentUserId).populate('friends');
 
       // Renderiza la vista 'home' y pasa todo el contexto
-      res.render('home', { pets: approvedPets, dogCount, catCount, currentUserId, friends: user.friends, User: User });
+      res.render('home', { pets: approvedPets, dogCount, catCount, currentUserId, friends: user.friends, User: User, showWelcomeMessage  });
 
   } catch (error) {
       console.error('Error al obtener la lista de mascotas aprobadas:', error);

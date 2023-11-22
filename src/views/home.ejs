@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/home.css">
     <link rel="icon" href="./assets/img/index/logo-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-Op1e/ZLL9Y6zYk5t/63yLWuFwY5lP63Tb1XHN9R0A3tuuU5Joc3ePS5gNH8rjzfuSoOPSnimmd27eyjj8cx4LbA==" crossorigin="anonymous" />
 
     <title>Inicio</title>
 </head>
@@ -83,6 +84,25 @@
         <!-- End of Navbar -->
 
         <main>
+            <% if (showWelcomeMessage) { %>
+                <div class="welcome-message">
+                    <h2>Bienvenido/a a la comunidad de EverFind</h2>
+                    <p>Estamos emocionados de tenerte con nosotros. Explora y comparte tu amor por los animales.</p>
+                    <img src="./Brazuca - Sitting.png" alt="Gato y perro amigos">
+                    <a href="#" class="scroll-down-arrow" onclick="scrollToContent()">
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                </div>
+            <% } %>
+
+            <script>
+                function scrollToContent() {
+    const contentElement = document.getElementById('petsAvailable'); // Reemplaza 'id-de-tu-contenido' con el ID de tu contenido
+    if (contentElement) {
+        contentElement.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave hacia el contenido
+    }
+}
+            </script>
             <div class="header">
                 <div class="left">
                     <h1>Inicio</h1>
@@ -97,8 +117,11 @@
             </div>
 
             <!-- Insights -->
+            
             <ul class="insights">
+                
                 <li>
+                    
                     <i class='bx bxs-dog'></i>
                     <span class="info">
                         <h3>
@@ -140,35 +163,45 @@
                         <h3>Mascotas disponibles</h3>
                     </div>
 
-                    <div class="pets-available">
-                        <% pets.forEach(function(pet, index) { %>
-                            <div class="pet-container">
-                                <article class="pet-view">
-                                    <div class="pet-background">
-                                        <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
-                                    </div>
-                                    <div class="pet-info">
-                                        <div class="pet-info-column">
-                                            <div class="name-gender">
-                                                <div class="name">
-                                                    <h2 style="color: black;"><%= pet.name %></h2>
+                    
+
+                    <div class="pets-available" id="petsAvailable">
+                        <% if (pets.length > 0) { %>
+                            <% pets.forEach(function(pet, index) { %>
+                                <div class="pet-container">
+                                    <article class="pet-view">
+                                        <div class="pet-background">
+                                            <img src="<%= pet.imagePath %>" alt="Foto de la Mascota <%= index %>">
+                                        </div>
+                                        <div class="pet-info">
+                                            <div class="pet-info-column">
+                                                <div class="name-gender">
+                                                    <div class="name">
+                                                        <h2 style="color: black;"><%= pet.name %></h2>
+                                                    </div>
+                                                </div>
+                                                <div class="age">
+                                                    <p>Edad: <%= pet.age %> años</p>
+                                                </div>
+                                                <div class="age">
+                                                    <p><%= pet.breed %></p>
+                                                </div>
+                                                <div class="more">
+                                                    <button class="open-modal-btn btn-more" data-index="<%= index %>">Información</button>
                                                 </div>
                                             </div>
-                                            <div class="age">
-                                                <p>Edad: <%= pet.age %> años</p>
-                                            </div>
-                                            <div class="age">
-                                                <p><%= pet.breed %></p>
-                                            </div>
-                                            <div class="more">
-                                                <!-- Botón para abrir el modal -->
-                                                <button class="open-modal-btn btn-more" data-index="<%= index %>">Información</button>
-                                            </div>
                                         </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
+                            <% }); %>
+                        <% } else { %>
+                            <div class="no-pets-container">
+                                <img src="./Tutto Ricco - Walking In the Park.png" alt="Imagen referente">
+                                <!-- o puedes usar un SVG en lugar de una imagen -->
+                                <!-- <svg> ... </svg> -->
+                                <p>No hay mascotas disponibles en este momento.</p>
                             </div>
-                        <% }); %>
+                        <% } %>
                       </div>
                       
                       <!-- Modales para todas las mascotas -->
