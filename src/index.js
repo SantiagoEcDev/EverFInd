@@ -51,9 +51,7 @@ const server = app.listen(app.get('port'), () => {
 
 const io = require('socket.io')(server)
 
-let socketsConected = new Set()
-
-iio.on('connection', (socket) => {
+io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
   
     // Listen for incoming chat messages
