@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/fd378db718.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/settings.css">
     <link rel="stylesheet" href="./styles/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <link rel="icon" href="./assets/img/index/logo-removebg-preview.png" type="image/png">
 
@@ -89,10 +90,9 @@
             <div class="bottom-data">
                 <div class="orders">
                     <div class="header">
-                        <i class='bx bx-calendar-check'></i>
+                        
                         <h3>Tus mascotas</h3>
-                        <i class='bx bx-filter'></i>
-                        <i class='bx bx-search'></i>
+                        
                     </div>
                     <table>
                         <thead>
@@ -134,9 +134,8 @@
                 <!-- Reminders -->
                 <div class="reminders">
                     <div class="header">
-                        <i class='bx bx-plus'></i>
+                       
                         <h3>Postular mascota</h3>
-                        <i class='bx bx-filter'></i>
                     </div>
                     <form action="/addPet" method="post" enctype="multipart/form-data">
                         <div class="addPet">
@@ -183,8 +182,19 @@
                       
                         <!-- Agrega otros campos si es necesario -->
                       
-                        <button type="submit" onclick="openModal()">Subir Mascota <i class="fa-solid fa-plus"></i></button>
+                        <button type="submit" onclick="showAlert()">Subir Mascota <i class="fa-solid fa-plus"></i></button>
                     </form>
+
+                    <script>
+                        function showAlert() {
+                            Swal.fire({
+                                title: '¡Mascota en cola!',
+                                text: 'El administrador la postulará pronto.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar'
+                            });
+                        }
+                    </script>
 
                     <div id="confirmacionEnvioModal" class="modal-envio" style="display: none;">
                         <div class="contenido-modal-envio">
