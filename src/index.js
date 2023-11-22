@@ -49,37 +49,45 @@ const server = app.listen(app.get('port'), () => {
     console.log('Server on Port', app.get('port'));
 }) ;
 
-const io = require('socket.io')(server)
+const io = require('socket.io')(server);
 
-let socketsConected = new Set()
+let socketsConnected = new Set();
 
-io.on('connection', onConnected)
+io.on('connection', onConnected);
 
 function onConnected(socket) {
-    console.log('A usuario has connected')
-    socketsConected.add(socket.id)
-    
-    io.emit('clients-total',socketsConected.size)
+  console.log('A usuario has connected');
+  socketsConnected.add(socket.id);
 
-    socket.on('disconnect', () =>{
-        console.log('Socket disconnected', socket.id)
-        socketsConected.delete(socket.id)
-        io.emit('clients-total', socketsConected.size)
-    })
+  io.emit('clients-total', socketsConnected.size);
 
-    socket.on('solicitudMascota', (data) => {
-        // envia la notificación al propietario de la mascota
-        io.to(data.ownerId).emit('nuevaSolicitud', {
-            message: '¡Tienes una nueva solicitud de adopción para ' + data.petName + '!'
-        });
-    });
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected', socket.id);
+    socketsConnected.delete(socket.id);
+    io.emit('clients-total', socketsConnected.size);
+  });
 
-    socket.on('message', (data) => {
-        console.log(data)
-        socket.broadcast.emit('chat-message', data)
-    })
-    socket.on('feedback', (data) => {
-        socket.broadcast.emit('feedback', data)
-      })
+  socket.on('message', async (data) => {
+    console.log(data);
+
+    try {
+      // Crear un nuevo mensaje utilizando el modelo
+      const newMessage = new Message({
+        sender: data.sender,
+        content: data.content,
+      });
+
+      // Guardar el mensaje en la base de datos
+      await newMessage.save();
+
+      // Enviar el mensaje a todos los clientes, incluido el remitente
+      io.emit('chat-message', data);
+    } catch (error) {
+      console.error('Error saving message:', error.message);
     }
+  });
 
+  socket.on('feedback', (data) => {
+    socket.broadcast.emit('feedback', data);
+  });
+}

@@ -380,21 +380,9 @@ router.post('/addFriend', isAuthenticated, async (req, res) => {
   }
 });
 
-router.get('/requests', isAuthenticated, async (req, res, next) => {
-  try {
-      // Suponiendo que req.user._id te da el ID del usuario actualmente autenticado
-      const user = await User.findById(req.user._id).populate('friends');
-      
-      if (!user) {
-          throw new Error('Usuario no encontrado.');
-      }
+router.get('/requests', (req, res, next) => {
+      res.render('requests');
 
-      res.render('requests', { friends: user.friends });
-
-  } catch (error) {
-      console.error('Error al obtener la lista de amigos:', error);
-      res.redirect('/');  // O maneja el error como prefieras, por ejemplo redirigiendo a la página principal.
-  }
 });
 
 
