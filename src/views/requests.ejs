@@ -23,7 +23,7 @@
         <ul class="side-menu">
             <li><a href="home"><i class='bx bx-heart'></i>Adoptar</a></li>
             <li><a href="giveto"><i class='bx bx-send'></i>Dar en adopción</a></li>
-            <li class="active"><a href="requests"><i class='bx bx-file'></i>Solicitudes</a></li>
+            <li class="active"><a href="requests"><i class='bx bx-file'></i>Comunidad</a></li>
             <li><a href="profile"><i class='bx bx-user'></i>Perfil</a></li>
         </ul>
         <ul class="side-menu">
@@ -70,38 +70,20 @@
         <!-- End of Navbar -->
 
         <main>
-            <div class="header">
-                <div class="left">
-                    <h1>Solicitudes</h1>
-                    <ul class="breadcrumb">
-                        <li><a href="#">
-                                Postulantes
-                            </a></li>
-                        /
-                        <li><a href="#" class="active">Solicitudes</a></li>
-                    </ul>
-                </div>
-            </div>
+            
 
             <div class="bottom-data">
                 <div class="orders">
                     <div class="main-chat">
                         <div class="name">
-                                <% if (user && user.profileImage) { %>
-                                    <img class="user-image" src="<%= user.profileImage %>" alt="Imagen de perfil"
-                                        class="d-block ui-w-80">
-                                    <% } else { %>
-                                        <img class="user-image"  src="./assets/img/defaultProfilePic.png"
-                                            alt="Imagen predeterminada" class="d-block ui-w-80">
-                                        <% } %>
-                            
                             
                           <input
                             type="text"
                             id="name-input"
+                            value="Comunidad"
                             class="name-input"
-                            value="Santiago"
                             maxlength="20"
+                            autocomplete="off"
                           />
                         </div>
                   
@@ -133,6 +115,8 @@
                             id="message-input"
                             placeholder="Escribe un mensaje"
                             class="message-input"
+                            autocomplete="off"
+                            autocapitalize="on"
                           />
                           <div class="v-divider"></div>
                           <button type="submit"  class="send-button" > <span><i class="fas fa-paper-plane"></i></span>
@@ -142,21 +126,7 @@
                 </div>
 
                 <!-- Direct messages -->
-                <div class="reminders">
-                    <div class="header">
-                        <i class='bx bx-chat'></i>
-                        <h3>Mensajes directos</h3>
-                    </div>
-                    <ul class="user-list">
-                        <% friends.forEach(friend => { %>
-                            <li class="user-item">
-                                <img class="user-image" src="<%= friend.profileImage %>" alt="<%= friend.name %>">
-                                <div class="user-name"><%= friend.name %></div>
-                                <div class="notification-count">0</div> <!-- Aquí puedes agregar lógica para las notificaciones si lo deseas -->
-                            </li>
-                        <% }); %>
-                    </ul>
-                </div>
+                
 
                 <!-- End of Reminders-->
 
