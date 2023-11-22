@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
+const Message = require('./models/messageSchema')
 
 //Initializations
 const app = express();
@@ -55,25 +56,24 @@ io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
   
     // Listen for incoming chat messages
-    socket.on('chat message', (data) => {
-      console.log('Received message:', data);
-  
-      // Save the message to MongoDB
-      const message = new Message({ user: data.user, text: data.message });
-      message.save((err) => {
-        if (err) {
-          console.error('Error saving message to database:', err);
-        } else {
+    socket.on('chat message', async (data) => {
+        console.log('Received message:', data);
+    
+        try {
+          // Save the message to MongoDB
+          const message = new Message({ user: data.user, text: data.message });
+          await message.save();
           console.log('Message saved to the database');
+    
+          // Broadcast the message to all connected clients
+          io.emit('chat message', data);
+        } catch (error) {
+          console.error('Error saving message to database:', error.message);
         }
       });
-  
-      // Broadcast the message to all connected clients
-      io.emit('chat message', data);
+    
+      // Listen for user disconnection
+      socket.on('disconnect', () => {
+        console.log('User disconnected:', socket.id);
+      });
     });
-  
-    // Listen for user disconnection
-    socket.on('disconnect', () => {
-      console.log('User disconnected:', socket.id);
-    });
-  });
