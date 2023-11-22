@@ -49,43 +49,44 @@ const server = app.listen(app.get('port'), () => {
     console.log('Server on Port', app.get('port'));
 }) ;
 
-const io = require('socket.io')(server);
+const io = require('socket.io')(server)
 
-io.on('connection', async (socket) => {
-  console.log('A usuario has connected');
+let socketsConected = new Set()
 
-  try {
-    // Obtener mensajes anteriores al conectarse el usuario
-    const chatHistory = await Message.find().sort({ timestamp: 1 });
-    socket.emit('chat-history', chatHistory);
-  } catch (error) {
-    console.error('Error fetching chat history:', error.message);
-  }
+io.on('connection', onConnected)
 
-  // Manejar eventos de mensajes
-  socket.on('message', async (data) => {
-    try {
-      // Crear un nuevo mensaje utilizando el modelo
-      const newMessage = new Message({
-        sender: data.name,
-        content: data.message,
+function onConnected(socket) {
+    console.log('A usuario has connected')
+    socketsConected.add(socket.id)
+    
+    io.emit('clients-total',socketsConected.size)
+
+    socket.on('disconnect', () =>{
+        console.log('Socket disconnected', socket.id)
+        socketsConected.delete(socket.id)
+        io.emit('clients-total', socketsConected.size)
+    })
+
+
+    socket.on('message', async (data) => {
+        try {
+          const newMessage = new Message({
+            sender: data.name,
+            content: data.message,
+          });
+      
+          // Guardar el mensaje en la base de datos
+          await newMessage.save();
+      
+          // Enviar el mensaje a todos los clientes, incluido el remitente
+          io.emit('chat-message', data);
+        } catch (error) {
+          console.error('Error saving message:', error.message);
+        }
       });
-
-      // Guardar el mensaje en la base de datos
-      await newMessage.save();
-
-      // Enviar el mensaje a todos los clientes, incluido el remitente
-      io.emit('chat-message', data);
-    } catch (error) {
-      console.error('Error saving message:', error.message);
+      
+    socket.on('feedback', (data) => {
+        socket.broadcast.emit('feedback', data)
+      })
     }
-  });
 
-  // Manejar desconexión de sockets
-  socket.on('disconnect', () => {
-    console.log('Socket disconnected', socket.id);
-    // ... (puedes agregar lógica adicional si es necesario)
-  });
-
-  // ... (otros eventos que manejas)
-});
