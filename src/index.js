@@ -72,7 +72,7 @@ function onConnected(socket) {
         try {
           const newMessage = new Message({
             sender: data.name,
-            content: data.message,
+            content: data.content, // <-- Add the 'content' property
           });
       
           // Guardar el mensaje en la base de datos
