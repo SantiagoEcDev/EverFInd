@@ -51,30 +51,24 @@ const server = app.listen(app.get('port'), () => {
 
 const io = require('socket.io')(server);
 
-let socketsConnected = new Set();
-
-io.on('connection', onConnected);
-
-function onConnected(socket) {
+io.on('connection', async (socket) => {
   console.log('A usuario has connected');
-  socketsConnected.add(socket.id);
 
-  io.emit('clients-total', socketsConnected.size);
+  try {
+    // Obtener mensajes anteriores al conectarse el usuario
+    const chatHistory = await Message.find().sort({ timestamp: 1 });
+    socket.emit('chat-history', chatHistory);
+  } catch (error) {
+    console.error('Error fetching chat history:', error.message);
+  }
 
-  socket.on('disconnect', () => {
-    console.log('Socket disconnected', socket.id);
-    socketsConnected.delete(socket.id);
-    io.emit('clients-total', socketsConnected.size);
-  });
-
+  // Manejar eventos de mensajes
   socket.on('message', async (data) => {
-    console.log(data);
-
     try {
       // Crear un nuevo mensaje utilizando el modelo
       const newMessage = new Message({
-        sender: data.sender,
-        content: data.content,
+        sender: data.name,
+        content: data.message,
       });
 
       // Guardar el mensaje en la base de datos
@@ -87,7 +81,11 @@ function onConnected(socket) {
     }
   });
 
-  socket.on('feedback', (data) => {
-    socket.broadcast.emit('feedback', data);
+  // Manejar desconexión de sockets
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected', socket.id);
+    // ... (puedes agregar lógica adicional si es necesario)
   });
-}
+
+  // ... (otros eventos que manejas)
+});
