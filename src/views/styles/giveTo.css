@@ -45,3 +45,23 @@ button i {
 button:hover {
   background-color: #2345ba;
 }
+
+.hidden {
+  display: none;
+}
+
+/* Estilo para la imagen cuando no hay usuarios */
+.no-users-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px; /* Ajusta el margen según sea necesario */
+}
+
+.no-users-container img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}

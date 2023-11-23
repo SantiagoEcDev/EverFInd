@@ -97,16 +97,34 @@
 
                 <div class="analytics">
 
-                    <div class="card">
+                    <div class="card <%= userCount > 0 ? '' : 'hidden' %>">
                         <div class="card-head">
                             <h2><%= userCount %></h2>
                             <span class="las la-user-friends"></span>
                         </div>
                         <div class="card-progress">
                             <small>Usuarios registrados</small>
-                            
                         </div>
                     </div>
+                    
+                    <!-- Tarjeta de Mascotas Publicadas -->
+                    <div class="card <%= petCount > 0 ? '' : 'hidden' %>">
+                        <div class="card-head">
+                            <h2><%= petCount %></h2>
+                            <span class="las la-paw"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Mascotas publicadas</small>
+                        </div>
+                    </div>
+                    
+                    <% if (userCount === 0) { %>
+                        <!-- Imagen cuando no hay usuarios -->
+                        <div class="no-users-container">
+                            <img src="ruta/de/la/imagen.jpg" alt="Imagen sin usuarios">
+                            <p>No hay usuarios registrados en este momento.</p>
+                        </div>
+                    <% } %>
 
                     <div id="messageModal" class="modal">
                         <!-- Contenido del Modal -->
@@ -183,16 +201,7 @@
                     </script>
 
 
-                    <div class="card">
-                        <div class="card-head">
-                            <h2><%= petCount %></h2>
-                            <span class="las la-paw"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Mascotas publicadas</small>
-                            
-                        </div>
-                    </div>
+                    
 
 
 
