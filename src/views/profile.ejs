@@ -137,6 +137,23 @@
                         </form>
                     </div>
                     
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const saveChangesButton = document.querySelector('.btn-primary');
+                    
+                            saveChangesButton.addEventListener('click', function () {
+                                // Muestra la alerta de cambios guardados
+                                Swal.fire({
+                                    title: 'Cambios guardados',
+                                    text: 'Los cambios se han guardado correctamente.',
+                                    icon: 'success',
+                                    confirmButtonColor: '#3455db',
+                                    confirmButtonText: 'Aceptar'
+                                });
+                            });
+                        });
+                    </script>
+                    
                     </div>
                     <div class="tab-pane fade" id="account-social-links">
                         <div class="card-body pb-2">
