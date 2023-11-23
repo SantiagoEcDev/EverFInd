@@ -1024,3 +1024,42 @@ p {
     color: #1a73e8; /* Cambia el color del icono */
     transform: scale(1.1); /* Aumenta ligeramente el tamaño del icono */
 }
+
+.no-requests {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.no-requests img {
+    max-width: 100%; /* Ajusta el ancho máximo de la imagen al 100% */
+    height: auto; /* Permite que la altura de la imagen se ajuste automáticamente */
+    margin-bottom: 10px; /* Puedes ajustar este margen según sea necesario */
+}
+
+.no-requests p {
+    font-family: 'Arial', sans-serif; /* Cambia la fuente del texto */
+    font-size: 18px; /* Tamaño de la fuente del texto */
+    color: #555; /* Color del texto gris oscuro */
+}
+
+.no-pets {
+    text-align: center;
+    margin: 20px;
+    width: 600px;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-pets img {
+    max-width: 100%;/* Ancho máximo deseado para la imagen */
+    justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.no-pets p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+}

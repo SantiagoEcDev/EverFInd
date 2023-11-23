@@ -97,34 +97,16 @@
 
                 <div class="analytics">
 
-                    <div class="card <%= userCount > 0 ? '' : 'hidden' %>">
+                    <div class="card">
                         <div class="card-head">
                             <h2><%= userCount %></h2>
                             <span class="las la-user-friends"></span>
                         </div>
                         <div class="card-progress">
                             <small>Usuarios registrados</small>
+                            
                         </div>
                     </div>
-                    
-                    <!-- Tarjeta de Mascotas Publicadas -->
-                    <div class="card <%= petCount > 0 ? '' : 'hidden' %>">
-                        <div class="card-head">
-                            <h2><%= petCount %></h2>
-                            <span class="las la-paw"></span>
-                        </div>
-                        <div class="card-progress">
-                            <small>Mascotas publicadas</small>
-                        </div>
-                    </div>
-                    
-                    <% if (userCount === 0) { %>
-                        <!-- Imagen cuando no hay usuarios -->
-                        <div class="no-users-container">
-                            <img src="ruta/de/la/imagen.jpg" alt="Imagen sin usuarios">
-                            <p>No hay usuarios registrados en este momento.</p>
-                        </div>
-                    <% } %>
 
                     <div id="messageModal" class="modal">
                         <!-- Contenido del Modal -->
@@ -201,7 +183,16 @@
                     </script>
 
 
-                    
+                    <div class="card">
+                        <div class="card-head">
+                            <h2><%= petCount %></h2>
+                            <span class="las la-paw"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Mascotas publicadas</small>
+                            
+                        </div>
+                    </div>
 
 
 
@@ -216,34 +207,40 @@
                         <table width="100%">
                             <thead>
                                 <tr>
-                                    <th></span>NOMBRE</th>
-                                    <th></span>VER</th>
+                                    <th>NOMBRE</th>
+                                    <th>VER</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% users.forEach((user, index) => { %>
+                                <% if (users.length === 0) { %>
+                                    <!-- Si no hay usuarios registrados -->
                                     <tr>
-                                      <td>
-                                        <div class="client">
-                                          <div class="client-img bg-img" style="background-image: url('<%= user.profileImage %>')"></div>
-                                          <div class="client-info">
-                                            <h4>
-                                              <%= user.name %>
-                                            </h4>
-                                            <small>
-                                              <%= user.email %>
-                                            </small>
-                                          </div>
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div class="actions">
-                                            <span data-title="Ver" class="las la-eye" id="openUserModal<%= user.id %>" data-modal-id="userModal<%= user.id %>"></span>
-                                        </div>
-                                      </td>
+                                        <td colspan="2" class="no-users">
+                                            <img src="tu_imagen.png" alt="No hay usuarios registrados">
+                                            <p>No hay usuarios registrados en este momento.</p>
+                                        </td>
                                     </tr>
-                                  <% }); %>
-
+                                <% } else { %>
+                                    <!-- Si hay usuarios registrados -->
+                                    <% users.forEach((user, index) => { %>
+                                        <tr>
+                                            <td>
+                                                <div class="client">
+                                                    <div class="client-img bg-img" style="background-image: url('<%= user.profileImage %>')"></div>
+                                                    <div class="client-info">
+                                                        <h4><%= user.name %></h4>
+                                                        <small><%= user.email %></small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="actions">
+                                                    <span data-title="Ver" class="las la-eye" id="openUserModal<%= user.id %>" data-modal-id="userModal<%= user.id %>"></span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>

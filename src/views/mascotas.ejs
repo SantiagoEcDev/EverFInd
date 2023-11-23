@@ -94,16 +94,24 @@
 
                 <div class="analytics">
 
-                    <% pets.forEach((pet) => { %>
-                        <div class="pet-card">
-                          <div class="pet-image" style="background-image: url('<%= pet.imagePath %>');"></div>
-                          <div class="pet-info">
-                            <h3 class="pet-name"><%= pet.name %></h3>
-                            <p class="pet-details">Edad: <%= pet.age %> años</p>
-                            <p class="pet-details">Raza: <%= pet.breed %></p>
-                          </div>
+                    <% if (pets.length > 0) { %>
+                        <% pets.forEach((pet) => { %>
+                            <div class="pet-card">
+                                <div class="pet-image" style="background-image: url('<%= pet.imagePath %>');"></div>
+                                <div class="pet-info">
+                                    <h3 class="pet-name"><%= pet.name %></h3>
+                                    <p class="pet-details">Edad: <%= pet.age %> años</p>
+                                    <p class="pet-details">Raza: <%= pet.breed %></p>
+                                </div>
+                            </div>
+                        <% }); %>
+                    <% } else { %>
+                        <!-- Mostrar imagen cuando no haya mascotas -->
+                        <div class="no-pets">
+                            <img src="./Cool Kids - Outdoors Celebration.png" alt="No hay mascotas" >
+                            <p>No hay mascotas en este momento.</p>
                         </div>
-                      <% }); %>
+                    <% } %>
                 </div>
                     
 
